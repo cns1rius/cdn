@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">s1rius&#39;s blog</title>
+  <title itemprop="name">SSTI模板注入 | s1rius&#39;s blog</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -289,14 +289,14 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
           <header class="entry-header">
-            <h1 class="entry-title"></h1>
-            <p class="entry-census">&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <h1 class="entry-title">SSTI模板注入</h1>
+            <p class="entry-census">s1rius&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
         
         <div class="entry-content">
-          <h2 id="SSTI模板注入"><a href="#SSTI模板注入" class="headerlink" title="SSTI模板注入"></a>SSTI模板注入</h2><p><img src="https://img-blog.csdnimg.cn/12ec799b41b544eb83db7a111956c0cb.png" alt="在这里插入图片描述"></p>
+          <p><img src="https://img-blog.csdnimg.cn/12ec799b41b544eb83db7a111956c0cb.png" alt="在这里插入图片描述"></p>
 <h1 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h1><p>ssti注入点在msg<br>注入49出现orz应该是有过滤<br>1正常<br>hint里缺cookie_secret<br>该项在handler.settings</p>
 <blockquote>
 <p>Handler这个对象，Handler指向的处理当前这个页面的RequestHandler对象<br>RequestHandler中并没有settings这个属性，与RequestHandler关联的Application对象（Requestion.application）才有setting这个属性<br>handler 指向RequestHandler<br>而RequestHandler.settings又指向self.application.settings<br>所有handler.settings就指向RequestHandler.application.settings了！</p>
@@ -383,7 +383,7 @@
               Previous Post</span>
               <div class="info">
                 <h3>
-                </h3>
+                upload-labs</h3>
                 <hr>
               </div>
             </a>
@@ -401,7 +401,7 @@
               Next Post</span>
               <div class="info">
                 <h3>
-                </h3>
+                sqli-lab</h3>
                 <hr>
               </div>
             </a>
@@ -428,11 +428,11 @@
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <a href="cns1rius.github.io" class="profile gravatar"><img src="/img/custom/avatar.jpg" itemprop="image" alt="s1rius" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="" itemprop="url" rel="author"></a>
+            <a href="cns1rius.github.io" itemprop="url" rel="author">s1rius</a>
             </h3>
           </div>
         </div>

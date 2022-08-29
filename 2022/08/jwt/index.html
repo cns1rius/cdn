@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">s1rius&#39;s blog</title>
+  <title itemprop="name">ctfhub-jwt | s1rius&#39;s blog</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -289,8 +289,8 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
           <header class="entry-header">
-            <h1 class="entry-title"></h1>
-            <p class="entry-census">&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <h1 class="entry-title">ctfhub-jwt</h1>
+            <p class="entry-census">s1rius&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
@@ -303,17 +303,16 @@
 <p>进去查消息头</p>
 <p>然后在</p>
 <p><a href="https://jwt.io/" target="_blank" rel="noopener">jwt.io</a></p>
-<p>decode    一共两部分ag是另一半</p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220331132533661.png" alt="image-20220331132533661"></p>
+<p>decode    一共两部分ag是另一半<br><img src="https://img-blog.csdnimg.cn/a4b0f89e87f84f8aa21b3071ec99c066.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
 <h1 id="无签名"><a href="#无签名" class="headerlink" title="无签名"></a>无签名</h1><pre><code class="python">import jwt
 algorithm=&quot;none&quot;
-header = {
+payload = {
   &quot;username&quot;: &quot;admin&quot;,
   &quot;password&quot;: &quot;admin&quot;,
   &quot;role&quot;:&quot;admin&quot;
   }
 key = &quot;&quot;
-encoded = jwt.encode(header,key,algorithm)
+encoded = jwt.encode(payload,key,algorithm)
 print(encoded)
 </code></pre>
 <p>jwt的签名可以为无</p>
@@ -335,14 +334,11 @@ make
 <p>然后得出该jwt密钥</p>
 <p>然后放之前那个网站</p>
 <p>改role为admin</p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220401103754837.png" alt="image-20220401103754837"></p>
-<p>返回提交token</p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220401103344937.png" alt="image-20220401103344937"></p>
+<p><img src="https://img-blog.csdnimg.cn/7fbb4534fca24281881a5aea1cba74ab.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/0c56be41283b43b7ae7bb6c95aac0ae6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述">返回提交token<br><img src="https://img-blog.csdnimg.cn/5da55fadcc664157bfd8481e7bd0d57d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
 <h1 id="修改签名算法"><a href="#修改签名算法" class="headerlink" title="修改签名算法"></a>修改签名算法</h1><p>把cookie清空后提交用户名密码</p>
 <p>得到一串jwt</p>
-<p>丢进</p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220401111643527.png" alt="image-20220401111643527"></p>
-<p>发现是RS256编码（不对称式编码）</p>
+<p>丢进<br><img src="https://img-blog.csdnimg.cn/f12a54b8f88848f49959045582a95cb7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"><br>发现是RS256编码（不对称式编码）</p>
 <p>需要改为对称式编码</p>
 <p>如HS256</p>
 <p>题目中给了public key</p>
@@ -384,8 +380,7 @@ print(token + &quot;.&quot; + sig)
 </code></pre>
 <p>运行后把token返回去验证</p>
 <p>成功</p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220401111559224.png" alt="image-20220401111559224"></p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220401111423320.png" alt="image-20220401111423320"></p>
+<p><img src="https://img-blog.csdnimg.cn/169a632c18eb4233a605602f6f6b9cde.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"><br><img src="https://img-blog.csdnimg.cn/cbb9f91b8d69482283ce362d1407284f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
 
         </div>
         <!-- .entry-content -->
@@ -425,7 +420,7 @@ print(token + &quot;.&quot; + sig)
               Previous Post</span>
               <div class="info">
                 <h3>
-                </h3>
+                linux动态加载</h3>
                 <hr>
               </div>
             </a>
@@ -443,7 +438,7 @@ print(token + &quot;.&quot; + sig)
               Next Post</span>
               <div class="info">
                 <h3>
-                </h3>
+                git命令</h3>
                 <hr>
               </div>
             </a>
@@ -470,11 +465,11 @@ print(token + &quot;.&quot; + sig)
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <a href="cns1rius.github.io" class="profile gravatar"><img src="/img/custom/avatar.jpg" itemprop="image" alt="s1rius" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="" itemprop="url" rel="author"></a>
+            <a href="cns1rius.github.io" itemprop="url" rel="author">s1rius</a>
             </h3>
           </div>
         </div>

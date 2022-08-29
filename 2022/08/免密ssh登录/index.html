@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">s1rius&#39;s blog</title>
+  <title itemprop="name">终端便捷ssh（免密）连接 | s1rius&#39;s blog</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -289,55 +289,59 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
           <header class="entry-header">
-            <h1 class="entry-title"></h1>
-            <p class="entry-census">&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <h1 class="entry-title">终端便捷ssh（免密）连接</h1>
+            <p class="entry-census">s1rius&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
         
         <div class="entry-content">
-          <p>物理机ssh连接虚拟机</p>
+          <h1 id="普通ssh方法"><a href="#普通ssh方法" class="headerlink" title="普通ssh方法"></a>普通ssh方法</h1><p>物理机ssh连接虚拟机</p>
 <p>没基础的可以这样连：复杂</p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610164418979.png" alt="image-20220610164418979"></p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610164551389.png" alt="image-20220610164551389"></p>
-<p>复制<code>&#39;s</code>前面的</p>
-<p>打开终端设置</p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610163919562.png" alt="image-20220610163919562"></p>
+<p><img src="https://img-blog.csdnimg.cn/322b3e519c8b4a128c24bed4da2c492b.png" alt="\[外链图片转存失败,源站可能有防盗链机制,建议将图片保存失败,源站可能有防盗下来851229742)(C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610164418979.png)\]"></p>
+<p><img src="https://img-blog.csdnimg.cn/a4fbb966a75d4c8cb76f39f6ad5a6247.png" alt="在这里插入图片描述"></p>
+<h1 id="终端快捷ssh"><a href="#终端快捷ssh" class="headerlink" title="终端快捷ssh"></a>终端快捷ssh</h1><p>复制<code>&#39;s</code>前面的<br>打开终端设置<br><img src="https://img-blog.csdnimg.cn/9fafbf4213e44ca2ac1c80a1262d9750.png" alt="在这里插入图片描述"></p>
 <p>左侧添加新配置文件-&gt;添加新控制文件</p>
 <p>然后填写第二行即命令行</p>
 <pre><code class="shell">ssh 虚拟机登录用户名@虚拟机IP
-或
-ssh 上面复制的
 </code></pre>
+<p>其实就是 ssh上面复制的</p>
 <p>保存</p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610164103047.png" alt="image-20220610164103047"></p>
+<p><img src="https://img-blog.csdnimg.cn/8240fecdcacd49d6b15ccca9c3debe88.png" alt></p>
 <p>即可在物理机终端快速打开</p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610164949379.png" alt="image-20220610164949379"></p>
+<p><img src="https://img-blog.csdnimg.cn/2314c349c1964a2d8ecf9520e7a294dd.png" alt="在这里插入图片描述"></p>
 <h1 id="免密ssh登录"><a href="#免密ssh登录" class="headerlink" title="免密ssh登录"></a>免密ssh登录</h1><p>在物理机运行：</p>
-<pre><code class="css">ssh-keygen
+<pre><code class="shell">ssh-keygen
 </code></pre>
 <p>后面第一个路径回车</p>
 <p>后面密码直接回车（即可实现免密码登录）</p>
-<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610120843319.png" alt="image-20220610120843319"></p>
-<pre><code class="shell">Your identification has been saved in C:\Users\CNsirius/.ssh/id_rsa.
-Your public key has been saved in C:\Users\CNsirius/.ssh/id_rsa.pub.
+<p><img src="https://img-blog.csdnimg.cn/754f8f550c2345c6a47fe8bb7c4dee29.png" alt="请添加图片描述"></p>
+<pre><code class="shell">Your identification has been saved in C:\Users\      /.ssh/id_rsa.
+Your public key has been saved in C:\Users\            /.ssh/id_rsa.pub.
 The key fingerprint is:
-SHA256:ln6ZkrhHWHLWE9jZwIaJ+rfJnkoKbdDStRbGBeooF4g cnsirius\cnsirius@CNSirius
+SHA256:ln6ZkrhHWH*********tRbGBeooF4g       \    @
 The key&#39;s randomart image is:
 +---[RSA 3072]----+
 |      .o.*.+     |
 |..   o..+ * .    |
-|E . ..=  o .     |
+|***********.     |
 |   *.o.o+.o      |
 |. = +.o*S  .     |
-| o + .o+o. o     |
-|  . o o++o+      |
-|   o o .=+       |
-|    . o+o        |
+| *********       |
 +----[SHA256]-----+
 </code></pre>
 <p>找到第一行的那个目录，把id_rsa.pub文件复制到虚拟机</p>
 <p>执行</p>
+<pre><code class="shell">cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+chmod 770 ~/.ssh/authorized_keys
+</code></pre>
+<blockquote>
+<p>报未找到.ssh的话</p>
+<p>要先运行<code>ssh-keygen</code>和在物理机设置一样</p>
+</blockquote>
+<p>然后终端打开虚拟机就不用输密码了</p>
+<h1 id="报错情况"><a href="#报错情况" class="headerlink" title="报错情况"></a>报错情况</h1><h2 id="仍需密码："><a href="#仍需密码：" class="headerlink" title="仍需密码："></a>仍需密码：</h2><p>传到虚拟机的keygen一定要是公钥pub</p>
+<h2 id="连接超时"><a href="#连接超时" class="headerlink" title="连接超时"></a>连接超时</h2><p>过一段时间之后 连不上<br>是ip未固定<br>需将虚拟机ip固定<br>桥接和net模式固定IP方式会抽空发<br>到时候在这打个传送</p>
 <pre><code class="shell">cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
 chmod 700 ~/.ssh/authorized_keys
 </code></pre>
@@ -385,7 +389,7 @@ chmod 700 ~/.ssh/authorized_keys
               Previous Post</span>
               <div class="info">
                 <h3>
-                </h3>
+                Bypass disable_function</h3>
                 <hr>
               </div>
             </a>
@@ -403,7 +407,7 @@ chmod 700 ~/.ssh/authorized_keys
               Next Post</span>
               <div class="info">
                 <h3>
-                </h3>
+                ctfhub-彩蛋</h3>
                 <hr>
               </div>
             </a>
@@ -430,11 +434,11 @@ chmod 700 ~/.ssh/authorized_keys
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <a href="cns1rius.github.io" class="profile gravatar"><img src="/img/custom/avatar.jpg" itemprop="image" alt="s1rius" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="" itemprop="url" rel="author"></a>
+            <a href="cns1rius.github.io" itemprop="url" rel="author">s1rius</a>
             </h3>
           </div>
         </div>
