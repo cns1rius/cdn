@@ -290,28 +290,62 @@
         
           <header class="entry-header">
             <h1 class="entry-title"></h1>
-            <p class="entry-census">&nbsp;·&nbsp;2022-8-28&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <p class="entry-census">&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
         
         <div class="entry-content">
-          <h1 id="工具-彩蛋"><a href="#工具-彩蛋" class="headerlink" title="工具 彩蛋"></a>工具 彩蛋</h1><p>一开始的想法是工具一共有8页，想抓个包改下看看有没有第九页<br>抓包后发现不管哪一页limit都是12 但offset在变化<br>于是<br><img src="https://img-blog.csdnimg.cn/0b4b33ac483e49a9945a279bd42d7cd8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">这样设置参数<br><img src="https://img-blog.csdnimg.cn/f9fc1f1792d84ca193c1ac4910dfce25.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">在长度为1000到6、7千左右随便一个双击后 ==点击响应== 看==响应==包<br><img src="https://img-blog.csdnimg.cn/92c81d3b913d4800a9c19030d3079d7a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">在最后一行</p>
-<h1 id="首页-彩蛋"><a href="#首页-彩蛋" class="headerlink" title="首页 彩蛋"></a>首页 彩蛋</h1><p><a href="https://api.ctfhub.com" target="_blank" rel="noopener">api</a>中间框内隐藏着两行字<br>ctfhub{c18732f48a96c40d40a06e74b1305706}<br><img src="https://img-blog.csdnimg.cn/42334be7914f498c96d55daecf1f09fb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h1 id="题目入口-彩蛋"><a href="#题目入口-彩蛋" class="headerlink" title="题目入口 彩蛋"></a>题目入口 彩蛋</h1><p>在web-ssrf中间那一列的某些题传参错误时会出现<br>详情见<a href="https://blog.csdn.net/qq_62414126/article/details/122881838" target="_blank" rel="noopener">ctfhub-ssrf</a>post最后一行介绍</p>
-<h1 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h1><p>公众号彩蛋坑的一批！<br>首先要先绑定<br>然后点彩蛋<br>它提示要回复正确的关键词<br>我*#@%<br>我回复过</p>
-<blockquote>
-<p>彩蛋    关键词    egg    ctfhub    CTFHub    拿来把你    CTFer 自己人 ……</p>
-</blockquote>
-<p>到底没想到竟然是flag</p>
-<h1 id="投稿提交-彩蛋"><a href="#投稿提交-彩蛋" class="headerlink" title="投稿提交 彩蛋"></a>投稿提交 彩蛋</h1><p>只找到了前半部分<br>分别在题目提交和wp提交页面的最后</p>
-<pre><code class="css">ctfhub{029e02eb3a1
-    e8c49b1132b5
-    15b652a5f3a8
-    62013}
+          <p>物理机ssh连接虚拟机</p>
+<p>没基础的可以这样连：复杂</p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610164418979.png" alt="image-20220610164418979"></p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610164551389.png" alt="image-20220610164551389"></p>
+<p>复制<code>&#39;s</code>前面的</p>
+<p>打开终端设置</p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610163919562.png" alt="image-20220610163919562"></p>
+<p>左侧添加新配置文件-&gt;添加新控制文件</p>
+<p>然后填写第二行即命令行</p>
+<pre><code class="shell">ssh 虚拟机登录用户名@虚拟机IP
+或
+ssh 上面复制的
 </code></pre>
-<p>最后这个彩蛋剩余部分也没找到<br>网上搜了下才明白：感谢anweilx的<a href="https://www.cnblogs.com/anweilx/p/12493000.html" target="_blank" rel="noopener">wp</a><br>第一行是俩页面的最后有<br>第二行是在俩页面源码 分别搜==奖励== 在上面那行一个是base64然后再转url 一个是hex解码<br>第三行是俩页面的图片隐写 丢进winhex<br>第四行有提示<br>aes 256 ecb<a href="http://tool.chacuo.net/cryptaes/" target="_blank" rel="noopener">解码</a></p>
-<h1 id="其他彩蛋"><a href="#其他彩蛋" class="headerlink" title="其他彩蛋"></a>其他彩蛋</h1><p>剩余皆可在对应页面搜索egg即可获得</p>
+<p>保存</p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610164103047.png" alt="image-20220610164103047"></p>
+<p>即可在物理机终端快速打开</p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610164949379.png" alt="image-20220610164949379"></p>
+<h1 id="免密ssh登录"><a href="#免密ssh登录" class="headerlink" title="免密ssh登录"></a>免密ssh登录</h1><p>在物理机运行：</p>
+<pre><code class="css">ssh-keygen
+</code></pre>
+<p>后面第一个路径回车</p>
+<p>后面密码直接回车（即可实现免密码登录）</p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220610120843319.png" alt="image-20220610120843319"></p>
+<pre><code class="shell">Your identification has been saved in C:\Users\CNsirius/.ssh/id_rsa.
+Your public key has been saved in C:\Users\CNsirius/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:ln6ZkrhHWHLWE9jZwIaJ+rfJnkoKbdDStRbGBeooF4g cnsirius\cnsirius@CNSirius
+The key&#39;s randomart image is:
++---[RSA 3072]----+
+|      .o.*.+     |
+|..   o..+ * .    |
+|E . ..=  o .     |
+|   *.o.o+.o      |
+|. = +.o*S  .     |
+| o + .o+o. o     |
+|  . o o++o+      |
+|   o o .=+       |
+|    . o+o        |
++----[SHA256]-----+
+</code></pre>
+<p>找到第一行的那个目录，把id_rsa.pub文件复制到虚拟机</p>
+<p>执行</p>
+<pre><code class="shell">cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+chmod 700 ~/.ssh/authorized_keys
+</code></pre>
+<blockquote>
+<p>报未找到.ssh的话</p>
+<p>要先运行<code>ssh-keygen</code>和在物理机设置一样</p>
+</blockquote>
+<p>然后终端打开虚拟机就不用输密码了</p>
 
         </div>
         <!-- .entry-content -->
@@ -343,7 +377,7 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2022/08/免密ssh登录/" rel="prev">
+            <a href="/2022/08/Bypass disable_function/" rel="prev">
               <div class="background">
                 <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -361,7 +395,7 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2022/08/hello-world/" rel="next">
+            <a href="/2022/08/CTFHub彩蛋/" rel="next">
               <div class="background">
                 <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -369,7 +403,7 @@
               Next Post</span>
               <div class="info">
                 <h3>
-                Hello World</h3>
+                </h3>
                 <hr>
               </div>
             </a>

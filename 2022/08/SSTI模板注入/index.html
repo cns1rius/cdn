@@ -290,28 +290,60 @@
         
           <header class="entry-header">
             <h1 class="entry-title"></h1>
-            <p class="entry-census">&nbsp;·&nbsp;2022-8-28&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <p class="entry-census">&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
         
         <div class="entry-content">
-          <h1 id="工具-彩蛋"><a href="#工具-彩蛋" class="headerlink" title="工具 彩蛋"></a>工具 彩蛋</h1><p>一开始的想法是工具一共有8页，想抓个包改下看看有没有第九页<br>抓包后发现不管哪一页limit都是12 但offset在变化<br>于是<br><img src="https://img-blog.csdnimg.cn/0b4b33ac483e49a9945a279bd42d7cd8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">这样设置参数<br><img src="https://img-blog.csdnimg.cn/f9fc1f1792d84ca193c1ac4910dfce25.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">在长度为1000到6、7千左右随便一个双击后 ==点击响应== 看==响应==包<br><img src="https://img-blog.csdnimg.cn/92c81d3b913d4800a9c19030d3079d7a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">在最后一行</p>
-<h1 id="首页-彩蛋"><a href="#首页-彩蛋" class="headerlink" title="首页 彩蛋"></a>首页 彩蛋</h1><p><a href="https://api.ctfhub.com" target="_blank" rel="noopener">api</a>中间框内隐藏着两行字<br>ctfhub{c18732f48a96c40d40a06e74b1305706}<br><img src="https://img-blog.csdnimg.cn/42334be7914f498c96d55daecf1f09fb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h1 id="题目入口-彩蛋"><a href="#题目入口-彩蛋" class="headerlink" title="题目入口 彩蛋"></a>题目入口 彩蛋</h1><p>在web-ssrf中间那一列的某些题传参错误时会出现<br>详情见<a href="https://blog.csdn.net/qq_62414126/article/details/122881838" target="_blank" rel="noopener">ctfhub-ssrf</a>post最后一行介绍</p>
-<h1 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h1><p>公众号彩蛋坑的一批！<br>首先要先绑定<br>然后点彩蛋<br>它提示要回复正确的关键词<br>我*#@%<br>我回复过</p>
+          <h2 id="SSTI模板注入"><a href="#SSTI模板注入" class="headerlink" title="SSTI模板注入"></a>SSTI模板注入</h2><p><img src="https://img-blog.csdnimg.cn/12ec799b41b544eb83db7a111956c0cb.png" alt="在这里插入图片描述"></p>
+<h1 id="护网杯-2018-easy-tornado"><a href="#护网杯-2018-easy-tornado" class="headerlink" title="[护网杯 2018]easy_tornado"></a>[护网杯 2018]easy_tornado</h1><p>ssti注入点在msg<br>注入49出现orz应该是有过滤<br>1正常<br>hint里缺cookie_secret<br>该项在handler.settings</p>
 <blockquote>
-<p>彩蛋    关键词    egg    ctfhub    CTFHub    拿来把你    CTFer 自己人 ……</p>
+<p>Handler这个对象，Handler指向的处理当前这个页面的RequestHandler对象<br>RequestHandler中并没有settings这个属性，与RequestHandler关联的Application对象（Requestion.application）才有setting这个属性<br>handler 指向RequestHandler<br>而RequestHandler.settings又指向self.application.settings<br>所有handler.settings就指向RequestHandler.application.settings了！</p>
 </blockquote>
-<p>到底没想到竟然是flag</p>
-<h1 id="投稿提交-彩蛋"><a href="#投稿提交-彩蛋" class="headerlink" title="投稿提交 彩蛋"></a>投稿提交 彩蛋</h1><p>只找到了前半部分<br>分别在题目提交和wp提交页面的最后</p>
-<pre><code class="css">ctfhub{029e02eb3a1
-    e8c49b1132b5
-    15b652a5f3a8
-    62013}
+<p><img src="https://img-blog.csdnimg.cn/ac2991bc7e1e4e64b87451461cb17916.png" alt="在这里插入图片描述">然后按hint里的MD5加密过后传参<br><img src="https://img-blog.csdnimg.cn/3ee21ded82d8493baba4f8b5b940927a.png" alt="在这里插入图片描述"></p>
+<pre><code class="shell">?filename=/fllllllllllllag&amp;filehash=ff92d5623223cadc00efabfc7676f9fe
 </code></pre>
-<p>最后这个彩蛋剩余部分也没找到<br>网上搜了下才明白：感谢anweilx的<a href="https://www.cnblogs.com/anweilx/p/12493000.html" target="_blank" rel="noopener">wp</a><br>第一行是俩页面的最后有<br>第二行是在俩页面源码 分别搜==奖励== 在上面那行一个是base64然后再转url 一个是hex解码<br>第三行是俩页面的图片隐写 丢进winhex<br>第四行有提示<br>aes 256 ecb<a href="http://tool.chacuo.net/cryptaes/" target="_blank" rel="noopener">解码</a></p>
-<h1 id="其他彩蛋"><a href="#其他彩蛋" class="headerlink" title="其他彩蛋"></a>其他彩蛋</h1><p>剩余皆可在对应页面搜索egg即可获得</p>
+<p>filehash不同 请自行加密<br><img src="https://img-blog.csdnimg.cn/c860336ae81a4d6e8c52328bf1ae378c.png" alt="在这里插入图片描述"></p>
+<h1 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h1><p><img src="https://img-blog.csdnimg.cn/ec82c70c7fdf49b698f9095bda0d1662.png" alt="在这里插入图片描述"></p>
+<pre><code class="php">&lt;?php
+    require_once(&#39;header.php&#39;);
+    require_once(&#39;./libs/Smarty.class.php&#39;);
+    $smarty = new Smarty();
+    if (!empty($_SERVER[&#39;HTTP_CLIENT_IP&#39;])) 
+    {
+           $ip=$_SERVER[&#39;HTTP_CLIENT_IP&#39;];
+    }
+    elseif (!empty($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]))
+    {
+        $ip=$_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;];
+    }
+    else
+    {
+        $ip=$_SERVER[&#39;REMOTE_ADDR&#39;];
+    }
+    //$your_ip = $smarty-&gt;display(&quot;string:&quot;.$ip);
+    echo &quot;&lt;div class=\&quot;container panel1\&quot;&gt;
+                &lt;div class=\&quot;row\&quot;&gt;
+                &lt;div class=\&quot;col-md-4\&quot;&gt;    
+                &lt;/div&gt;
+                &lt;div class=\&quot;col-md-4\&quot;&gt;
+                &lt;div class=\&quot;jumbotron pan\&quot;&gt;
+                    &lt;div class=\&quot;form-group log\&quot;&gt;
+                        &lt;label&gt;&lt;h2&gt;Your IP is : &quot;;
+    $smarty-&gt;display(&quot;string:&quot;.$ip);
+    echo &quot;                &lt;/h2&gt;&lt;/label&gt;
+                    &lt;/div&gt;        
+                &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=\&quot;col-md-4\&quot;&gt;    
+                &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;&quot;;
+    ?&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/eb0e52d7b7f74ac1bb74f7c38b4ca72f.png" alt="在这里插入图片描述"></p>
+<h1 id="BJDCTF2020-Cookie-is-so-stable"><a href="#BJDCTF2020-Cookie-is-so-stable" class="headerlink" title="[BJDCTF2020]Cookie is so stable"></a>[BJDCTF2020]Cookie is so stable</h1><p><img src="https://img-blog.csdnimg.cn/f568432cbffb4e5f9603858a0cfa797d.png" alt="在这里插入图片描述"></p>
 
         </div>
         <!-- .entry-content -->
@@ -343,7 +375,7 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2022/08/免密ssh登录/" rel="prev">
+            <a href="/2022/08/upload-labs/" rel="prev">
               <div class="background">
                 <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -361,7 +393,7 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2022/08/hello-world/" rel="next">
+            <a href="/2022/08/sqli-lab/" rel="next">
               <div class="background">
                 <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -369,7 +401,7 @@
               Next Post</span>
               <div class="info">
                 <h3>
-                Hello World</h3>
+                </h3>
                 <hr>
               </div>
             </a>

