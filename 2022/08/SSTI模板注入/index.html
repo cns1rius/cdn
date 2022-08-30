@@ -80,7 +80,7 @@
         <p>剑未配妥出门已是江湖，千帆过尽归来仍是少年。</p>
         <div class="top-social_v2">
           <li id="bg-pre">
-            <img class="flipx" src="/img/other/next-b.svg">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
           
             
@@ -121,7 +121,7 @@
             
           
           <li id="bg-next">
-            <img src="/img/other/next-b.svg">
+            <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
         </div>
       </div>
@@ -195,9 +195,9 @@
                   <ul class="sub-menu">
                     
                       <li>
-                        <a href="/categories/技术/">
+                        <a href="/categories/ctf/">
                           <i class="fa fa-code" aria-hidden="true"></i>
-                          技术
+                          ctf
                         </a>
                       </li>
                     
@@ -301,47 +301,9 @@
 <blockquote>
 <p>Handler这个对象，Handler指向的处理当前这个页面的RequestHandler对象<br>RequestHandler中并没有settings这个属性，与RequestHandler关联的Application对象（Requestion.application）才有setting这个属性<br>handler 指向RequestHandler<br>而RequestHandler.settings又指向self.application.settings<br>所有handler.settings就指向RequestHandler.application.settings了！</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/ac2991bc7e1e4e64b87451461cb17916.png" alt="在这里插入图片描述">然后按hint里的MD5加密过后传参<br><img src="https://img-blog.csdnimg.cn/3ee21ded82d8493baba4f8b5b940927a.png" alt="在这里插入图片描述"></p>
-<pre><code class="shell">?filename=/fllllllllllllag&amp;filehash=ff92d5623223cadc00efabfc7676f9fe
-</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/ac2991bc7e1e4e64b87451461cb17916.png" alt="在这里插入图片描述">然后按hint里的MD5加密过后传参<br><img src="https://img-blog.csdnimg.cn/3ee21ded82d8493baba4f8b5b940927a.png" alt="在这里插入图片描述"><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?filename=/fllllllllllllag&amp;filehash=ff92d5623223cadc00efabfc7676f9fe</span><br></pre></td></tr></table></figure></p>
 <p>filehash不同 请自行加密<br><img src="https://img-blog.csdnimg.cn/c860336ae81a4d6e8c52328bf1ae378c.png" alt="在这里插入图片描述"></p>
-<h1 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h1><p><img src="https://img-blog.csdnimg.cn/ec82c70c7fdf49b698f9095bda0d1662.png" alt="在这里插入图片描述"></p>
-<pre><code class="php">&lt;?php
-    require_once(&#39;header.php&#39;);
-    require_once(&#39;./libs/Smarty.class.php&#39;);
-    $smarty = new Smarty();
-    if (!empty($_SERVER[&#39;HTTP_CLIENT_IP&#39;])) 
-    {
-           $ip=$_SERVER[&#39;HTTP_CLIENT_IP&#39;];
-    }
-    elseif (!empty($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]))
-    {
-        $ip=$_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;];
-    }
-    else
-    {
-        $ip=$_SERVER[&#39;REMOTE_ADDR&#39;];
-    }
-    //$your_ip = $smarty-&gt;display(&quot;string:&quot;.$ip);
-    echo &quot;&lt;div class=\&quot;container panel1\&quot;&gt;
-                &lt;div class=\&quot;row\&quot;&gt;
-                &lt;div class=\&quot;col-md-4\&quot;&gt;    
-                &lt;/div&gt;
-                &lt;div class=\&quot;col-md-4\&quot;&gt;
-                &lt;div class=\&quot;jumbotron pan\&quot;&gt;
-                    &lt;div class=\&quot;form-group log\&quot;&gt;
-                        &lt;label&gt;&lt;h2&gt;Your IP is : &quot;;
-    $smarty-&gt;display(&quot;string:&quot;.$ip);
-    echo &quot;                &lt;/h2&gt;&lt;/label&gt;
-                    &lt;/div&gt;        
-                &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class=\&quot;col-md-4\&quot;&gt;    
-                &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;&quot;;
-    ?&gt;
-</code></pre>
+<h1 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h1><p><img src="https://img-blog.csdnimg.cn/ec82c70c7fdf49b698f9095bda0d1662.png" alt="在这里插入图片描述"><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">'header.php'</span>);</span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">'./libs/Smarty.class.php'</span>);</span><br><span class="line">	$smarty = <span class="keyword">new</span> Smarty();</span><br><span class="line">	<span class="keyword">if</span> (!<span class="keyword">empty</span>($_SERVER[<span class="string">'HTTP_CLIENT_IP'</span>])) </span><br><span class="line">	&#123;</span><br><span class="line">		   $ip=$_SERVER[<span class="string">'HTTP_CLIENT_IP'</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">elseif</span> (!<span class="keyword">empty</span>($_SERVER[<span class="string">'HTTP_X_FORWARDED_FOR'</span>]))</span><br><span class="line">	&#123;</span><br><span class="line">	    $ip=$_SERVER[<span class="string">'HTTP_X_FORWARDED_FOR'</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">	    $ip=$_SERVER[<span class="string">'REMOTE_ADDR'</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//$your_ip = $smarty-&gt;display("string:".$ip);</span></span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"&lt;div class=\"container panel1\"&gt;</span></span><br><span class="line"><span class="string">				&lt;div class=\"row\"&gt;</span></span><br><span class="line"><span class="string">				&lt;div class=\"col-md-4\"&gt;	</span></span><br><span class="line"><span class="string">				&lt;/div&gt;</span></span><br><span class="line"><span class="string">				&lt;div class=\"col-md-4\"&gt;</span></span><br><span class="line"><span class="string">				&lt;div class=\"jumbotron pan\"&gt;</span></span><br><span class="line"><span class="string">					&lt;div class=\"form-group log\"&gt;</span></span><br><span class="line"><span class="string">						&lt;label&gt;&lt;h2&gt;Your IP is : "</span>;</span><br><span class="line">	$smarty-&gt;display(<span class="string">"string:"</span>.$ip);</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">"				&lt;/h2&gt;&lt;/label&gt;</span></span><br><span class="line"><span class="string">					&lt;/div&gt;		</span></span><br><span class="line"><span class="string">				&lt;/div&gt;</span></span><br><span class="line"><span class="string">				&lt;/div&gt;</span></span><br><span class="line"><span class="string">				&lt;div class=\"col-md-4\"&gt;	</span></span><br><span class="line"><span class="string">				&lt;/div&gt;</span></span><br><span class="line"><span class="string">				&lt;/div&gt;</span></span><br><span class="line"><span class="string">			&lt;/div&gt;"</span>;</span><br><span class="line">	<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p><img src="https://img-blog.csdnimg.cn/eb0e52d7b7f74ac1bb74f7c38b4ca72f.png" alt="在这里插入图片描述"></p>
 <h1 id="BJDCTF2020-Cookie-is-so-stable"><a href="#BJDCTF2020-Cookie-is-so-stable" class="headerlink" title="[BJDCTF2020]Cookie is so stable"></a>[BJDCTF2020]Cookie is so stable</h1><p><img src="https://img-blog.csdnimg.cn/f568432cbffb4e5f9603858a0cfa797d.png" alt="在这里插入图片描述"></p>
 
@@ -612,9 +574,9 @@ $(document).ready(function() {
           <ul class="sub-menu">
             
               <li>
-                <a href="/categories/技术/">
+                <a href="/categories/ctf/">
                   <i class="fa fa-code" aria-hidden="true"></i>
-                  技术
+                  ctf
                 </a>
               </li>
             

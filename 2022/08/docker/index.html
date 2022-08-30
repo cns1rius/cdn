@@ -80,7 +80,7 @@
         <p>剑未配妥出门已是江湖，千帆过尽归来仍是少年。</p>
         <div class="top-social_v2">
           <li id="bg-pre">
-            <img class="flipx" src="/img/other/next-b.svg">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
           
             
@@ -121,7 +121,7 @@
             
           
           <li id="bg-next">
-            <img src="/img/other/next-b.svg">
+            <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
         </div>
       </div>
@@ -195,9 +195,9 @@
                   <ul class="sub-menu">
                     
                       <li>
-                        <a href="/categories/技术/">
+                        <a href="/categories/ctf/">
                           <i class="fa fa-code" aria-hidden="true"></i>
-                          技术
+                          ctf
                         </a>
                       </li>
                     
@@ -281,6 +281,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
 
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://api.yimian.xyz/img?type=moe);" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      kali安装docker</h1>
+      <p class="entry-census">
+        <span>
+          <a href="cns1rius.github.io">
+            <img src="/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="cns1rius.github.io">s1rius</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2022-8-29<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
@@ -288,29 +312,9 @@
         <div class="toc"></div>
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
-          <header class="entry-header">
-            <h1 class="entry-title">kali安装docker</h1>
-            <p class="entry-census">s1rius&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
-
-            <hr>
-          </header>
-        
         <div class="entry-content">
-          <h1 id="kali安装docker"><a href="#kali安装docker" class="headerlink" title="kali安装docker"></a>kali安装docker</h1><pre><code class="shell">apt-get update
-apt-get install docker-engine
-# 安装结束，打开docker服务
-service docker start
-# 验证安装，运行测试样例
-docker --version
-docker run hello-world
-#测试
-</code></pre>
-<h1 id="docker-常用命令"><a href="#docker-常用命令" class="headerlink" title="docker 常用命令"></a>docker 常用命令</h1><pre><code class="shell">docker --version
-docker images
-docker ps -a
-docker run -d --name 123 -p 127.0.0.1:80:80 镜像名
-docker stop 123
-</code></pre>
+          <h1 id="kali安装docker"><a href="#kali安装docker" class="headerlink" title="kali安装docker"></a>kali安装docker</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install docker-engine</span><br><span class="line"><span class="meta">#</span> 安装结束，打开docker服务</span><br><span class="line">service docker start</span><br><span class="line"><span class="meta">#</span> 验证安装，运行测试样例</span><br><span class="line">docker --version</span><br><span class="line">docker run hello-world</span><br><span class="line"><span class="meta">#</span>测试</span><br></pre></td></tr></table></figure>
+<h1 id="docker-常用命令"><a href="#docker-常用命令" class="headerlink" title="docker 常用命令"></a>docker 常用命令</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker --version</span><br><span class="line">docker images</span><br><span class="line">docker ps -a</span><br><span class="line">docker run -d --name 123 -p 127.0.0.1:80:80 镜像名</span><br><span class="line">docker stop 123</span><br></pre></td></tr></table></figure>
 <p><a href="https://www.runoob.com/docker/docker-command-manual.html" target="_blank" rel="noopener">其他常用命令见菜鸟教程</a></p>
 <h1 id="dockers底层原理"><a href="#dockers底层原理" class="headerlink" title="dockers底层原理"></a>dockers底层原理</h1><h2 id="Namespaces"><a href="#Namespaces" class="headerlink" title="Namespaces"></a>Namespaces</h2><blockquote>
 <p>命名空间是 Linux 为我们提供的==用于分离进程树、网络接口、挂载点以及进程间通信等资源==的方法。在日常使用Linux时，我们并没有运行多个完全分离的服务器的需要，但是如果我们在服务器上启动了多个服务，这些服务其实会相互影响的，每一个服务都能看到其他服务的进程，也可以访问宿主机器上的任意文件，这是很多时候我们都不愿意看到的，我们更希望运行在同一台机器上的不同服务能做到完全隔离，就像运行在多台不同的机器上一样。</p>
@@ -351,7 +355,7 @@ docker stop 123
           
             <a href="/2022/08/git/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe">
               </div>
               <span class="label">
               Previous Post</span>
@@ -369,7 +373,7 @@ docker stop 123
           
             <a href="/2022/08/ctfhub-rce/" rel="next">
               <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe">
               </div>
               <span class="label">
               Next Post</span>
@@ -586,9 +590,9 @@ $(document).ready(function() {
           <ul class="sub-menu">
             
               <li>
-                <a href="/categories/技术/">
+                <a href="/categories/ctf/">
                   <i class="fa fa-code" aria-hidden="true"></i>
-                  技术
+                  ctf
                 </a>
               </li>
             

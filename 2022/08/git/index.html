@@ -80,7 +80,7 @@
         <p>剑未配妥出门已是江湖，千帆过尽归来仍是少年。</p>
         <div class="top-social_v2">
           <li id="bg-pre">
-            <img class="flipx" src="/img/other/next-b.svg">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
           
             
@@ -121,7 +121,7 @@
             
           
           <li id="bg-next">
-            <img src="/img/other/next-b.svg">
+            <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
         </div>
       </div>
@@ -195,9 +195,9 @@
                   <ul class="sub-menu">
                     
                       <li>
-                        <a href="/categories/技术/">
+                        <a href="/categories/ctf/">
                           <i class="fa fa-code" aria-hidden="true"></i>
-                          技术
+                          ctf
                         </a>
                       </li>
                     
@@ -281,6 +281,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
 
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://api.yimian.xyz/img?type=moe);" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      git命令</h1>
+      <p class="entry-census">
+        <span>
+          <a href="cns1rius.github.io">
+            <img src="/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="cns1rius.github.io">s1rius</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2022-8-29<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
@@ -288,41 +312,21 @@
         <div class="toc"></div>
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
-          <header class="entry-header">
-            <h1 class="entry-title">git命令</h1>
-            <p class="entry-census">s1rius&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
-
-            <hr>
-          </header>
-        
         <div class="entry-content">
           <h1 id="创建仓库命令"><a href="#创建仓库命令" class="headerlink" title="创建仓库命令"></a>创建仓库命令</h1><h2 id="init"><a href="#init" class="headerlink" title="init"></a>init</h2><p>git init 命令用于在目录中创建新的 Git 仓库。<br>在文件夹中，会被创建出一个.git的一个隐藏文件，这时，本地库已经初始化完成.</p>
 <h2 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h2><p>git clone 拷贝一个 Git 仓库到本地，让自己能够查看该项目，或者进行修改。<br>拷贝项目命令格式如下：</p>
-<pre><code class="shell">git clone [url]
-</code></pre>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></table></figure>
 <h1 id="提交与修改"><a href="#提交与修改" class="headerlink" title="提交与修改"></a>提交与修改</h1><h2 id="add"><a href="#add" class="headerlink" title="add"></a>add</h2><p>git add 命令可将该文件添加到暂存区。</p>
 <p>添加一个或多个文件到暂存区</p>
-<h2 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h2><p>git commit 命令将暂存区内容添加到本地仓库中。<br>提交暂存区到本地仓库中:</p>
-<pre><code class="shell">git commit -m [message]
-</code></pre>
+<h2 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h2><p>git commit 命令将暂存区内容添加到本地仓库中。<br>提交暂存区到本地仓库中:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m [message]</span><br></pre></td></tr></table></figure></p>
 <p>[message] 可以是一些备注信息。</p>
 <h2 id="status"><a href="#status" class="headerlink" title="status"></a>status</h2><p>git status 命令用于查看在你上次提交之后是否有对文件进行再次修改。</p>
 <h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><p>git rm 命令用于删除文件。<br>如果只是简单地从工作目录中手工删除文件，运行 git status 时就会在 Changes not staged for commit 的提示。</p>
-<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p>git mv 命令用于移动或重命名一个文件、目录或软连接。</p>
-<pre><code class="shell">git mv [file] [newfile]
-</code></pre>
-<p>如果新文件名已经存在，但还是要重命名它，可以使用 -f 参数：</p>
-<pre><code class="shell">git mv -f [file] [newfile]
-</code></pre>
-<h1 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h1><h2 id="remote"><a href="#remote" class="headerlink" title="remote"></a>remote</h2><p>显示所有远程仓库：</p>
-<pre><code class="shell">git remote -v
-</code></pre>
-<h2 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h2><p>git pull 命令用于从远程获取代码并合并本地的版本。 </p>
-<pre><code class="shell">git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;
-</code></pre>
-<h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><p>git push 命用于从将本地的分支版本上传到远程并合并。</p>
-<pre><code class="shell">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;
-</code></pre>
+<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p>git mv 命令用于移动或重命名一个文件、目录或软连接。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv [file] [newfile]</span><br></pre></td></tr></table></figure></p>
+<p>如果新文件名已经存在，但还是要重命名它，可以使用 -f 参数：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv -f [file] [newfile]</span><br></pre></td></tr></table></figure></p>
+<h1 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h1><h2 id="remote"><a href="#remote" class="headerlink" title="remote"></a>remote</h2><p>显示所有远程仓库：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure></p>
+<h2 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h2><p>git pull 命令用于从远程获取代码并合并本地的版本。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><p>git push 命用于从将本地的分支版本上传到远程并合并。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure></p>
 
         </div>
         <!-- .entry-content -->
@@ -356,7 +360,7 @@
           
             <a href="/2022/08/jwt/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe">
               </div>
               <span class="label">
               Previous Post</span>
@@ -374,7 +378,7 @@
           
             <a href="/2022/08/docker/" rel="next">
               <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe">
               </div>
               <span class="label">
               Next Post</span>
@@ -591,9 +595,9 @@ $(document).ready(function() {
           <ul class="sub-menu">
             
               <li>
-                <a href="/categories/技术/">
+                <a href="/categories/ctf/">
                   <i class="fa fa-code" aria-hidden="true"></i>
-                  技术
+                  ctf
                 </a>
               </li>
             

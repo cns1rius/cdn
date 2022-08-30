@@ -80,7 +80,7 @@
         <p>剑未配妥出门已是江湖，千帆过尽归来仍是少年。</p>
         <div class="top-social_v2">
           <li id="bg-pre">
-            <img class="flipx" src="/img/other/next-b.svg">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
           
             
@@ -121,7 +121,7 @@
             
           
           <li id="bg-next">
-            <img src="/img/other/next-b.svg">
+            <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
         </div>
       </div>
@@ -195,9 +195,9 @@
                   <ul class="sub-menu">
                     
                       <li>
-                        <a href="/categories/技术/">
+                        <a href="/categories/ctf/">
                           <i class="fa fa-code" aria-hidden="true"></i>
-                          技术
+                          ctf
                         </a>
                       </li>
                     
@@ -281,6 +281,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
 
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://api.yimian.xyz/img?type=moe);" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      xss-lab</h1>
+      <p class="entry-census">
+        <span>
+          <a href="cns1rius.github.io">
+            <img src="/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="cns1rius.github.io">s1rius</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2022-8-29<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
@@ -288,21 +312,9 @@
         <div class="toc"></div>
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
-          <header class="entry-header">
-            <h1 class="entry-title">xss-lab</h1>
-            <p class="entry-census">s1rius&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
-
-            <hr>
-          </header>
-        
         <div class="entry-content">
           <h1 id="level-1"><a href="#level-1" class="headerlink" title="level 1"></a>level 1</h1><p>没啥好说的<br>直接alert<br><img src="https://img-blog.csdnimg.cn/7cff66907f234fe8a9264319b7fcb8de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h1 id="level-2"><a href="#level-2" class="headerlink" title="level 2"></a>level 2</h1><pre><code class="html">&lt;input name=keyword  value=&quot;test&quot;&gt;
-//改后是
-&lt;input name=keyword  value=&quot;1111&quot;&gt;&lt;script&gt;……&gt;//
-1111&quot;&gt;&lt;script&gt;……这是输入的部分
-前后闭合
-</code></pre>
+<h1 id="level-2"><a href="#level-2" class="headerlink" title="level 2"></a>level 2</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keyword</span>  <span class="attr">value</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">//改后是</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">keyword</span>  <span class="attr">value</span>=<span class="string">"1111"</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">……&gt;<span class="comment">//</span></span></span><br><span class="line"><span class="handlebars"><span class="xml">1111"&gt;<span class="tag">&lt;<span class="name">script</span>&gt;</span>……这是输入的部分</span></span></span><br><span class="line">前后闭合</span><br></pre></td></tr></table></figure>
 <h1 id="level-3"><a href="#level-3" class="headerlink" title="level 3"></a>level 3</h1><p><img src="https://img-blog.csdnimg.cn/1e4c13e4bc1d4537880deaf36855ab42.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>用了htmlspeialchars()函数    &lt;&gt;”都被过滤<br><img src="https://img-blog.csdnimg.cn/7c28fa1a02bd4383ac5f0cb8df3f3f95.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">二者都写可以</p>
 <h1 id="level-4"><a href="#level-4" class="headerlink" title="level 4"></a>level 4</h1><p>和上面一样</p>
 <h1 id="level-5"><a href="#level-5" class="headerlink" title="level 5"></a>level 5</h1><p>on 和 script都被过滤<br><img src="https://img-blog.csdnimg.cn/ec2a556e55ba4c9b84c5a07d3aedff9c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">这里用javascript:伪协议<br><img src="https://img-blog.csdnimg.cn/3d92413c5c624059aab10d022aefcf04.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">出来的链接就是答案</p>
@@ -310,32 +322,22 @@
 <h1 id="level-7"><a href="#level-7" class="headerlink" title="level 7"></a>level 7</h1><p>把特殊字符便空了<br>可以双写绕过</p>
 <h1 id="level-8"><a href="#level-8" class="headerlink" title="level 8"></a>level 8</h1><p>这关卡的死死的<br>要编码绕过<br><img src="https://img-blog.csdnimg.cn/d233b7b1bba44b50b4aeeab90330e7e1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt></p>
 <h1 id="level-9"><a href="#level-9" class="headerlink" title="level  9"></a>level  9</h1><p>strpos函数看是否有http://<br>验证是否为安全连接<br>但是没有限定位置<br>要编码下<br>还要把http://放最后面用//注释掉<br><img src="https://img-blog.csdnimg.cn/9d5db481746d4a9f95e8001a62ccd7bf.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<h1 id="level-10-13"><a href="#level-10-13" class="headerlink" title="level 10-13"></a>level 10-13</h1><p>页面没有注入点<br>看源代码发现隐藏的表单<br>要改为文本框text</p>
-<pre><code class="css">type=&quot;text&quot; onclick=&quot;alert(1)&quot;
-</code></pre>
+<h1 id="level-10-13"><a href="#level-10-13" class="headerlink" title="level 10-13"></a>level 10-13</h1><p>页面没有注入点<br>看源代码发现隐藏的表单<br>要改为文本框text<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type="text" onclick="alert(1)"</span><br></pre></td></tr></table></figure></p>
 <p>后面几关都要改t_sort<br>因为后端获取t_sort和user-agent等<br>要从相应注入点注入<br><img src="https://img-blog.csdnimg.cn/2040ace8d49d4257a8553820b103ff93.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <h1 id="level-14"><a href="#level-14" class="headerlink" title="level 14"></a>level 14</h1><blockquote>
 <p>exif xss漏洞，exif是可交换图像文件格式（英语：Exchangeable image file format，官方简称Exif），是专门为数码相机的照片设定的，可以记录数码照片的属性信息和拍摄数据。我们右键图片选择属性，点击详细信息就可以看到exif的相关属性。</p>
 <p>喜欢摄影的应该都知道一张照片可以看快门时间 快门次数等很多参数<br>甚至有些照片能看到经纬度<br>这关要用到<br><a href="http://ww1.exifviewer.org/" target="_blank" rel="noopener">exifviewer</a>网页<br>但是<br><img src="https://img-blog.csdnimg.cn/b0ccd08d54844a0ab8326ecdebed2497.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/a28e85a7ace44b67a82fb0f28009f4a6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 </blockquote>
-<h1 id="level-15"><a href="#level-15" class="headerlink" title="level 15"></a>level 15</h1><h1 id="level-16"><a href="#level-16" class="headerlink" title="level 16"></a>level 16</h1><p>对script、/、空格进行了转换<br>空格不可以就用换行符</p>
-<pre><code class="css">&lt;a%0atype=&quot;text&quot;%0a&quot;alert&quot;&gt;
-</code></pre>
+<h1 id="level-15"><a href="#level-15" class="headerlink" title="level 15"></a>level 15</h1><h1 id="level-16"><a href="#level-16" class="headerlink" title="level 16"></a>level 16</h1><p>对script、/、空格进行了转换<br>空格不可以就用换行符<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a%0atype="text"%0a"alert"&gt;</span><br></pre></td></tr></table></figure></p>
 <h1 id="level-17-18"><a href="#level-17-18" class="headerlink" title="level 17-18"></a>level 17-18</h1><p><img src="https://img-blog.csdnimg.cn/3636897a078a4392a3d629c6eabb3715.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>火狐不支持swf格式<br>把链接加网页上显示出这样<br>很奇怪<br>开始整套娃了<br><img src="https://img-blog.csdnimg.cn/b402d2307f0f45baacade379e596da50.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<p>要找个支持flash的浏览器才能正常打开<br>17-20关都能用flash xss<br><a href="https://www.secpulse.com/archives/44299.html" target="_blank" rel="noopener">flash xss原理</a><br>但这里先用别的办法<br>以18关为例<br>注入点可以在arg02<br>但是你连swf都没有哪来的moouseover哪<br>所以得url连接一下</p>
-<pre><code class="python">http://127.0.0.1/xss-labs/level18.php/xsf02.swf?a=?arg01=a&amp;arg02=%20onmouseover=javascript:alert(1)
-</code></pre>
+<p>要找个支持flash的浏览器才能正常打开<br>17-20关都能用flash xss<br><a href="https://www.secpulse.com/archives/44299.html" target="_blank" rel="noopener">flash xss原理</a><br>但这里先用别的办法<br>以18关为例<br>注入点可以在arg02<br>但是你连swf都没有哪来的moouseover哪<br>所以得url连接一下<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/xss-labs/level18.php/xsf02.swf?a=?arg01=a&amp;arg02=%20onmouseover=javascript:alert(1)</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://img-blog.csdnimg.cn/d2caecf88dc64e4fbbfe4d6aff041882.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <h1 id="level-19-20"><a href="#level-19-20" class="headerlink" title="level 19-20"></a>level 19-20</h1><p><a href="https://www.cnblogs.com/-qing-/p/10853379.html" target="_blank" rel="noopener">Flash XSS漏洞快速上手</a><br><a href="https://www.secpulse.com/archives/44299.html" target="_blank" rel="noopener">flash xss原理</a><br><a href="https://github.com/jindrapetrik/jpexs-decompiler" target="_blank" rel="noopener">flash反编译工具</a><br>以下是大佬的payload</p>
 <blockquote>
 <p>卑微小杨在线emo<br>flash反编译也不懂<br>等有空了再研究吧<br>好多困难等着被克服那<br>这次没支持flash的浏览器真没法做</p>
-<p>18关</p>
-<pre><code class="css">http://10.0.1.83/xsslab/level19.php?arg01=version&amp;arg02=&lt;a href=&quot;javascript:alert(/bmfx/)&quot;&gt;bmfx&lt;/a&gt; 
-</code></pre>
-<p>19关</p>
-<pre><code class="css">http://10.0.1.83/xsslab/level20.php?arg01=id&amp;arg02=bmfx\&quot;))}catch(e){alert(/bmfx/)}//%26width=998%26height=998
-</code></pre>
+<p>18关<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://10.0.1.83/xsslab/level19.php?arg01=version&amp;arg02=&lt;a href="javascript:alert(/bmfx/)"&gt;bmfx&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
+<p>19关<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://10.0.1.83/xsslab/level20.php?arg01=id&amp;arg02=bmfx\"))&#125;catch(e)&#123;alert(/bmfx/)&#125;//%26width=998%26height=998</span><br></pre></td></tr></table></figure></p>
 
         </div>
         <!-- .entry-content -->
@@ -604,9 +606,9 @@ $(document).ready(function() {
           <ul class="sub-menu">
             
               <li>
-                <a href="/categories/技术/">
+                <a href="/categories/ctf/">
                   <i class="fa fa-code" aria-hidden="true"></i>
-                  技术
+                  ctf
                 </a>
               </li>
             

