@@ -73,7 +73,7 @@
     <div class="focusinfo no-select">
       <div class="header-tou">
         <a href="https://s1rius.github.io">
-          <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+          <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
         </a>
       </div>
       <div class="header-info">
@@ -220,16 +220,6 @@
               </li>
             
               <li>
-                <a href="/comment/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-                    留言板
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -250,23 +240,12 @@
               </li>
             
               <li>
-                <a href="/">
+                <a href="/about/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
                     关于
                   </span>
                 </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/about/">
-                          <i class="fa fa-meetup" aria-hidden="true"></i>
-                          我
-                        </a>
-                      </li>
-                    
-                  </ul>
                 
               </li>
             
@@ -321,7 +300,12 @@
 <p>彩蛋    关键词    egg    ctfhub    CTFHub    拿来把你    CTFer 自己人 ……</p>
 </blockquote>
 <p>到底没想到竟然是flag</p>
-<h1 id="投稿提交-彩蛋"><a href="#投稿提交-彩蛋" class="headerlink" title="投稿提交 彩蛋"></a>投稿提交 彩蛋</h1><p>只找到了前半部分<br>分别在题目提交和wp提交页面的最后<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctfhub&#123;029e02eb3a1</span><br><span class="line">	<span class="selector-tag">e8c49b1132b5</span></span><br><span class="line">	15<span class="selector-tag">b652a5f3a8</span></span><br><span class="line">	62013&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="投稿提交-彩蛋"><a href="#投稿提交-彩蛋" class="headerlink" title="投稿提交 彩蛋"></a>投稿提交 彩蛋</h1><p>只找到了前半部分<br>分别在题目提交和wp提交页面的最后</p>
+<pre><code class="css">ctfhub{029e02eb3a1
+    e8c49b1132b5
+    15b652a5f3a8
+    62013}
+</code></pre>
 <p>最后这个彩蛋剩余部分也没找到<br>网上搜了下才明白：感谢anweilx的<a href="https://www.cnblogs.com/anweilx/p/12493000.html" target="_blank" rel="noopener">wp</a><br>第一行是俩页面的最后有<br>第二行是在俩页面源码 分别搜==奖励== 在上面那行一个是base64然后再转url 一个是hex解码<br>第三行是俩页面的图片隐写 丢进winhex<br>第四行有提示<br>aes 256 ecb<a href="http://tool.chacuo.net/cryptaes/" target="_blank" rel="noopener">解码</a></p>
 <h1 id="其他彩蛋"><a href="#其他彩蛋" class="headerlink" title="其他彩蛋"></a>其他彩蛋</h1><p>剩余皆可在对应页面搜索egg即可获得</p>
 
@@ -557,7 +541,7 @@ $(document).ready(function() {
   </section>
   <div id="mo-nav" class="">
   <div class="m-avatar">
-    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
   </div>
   <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">s1rius's blog</p>
   <p style="text-align: center; word-spacing: 20px;">
@@ -617,16 +601,6 @@ $(document).ready(function() {
       </li>
     
       <li>
-        <a href="/comment/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-            留言板
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
         <a href="/links/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -647,23 +621,12 @@ $(document).ready(function() {
       </li>
     
       <li>
-        <a href="/">
+        <a href="/about/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
             关于
           </span>
         </a>
-        
-          <ul class="sub-menu">
-            
-              <li>
-                <a href="/about/">
-                  <i class="fa fa-meetup" aria-hidden="true"></i>
-                  我
-                </a>
-              </li>
-            
-          </ul>
         
       </li>
     
@@ -719,7 +682,7 @@ $(document).ready(function() {
 
     preload="auto"
 
-    volume="0.7"
+    volume="0.3"
 
     mutex="true"
 

