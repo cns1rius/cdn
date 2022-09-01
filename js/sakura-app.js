@@ -170,20 +170,20 @@ function imgError (ele, type) {
   switch (type) {
     case 1:
       if (ele.src.includes('https://cn.gravatar.com/avatar')) {
-        ele.src = ele.src.replace('https://cn.gravatar.com/avatar/', '/img/other/gravatar.jpg')
+        ele.src = ele.src.replace('https://cn.gravatar.com/avatar/', 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/gravatar.jpg')
       } else {
-        ele.src = '/img/other/default_avatar.jpg'
+        ele.src = 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/default_avatar.jpg'
       }
       break
     case 2:
-      ele.src = '/img/other/default_gavatar.jpg'
+      ele.src = 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/default_gavatar.jpg'
       break
     case 3:
 
-      ele.src = '/img/other/image-404.png'
+      ele.src = 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/image-404.png'
       break
     default:
-      ele.src = '/img/other/image-404.png'
+      ele.src = 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/image-404.png'
   }
 }
 mashiro_global.post_list_show_animation = new function () {
@@ -432,7 +432,7 @@ function checkBgImgCookie () {
     $('#banner_wave_2').addClass('banner_wave_hide_fit_skin')
   }
   if (bgurl != '') {
-    if (bgurl == '/img/themebg/sakura.png' || bgurl == '/img/themebg/plaid.jpg' || bgurl == '/img/themebg/star.png' || bgurl == '/img/themebg/point.png' || bgurl == '/img/themebg/little-monster.png') {
+    if (bgurl == 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/themebg/sakura.png' || bgurl == 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/themebg/plaid.jpg' || bgurl == 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/themebg/star.png' || bgurl == 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/themebg/point.png' || bgurl == 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/themebg/little-monster.png') {
       mashiro_global.variables.skinSecter = true
       mashiro_global.variables.isNight = false
       $('#night-mode-cover').css('visibility', 'hidden')
@@ -499,11 +499,11 @@ $(document).ready(function () {
       setCookie('bgImgSetting', url, 30)
     })
   }
-  changeBG('#sakura-bg', '/img/themebg/sakura.png')
-  changeBG('#gribs-bg', '/img/themebg/plaid.jpg')
-  changeBG('#pixiv-bg', '/img/themebg/star.png')
-  changeBG('#KAdots-bg', '/img/themebg/point.png')
-  changeBG('#totem-bg', '/img/themebg/little-monster.png')
+  changeBG('#sakura-bg', 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/themebg/sakura.png')
+  changeBG('#gribs-bg', 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/themebg/plaid.jpg')
+  changeBG('#pixiv-bg', 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/themebg/star.png')
+  changeBG('#KAdots-bg', 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/themebg/point.png')
+  changeBG('#totem-bg', 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/themebg/little-monster.png')
   changeBGnoTrans('#bing-bg', 'https://api.shino.cc/bing/')
   $('.skin-menu #white-bg').click(function () {
     mashiro_global.variables.skinSecter = false
@@ -521,7 +521,7 @@ $(document).ready(function () {
   $('.skin-menu #dark-bg').click(function () {
     mashiro_global.variables.skinSecter = true
     mashiro_global.variables.isNight = true
-    $('body').css('background-image', 'url(/img/other/starry_sky.png)')
+    $('body').css('background-image', 'url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/starry_sky.png)')
     $('.blank').css('background-color', 'rgba(255,255,255,.8)')
     $('#night-mode-cover').css('visibility', 'visible')
     $('.pattern-center').removeClass('pattern-center').addClass('pattern-center-sakura')
@@ -730,7 +730,7 @@ $.fn.commentPrivate = function () {
 }
 
 function show_date_time () {
-  BirthDay = new Date('06/02/2017 18:00:00')
+  BirthDay = new Date('2020-02-11 18:00:00')
   today = new Date()
   timeold = (today.getTime() - BirthDay.getTime())
   sectimeold = timeold / 1000
@@ -819,14 +819,16 @@ function grin (tag, type, before, after) {
 function add_copyright () {
   document.body.addEventListener('copy', function (e) {
     if (!mashiro_global.is_user_logged_in && window.getSelection().toString().length > 30) {
-      setClipboardText(e)
+      if(mashiro_option.copyright_enable.indexOf("false")!= -1 && window.getSelection().toString().length > mashiro_option.copyright_minCharNumber){//判断是否允许复制，false不允许，添加复制作者信息
+        setClipboardText(e)
+      }
     }
   })
-
+  
   function setClipboardText (event) {
     event.preventDefault()
-    var htmlData = '' + '著作权归作者所有。<br>' + '商业转载请联系作者获得授权，非商业转载请注明出处。<br>' + '作者：' + mashiro_option.author_name + '<br>' + '链接：' + window.location.href + '<br>' + '来源：' + mashiro_option.site_name + '<br><br>' + window.getSelection().toString().replace(/\r\n/g, '<br>')
-    var textData = '' + '著作权归作者所有。\n' + '商业转载请联系作者获得授权，非商业转载请注明出处。\n' + '' + mashiro_option.author_name + '\n' + '链接：' + window.location.href + '\n' + '来源：' + mashiro_option.site_name + '\n\n' + window.getSelection().toString().replace(/\r\n/g, '\n')
+    var htmlData = '' + mashiro_option.copyright_description +'<br>' + '作者：' + mashiro_option.author_name + '<br>' + '链接：' + window.location.href + '<br>' + '来源：' + mashiro_option.site_name + '<br><br>' + window.getSelection().toString().replace(/\r\n/g, '<br>')
+    var textData = '' + mashiro_option.copyright_description +'\n' + '作者：' + mashiro_option.author_name + '\n' + '链接：' + window.location.href + '\n' + '来源：' + mashiro_option.site_name + '\n\n' + window.getSelection().toString().replace(/\r\n/g, '\n')
     if (event.clipboardData) {
       event.clipboardData.setData('text/html', htmlData)
       event.clipboardData.setData('text/plain', textData)
@@ -1098,14 +1100,18 @@ var home = location.href,
       }
     },
     VA: function () {
-      if (!valine) {
+      if (!valine) {//注意
         var valine = new Valine()
         valine.init({
           el: '#vcomments',
           appId: mashiro_option.v_appId,
           appKey: mashiro_option.v_appKey,
+          comment_count: true,
+          notify: false,
+          verify: true,
           path: window.location.pathname,
-          placeholder: '你是我一生只会遇见一次的惊喜 ...'
+          placeholder: "祝开开心心！",
+          avatar: 'monsterid'
         })
       }
     },
@@ -1609,9 +1615,9 @@ $(function () {
   $(document).on('click', '.specsZan', function () {
     $(this).postLike()
   })
-  console.log('%c Mashiro %c', 'background:#24272A; color:#ffffff', '', 'https://2heng.xin/')
-  console.log('%c hojun %c', 'background:#24272A; color:#ffffff', '', 'https://www.hojun.cn/')
-  console.log('%c Github %c', 'background:#24272A; color:#ffffff', '', 'https://github.com/honjun/hexo-theme-sakura')
+  // console.log('%c Mashiro %c', 'background:#24272A; color:#ffffff', '', 'https://2heng.xin/')
+  // console.log('%c hojun %c', 'background:#24272A; color:#ffffff', '', 'https://www.hojun.cn/')
+  // console.log('%c Github %c', 'background:#24272A; color:#ffffff', '', 'https://github.com/honjun/hexo-theme-sakura')
 })
 var isWebkit = navigator.userAgent.toLowerCase().indexOf('webkit') > -1,
   isOpera = navigator.userAgent.toLowerCase().indexOf('opera') > -1,
