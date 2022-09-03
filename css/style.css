@@ -9553,7 +9553,7 @@ img[src*="#in-center"] {
     display: block
 }
 
-#banner_wave_1 {
+/* #banner_wave_1 {
     width: auto;
     height: 65px;
     background: url("https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wave1.png") repeat-x;
@@ -9579,7 +9579,7 @@ img[src*="#in-center"] {
     opacity: 1;
     transition-property: opacity, bottom;
     transition-duration: .4s, .4s
-}
+} */
 
 .banner_wave_hide,
 .banner_wave_hide_fit_skin {
