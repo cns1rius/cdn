@@ -82,6 +82,10 @@
       alert('朋友，IE浏览器未适配哦~');
     }
   </script>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head> 
 </html>
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
@@ -262,6 +266,27 @@
               </li>
             
               <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/fanju/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          追剧
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -393,13 +418,13 @@
 <p><a href="https://jwt.io/" target="_blank" rel="noopener">jwt.io</a></p>
 <p>decode    一共两部分ag是另一半<br><img src="https://img-blog.csdnimg.cn/a4b0f89e87f84f8aa21b3071ec99c066.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
 <h1 id="无签名"><a href="#无签名" class="headerlink" title="无签名"></a>无签名</h1><pre><code class="python">import jwt
-algorithm=&quot;none&quot;
+algorithm="none"
 payload = {
-  &quot;username&quot;: &quot;admin&quot;,
-  &quot;password&quot;: &quot;admin&quot;,
-  &quot;role&quot;:&quot;admin&quot;
+  "username": "admin",
+  "password": "admin",
+  "role":"admin"
   }
-key = &quot;&quot;
+key = ""
 encoded = jwt.encode(payload,key,algorithm)
 print(encoded)
 </code></pre>
@@ -443,28 +468,28 @@ import hmac
 import hashlib
 import base64
 
-file = open(&#39;publickey.pem&#39;)#需要将文中的publickey下载    与脚本同目录
+file = open('publickey.pem')#需要将文中的publickey下载    与脚本同目录
 key = file.read()
 
 # Paste your header and payload here
-header = &#39;{&quot;typ&quot;: &quot;JWT&quot;, &quot;alg&quot;: &quot;HS256&quot;}&#39;
-payload = &#39;{&quot;username&quot;: &quot;admin&quot;, &quot;role&quot;: &quot;admin&quot;}&#39;
+header = '{"typ": "JWT", "alg": "HS256"}'
+payload = '{"username": "admin", "role": "admin"}'
 
 # Creating encoded header
-encodeHBytes = base64.urlsafe_b64encode(header.encode(&quot;utf-8&quot;))
-encodeHeader = str(encodeHBytes, &quot;utf-8&quot;).rstrip(&quot;=&quot;)
+encodeHBytes = base64.urlsafe_b64encode(header.encode("utf-8"))
+encodeHeader = str(encodeHBytes, "utf-8").rstrip("=")
 
 # Creating encoded payload
-encodePBytes = base64.urlsafe_b64encode(payload.encode(&quot;utf-8&quot;))
-encodePayload = str(encodePBytes, &quot;utf-8&quot;).rstrip(&quot;=&quot;)
+encodePBytes = base64.urlsafe_b64encode(payload.encode("utf-8"))
+encodePayload = str(encodePBytes, "utf-8").rstrip("=")
 
 # Concatenating header and payload
-token = (encodeHeader + &quot;.&quot; + encodePayload)
+token = (encodeHeader + "." + encodePayload)
 
 # Creating signature
-sig = base64.urlsafe_b64encode(hmac.new(bytes(key, &quot;UTF-8&quot;), token.encode(&quot;utf-8&quot;), hashlib.sha256).digest()).decode(&quot;UTF-8&quot;).rstrip(&quot;=&quot;)
+sig = base64.urlsafe_b64encode(hmac.new(bytes(key, "UTF-8"), token.encode("utf-8"), hashlib.sha256).digest()).decode("UTF-8").rstrip("=")
 
-print(token + &quot;.&quot; + sig)
+print(token + "." + sig)
 </code></pre>
 <p>运行后把token返回去验证</p>
 <p>成功</p>
@@ -856,6 +881,27 @@ gitalk.render('gitalk-container')
                 <a href="/categories/资源/">
                   <i class="fa fa-cloud-download" aria-hidden="true"></i>
                   资源
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/fanju/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  追剧
                 </a>
               </li>
             

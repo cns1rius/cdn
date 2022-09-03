@@ -82,6 +82,10 @@
       alert('朋友，IE浏览器未适配哦~');
     }
   </script>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head> 
 </html>
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
@@ -262,6 +266,27 @@
               </li>
             
               <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/fanju/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          追剧
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -386,8 +411,8 @@
         <div class="entry-content">
           <p>rce：远程代码执行漏洞<br>分为远程命令执行ping和远程代码执行evel。<br><strong>其实这就是一个接口，可以让攻击者直接向后台服务器远程注入操作系统命令或者代码，从而控制后台系统，这就是RCE漏洞</strong>。相当于直接操控服务器电脑的cmd命令行！高危漏洞！</p>
 <h1 id="eval执行"><a href="#eval执行" class="headerlink" title="eval执行"></a>eval执行</h1><pre><code class="php">&lt;?php
-    if(isset($_REQUEST[&#39;cmd&#39;])){
-        eval($_REQUEST[&#39;cmd&#39;]);
+    if(isset($_REQUEST['cmd'])){
+        eval($_REQUEST['cmd']);
     }
     else{
         highlight_file(__FILE__);
@@ -395,7 +420,7 @@
 ?&gt;
 </code></pre>
 <p>传参给cmd来eval</p>
-<pre><code class="php">/?cmd=system(&quot;ls /&quot;);//此处因为根目录无flag 所以看上一级目录
+<pre><code class="php">/?cmd=system("ls /");//此处因为根目录无flag 所以看上一级目录
 </code></pre>
 <p>找到后 再cat /flag_<em>**</em></p>
 <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h1><p>这里使用strpos函数</p>
@@ -404,8 +429,8 @@
 <p>int strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )</p>
 </blockquote>
 <p>题目使用</p>
-<pre><code class="php">if(!strpos($_GET[&quot;file&quot;],&quot;flag&quot;)){//无flag字符即可运行
-    include $_GET[&quot;file&quot;];
+<pre><code class="php">if(!strpos($_GET["file"],"flag")){//无flag字符即可运行
+    include $_GET["file"];
 }
 </code></pre>
 <p>来包含文件，而下方给出的shell.txt含有eval漏洞</p>
@@ -413,16 +438,16 @@
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220218182857507.png" alt="image-20220218182857507"></p>
 <p>通过get(包含文件) post(传参)并用来得到flag</p>
 <h1 id="php-info"><a href="#php-info" class="headerlink" title="php info"></a>php info</h1><pre><code class="php+HTML">&lt;?php
-if (isset($_GET[&#39;file&#39;])){  
-    if ( substr($_GET[&quot;file&quot;], 0, 6) === &quot;php://&quot; ) {
-        include($_GET[&quot;file&quot;]);  
+if (isset($_GET['file'])){  
+    if ( substr($_GET["file"], 0, 6) === "php://" ) {
+        include($_GET["file"]);  
          }
     else { 
-        echo &quot;Hacker!!!&quot;;
+        echo "Hacker!!!";
         }}
 else {
     highlight_file(__FILE__);}?&gt;
-&lt;hr&gt;i don&#39;t have shell, how to get flag? &lt;br&gt;&lt;a href=&quot;phpinfo.php&quot;&gt;phpinfo&lt;/a&gt; 
+&lt;hr&gt;i don't have shell, how to get flag? &lt;br&gt;&lt;a href="phpinfo.php"&gt;phpinfo&lt;/a&gt; 
 </code></pre>
 <p>点击phpinfo链接 可查看php环境</p>
 <h2 id="php-input"><a href="#php-input" class="headerlink" title="php://input"></a>php://input</h2><pre><code class="c++">/*php:// — 访问各个输入/输出流（I/O streams）
@@ -435,11 +460,11 @@ php://input是个可以访问请求的原始数据的只读流。
 <h1 id="读取源代码"><a href="#读取源代码" class="headerlink" title="读取源代码"></a>读取源代码</h1><p>看环境 无法使用php://input</p>
 <pre><code class="shell">&lt;?php
 error_reporting(E_ALL);
-if (isset($_GET[&#39;file&#39;])) {
-    if ( substr($_GET[&quot;file&quot;], 0, 6) === &quot;php://&quot; ) {
-        include($_GET[&quot;file&quot;]);
+if (isset($_GET['file'])) {
+    if ( substr($_GET["file"], 0, 6) === "php://" ) {
+        include($_GET["file"]);
     } else {
-        echo &quot;Hacker!!!&quot;;
+        echo "Hacker!!!";
     }
 } else {
     highlight_file(__FILE__);
@@ -460,11 +485,11 @@ if (isset($_GET[&#39;file&#39;])) {
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220218170811553.png" alt="image-20220218170811553"></p>
 <h1 id="过滤cat"><a href="#过滤cat" class="headerlink" title="过滤cat"></a>过滤cat</h1><pre><code class="php+html">&lt;?php
 $res = FALSE;
-if (isset($_GET[&#39;ip&#39;]) &amp;&amp; $_GET[&#39;ip&#39;]) {
-    $ip = $_GET[&#39;ip&#39;];
+if (isset($_GET['ip']) &amp;&amp; $_GET['ip']) {
+    $ip = $_GET['ip'];
     $m = [];
-    if (!preg_match_all(&quot;/cat/&quot;, $ip, $m)) {//过滤了cat
-        $cmd = &quot;ping -c 4 {$ip}&quot;;
+    if (!preg_match_all("/cat/", $ip, $m)) {//过滤了cat
+        $cmd = "ping -c 4 {$ip}";
         exec($cmd, $res);
     } 
     else {
@@ -495,11 +520,11 @@ if (isset($_GET[&#39;ip&#39;]) &amp;&amp; $_GET[&#39;ip&#39;]) {
 <h1 id="过滤运算符"><a href="#过滤运算符" class="headerlink" title="过滤运算符"></a>过滤运算符</h1><p>cat [file]|base64还可以用base64 [file]</p>
 <pre><code class="php+HTML">&lt;?php
 $res = FALSE;
-if (isset($_GET[&#39;ip&#39;]) &amp;&amp; $_GET[&#39;ip&#39;]) {
-    $ip = $_GET[&#39;ip&#39;];
+if (isset($_GET['ip']) &amp;&amp; $_GET['ip']) {
+    $ip = $_GET['ip'];
     $m = [];
-    if (!preg_match_all(&quot;/(\||\&amp;)/&quot;, $ip, $m)) {
-        $cmd = &quot;ping -c 4 {$ip}&quot;;
+    if (!preg_match_all("/(\||\&amp;)/", $ip, $m)) {
+        $cmd = "ping -c 4 {$ip}";
         exec($cmd, $res);
     } else {
         $res = $m;
@@ -508,7 +533,7 @@ if (isset($_GET[&#39;ip&#39;]) &amp;&amp; $_GET[&#39;ip&#39;]) {
 ?&gt;
 </code></pre>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220219104650896.png" alt="image-20220219104650896"></p>
-<h1 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h1><pre><code class="php">!preg_match_all(&quot;/(\||&amp;|;| |\/|cat|flag|ctfhub)/&quot;, $ip
+<h1 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h1><pre><code class="php">!preg_match_all("/(\||&amp;|;| |\/|cat|flag|ctfhub)/", $ip
 </code></pre>
 <p>;可以用%0a(url编码)    cat用base64    flag用正则f<em>**    </em>lag等    空格用 ${IFS}</p>
 <p><img src="C:\Users\CNsirius\AppData\Roaming\Typora\typora-user-images\image-20220219105932534.png" alt="image-20220219105932534"></p>
@@ -900,6 +925,27 @@ gitalk.render('gitalk-container')
                 <a href="/categories/资源/">
                   <i class="fa fa-cloud-download" aria-hidden="true"></i>
                   资源
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/fanju/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  追剧
                 </a>
               </li>
             

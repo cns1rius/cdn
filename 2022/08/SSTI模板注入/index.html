@@ -82,6 +82,10 @@
       alert('朋友，IE浏览器未适配哦~');
     }
   </script>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head> 
 </html>
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
@@ -262,6 +266,27 @@
               </li>
             
               <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/fanju/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          追剧
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
                 <a href="/links/">
                   <span class="faa-parent animated-hover">
                     <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
@@ -395,39 +420,39 @@
 <p>filehash不同 请自行加密<br><img src="https://img-blog.csdnimg.cn/c860336ae81a4d6e8c52328bf1ae378c.png" alt="在这里插入图片描述"></p>
 <h1 id="BJDCTF2020-The-mystery-of-ip"><a href="#BJDCTF2020-The-mystery-of-ip" class="headerlink" title="[BJDCTF2020]The mystery of ip"></a>[BJDCTF2020]The mystery of ip</h1><p><img src="https://img-blog.csdnimg.cn/ec82c70c7fdf49b698f9095bda0d1662.png" alt="在这里插入图片描述"></p>
 <pre><code class="php">&lt;?php
-    require_once(&#39;header.php&#39;);
-    require_once(&#39;./libs/Smarty.class.php&#39;);
+    require_once('header.php');
+    require_once('./libs/Smarty.class.php');
     $smarty = new Smarty();
-    if (!empty($_SERVER[&#39;HTTP_CLIENT_IP&#39;])) 
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) 
     {
-           $ip=$_SERVER[&#39;HTTP_CLIENT_IP&#39;];
+           $ip=$_SERVER['HTTP_CLIENT_IP'];
     }
-    elseif (!empty($_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;]))
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
     {
-        $ip=$_SERVER[&#39;HTTP_X_FORWARDED_FOR&#39;];
+        $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
     }
     else
     {
-        $ip=$_SERVER[&#39;REMOTE_ADDR&#39;];
+        $ip=$_SERVER['REMOTE_ADDR'];
     }
-    //$your_ip = $smarty-&gt;display(&quot;string:&quot;.$ip);
-    echo &quot;&lt;div class=\&quot;container panel1\&quot;&gt;
-                &lt;div class=\&quot;row\&quot;&gt;
-                &lt;div class=\&quot;col-md-4\&quot;&gt;    
+    //$your_ip = $smarty-&gt;display("string:".$ip);
+    echo "&lt;div class=\"container panel1\"&gt;
+                &lt;div class=\"row\"&gt;
+                &lt;div class=\"col-md-4\"&gt;    
                 &lt;/div&gt;
-                &lt;div class=\&quot;col-md-4\&quot;&gt;
-                &lt;div class=\&quot;jumbotron pan\&quot;&gt;
-                    &lt;div class=\&quot;form-group log\&quot;&gt;
-                        &lt;label&gt;&lt;h2&gt;Your IP is : &quot;;
-    $smarty-&gt;display(&quot;string:&quot;.$ip);
-    echo &quot;                &lt;/h2&gt;&lt;/label&gt;
+                &lt;div class=\"col-md-4\"&gt;
+                &lt;div class=\"jumbotron pan\"&gt;
+                    &lt;div class=\"form-group log\"&gt;
+                        &lt;label&gt;&lt;h2&gt;Your IP is : ";
+    $smarty-&gt;display("string:".$ip);
+    echo "                &lt;/h2&gt;&lt;/label&gt;
                     &lt;/div&gt;        
                 &lt;/div&gt;
                 &lt;/div&gt;
-                &lt;div class=\&quot;col-md-4\&quot;&gt;    
+                &lt;div class=\"col-md-4\"&gt;    
                 &lt;/div&gt;
                 &lt;/div&gt;
-            &lt;/div&gt;&quot;;
+            &lt;/div&gt;";
     ?&gt;
 </code></pre>
 <p><img src="https://img-blog.csdnimg.cn/eb0e52d7b7f74ac1bb74f7c38b4ca72f.png" alt="在这里插入图片描述"></p>
@@ -819,6 +844,27 @@ gitalk.render('gitalk-container')
                 <a href="/categories/资源/">
                   <i class="fa fa-cloud-download" aria-hidden="true"></i>
                   资源
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/fanju/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  追剧
                 </a>
               </li>
             
