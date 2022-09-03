@@ -292,7 +292,7 @@ mashiro_global.ini = new function () {
                 setTimeout(function () {
                     mashiro_option.app_update(true);
                 }, 10000);
-            } catch (e) {}
+            } catch (e) { }
         }
         if ($("div").hasClass("poem-wrap")) {
             get_poem('#poem', '#info')
@@ -423,25 +423,25 @@ function injectStyles(rule) {
 
 function imgError(ele, type) {
     switch (type) {
-    case 1:
-        if (ele.src.includes("https://cn.gravatar.com/avatar")) {
-            ele.src = ele.src.replace("https://cn.gravatar.com/avatar/", "https://cdn.v2ex.com/gravatar/");
-        } else {
-            ele.src = 'https://view.moezx.cc/images/2017/12/30/Transparent_Akkarin.th.jpg';
-        }
-        break;
-    case 2:
-        ele.src = 'https://gravatar.shino.cc/avatar/?s=80&d=mm&r=g';
-        break;
-    case 3:
-        if (ele.src.includes("https://static.2heng.xin/")) {
-            ele.src = ele.src.replace("https://static.2heng.xin/wp-content/uploads/", "https://cdn.2heng.xin/");
-        } else {
+        case 1:
+            if (ele.src.includes("https://cn.gravatar.com/avatar")) {
+                ele.src = ele.src.replace("https://cn.gravatar.com/avatar/", "https://cdn.v2ex.com/gravatar/");
+            } else {
+                ele.src = 'https://view.moezx.cc/images/2017/12/30/Transparent_Akkarin.th.jpg';
+            }
+            break;
+        case 2:
+            ele.src = 'https://gravatar.shino.cc/avatar/?s=80&d=mm&r=g';
+            break;
+        case 3:
+            if (ele.src.includes("https://static.2heng.xin/")) {
+                ele.src = ele.src.replace("https://static.2heng.xin/wp-content/uploads/", "https://cdn.2heng.xin/");
+            } else {
+                ele.src = 'https://view.moezx.cc/images/2018/05/13/image-404.png';
+            }
+            break;
+        default:
             ele.src = 'https://view.moezx.cc/images/2018/05/13/image-404.png';
-        }
-        break;
-    default:
-        ele.src = 'https://view.moezx.cc/images/2018/05/13/image-404.png';
     }
 }
 mashiro_global.post_list_show_animation = new function () {
@@ -537,7 +537,7 @@ function code_highlight_style() {
 }
 try {
     code_highlight_style();
-} catch (e) {}
+} catch (e) { }
 function attach_image() {
     $('#upload-img-file').change(function () {
         if (this.files.length > 10) {
@@ -693,7 +693,7 @@ function checkBgImgCookie() {
             $(".blank").css("background-color", "rgba(255,255,255,1)");
             $(".pattern-center").removeClass('pattern-center').addClass('pattern-center-sakura');
             $(".headertop-bar").removeClass('headertop-bar').addClass('headertop-bar-sakura');
-        } else {}
+        } else { }
     } else {
         return false;
     }
@@ -802,13 +802,13 @@ $(document).ready(function () {
 });
 
 function nextBG() {
-    $(".centerbg").css("background-image", 'url("/images/cover/(' + Math.abs(bgn%8) + ').jpg.webp")');
+    $(".centerbg").css("background-image", 'url("/images/cover/(' + Math.abs(bgn % 8) + ').jpg.webp")');
     bgn = bgn + 1;
 }
 
 function preBG() {
     bgn = bgn - 1;
-    $(".centerbg").css("background-image", 'url("/images/cover/(' + Math.abs(bgn%8) + ').jpg.webp")');
+    $(".centerbg").css("background-image", 'url("/images/cover/(' + Math.abs(bgn % 8) + ').jpg.webp")');
 }
 $(document).ready(function () {
     $(".centerbg").css("background-image", 'url("/images/cover/(' + bgn + ').jpg.webp")');
@@ -930,7 +930,7 @@ function tableOfContentScroll(flag) {
                 tocSelector: '.toc',
                 contentSelector: ['.entry-content', '.links'],
                 headingSelector: 'h1, h2, h3, h4, h5',
-                scrollEndCallback: function (e) {},
+                scrollEndCallback: function (e) { },
             });
         }
     }
@@ -944,15 +944,15 @@ var pjaxInit = function () {
     $("p").remove(".head-copyright");
     try {
         code_highlight_style();
-    } catch (e) {};
+    } catch (e) { };
     try {
         inlojv_js_getqqinfo();
-    } catch (e) {};
+    } catch (e) { };
     lazyload();
     $("#to-load-aplayer").click(function () {
         try {
             reloadHermit();
-        } catch (e) {};
+        } catch (e) { };
         $("div").remove(".load-aplayer");
     });
     if ($("div").hasClass("aplayer")) {
@@ -963,7 +963,7 @@ var pjaxInit = function () {
     // }
     try {
         reload_show_date_time();
-    } catch (e) {}
+    } catch (e) { }
     if (mashiro_global.variables.skinSecter === true) {
         $(".pattern-center").removeClass('pattern-center').addClass('pattern-center-sakura');
         $(".headertop-bar").removeClass('headertop-bar').addClass('headertop-bar-sakura');
@@ -1028,7 +1028,7 @@ function show_date_time() {
 }
 try {
     show_date_time();
-} catch (e) {}
+} catch (e) { }
 POWERMODE.colorful = true;
 POWERMODE.shake = false;
 document.body.addEventListener('input', POWERMODE);
@@ -1351,7 +1351,7 @@ var home = location.href,
                 $('body').toggleClass('navOpen');
                 $('#main-container,#mo-nav,.openNav').toggleClass('open');
             }
-        }, splay: function () {
+        }, /*splay: function () {
             $('#video-btn').addClass('video-pause').removeClass('video-play').show();
             $('.video-stu').css({
                 "bottom": "-100px"
@@ -1437,7 +1437,8 @@ var home = location.href,
             $('#video-add').on('click', function () {
                 Siren.addsource();
             });
-        }, AH: function () {
+        }, */
+        AH: function () {
             if (Poi.windowheight == 'auto') {
                 if ($('h1.main-title').length > 0) {
                     var _height = $(window).height();
@@ -1632,7 +1633,7 @@ var home = location.href,
                         div.id = 'wp-temp-form-div';
                         div.style.display = 'none';
                         respond.parentNode.insertBefore(div, respond)
-                    }!comm ? (temp = t.I('wp-temp-form-div'), t.I('comment_parent').value = '0', temp.parentNode.insertBefore(respond, temp), temp.parentNode.removeChild(temp)) : comm.parentNode.insertBefore(respond, comm.nextSibling);
+                    } !comm ? (temp = t.I('wp-temp-form-div'), t.I('comment_parent').value = '0', temp.parentNode.insertBefore(respond, temp), temp.parentNode.removeChild(temp)) : comm.parentNode.insertBefore(respond, comm.nextSibling);
                     jQuery("body").animate({
                         scrollTop: jQuery('#respond').offset().top - 180
                     }, 400);
@@ -1653,7 +1654,7 @@ var home = location.href,
                     };
                     try {
                         t.I('comment').focus();
-                    } catch (e) {}
+                    } catch (e) { }
                     return false;
                 }, I: function (e) {
                     return document.getElementById(e);
