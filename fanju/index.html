@@ -241,6 +241,13 @@
                   <ul class="sub-menu">
                     
                       <li>
+                        <a href="/analytics/">
+                          <i class="fa fa-line-chart" aria-hidden="true"></i>
+                          统计
+                        </a>
+                      </li>
+                    
+                      <li>
                         <a href="/categories/ctf/">
                           <i class="fa fa-code" aria-hidden="true"></i>
                           ctf
@@ -335,64 +342,75 @@
 
       
       <!-- body -->
-        <div class="pattern-center-blank"></div>
-  
-  <div id="content" class="site-content">
-    <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
-      
-      <!-- .entry-content -->
-      
-
-
-      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<div id="gitalk-container" class="comment"></div> 
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<script src="/js/md5.min.js"></script>
-<script type="text/javascript">
-	var gitalk = new Gitalk({
-  	clientID: '',
-  	clientSecret: '',
-  	repo: '',
-  	owner: '',
-	admin: [''],
-	distractionFreeMode: '',
-    id: md5(location.pathname)
-})
-gitalk.render('gitalk-container') 
-</script>
-
-      <div class="single-reward">
-        <div class="reward-open">赏
-          <div class="reward-main">
-            <ul class="reward-row">
-              <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@latest/img/custom/donate/AliPay.jpg"></li>
-              <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@latest/img/custom/donate/WeChanQR.jpg"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
-      </div>
-      <footer class="post-footer">
-        <div class="post-lincenses" style="color: #ff9966;">
-          欢迎转载，转载时请注明来源哦！
-          <br>
-          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">
-            <i class="fa fa-creative-commons" aria-hidden="true"></i>知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
-        </div>
-        <div class="post-tags">
-        </div>
-        <div class="post-share">
-          <div class="social-share sharehidden share-component"></div>
-          <i class="iconfont show-share icon-forward"></i>
-        </div>
-      </footer><!-- .entry-footer -->
-    </article>
-    <!-- #post-## -->
+      <link rel="stylesheet" href="/css/bangumi.css">
+<div class="pattern-center-blank"></div>
+<div id="content" class="site-content">
+  <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
+    <header class="page-header">
+      <h1 class="cat-title">番组计划</h1> <span class="cat-des">
+        <p>这里将是永远的回忆</p>
+      </span>
+    </header>
     
-  </div><!-- #primary -->
-  </div>
-
+      <div class="bangumi">
+        <div class="row" id="rootRow">
+          
+            <div class="col s12 m6" id="bangumi-0">
+              <div class="card hoverable" style="overflow: visible;">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <div class="activator itempic lazyload" style="background-image: url(https://img2.baidu.com/it/u=957402342,250867729&fm=253&fmt=auto?w=1059&h=599);"
+                    data-src="https://img2.baidu.com/it/u=957402342,250867729&fm=253&fmt=auto?w=1059&h=599">
+                  </div>
+                </div>
+                <div class="card-content">
+                  <div class="card-title should-ellipsis activator grey-text text-darken-4">
+                    一人之下<i class="fa fa-commenting-o right"></i>
+                  </div>
+                  <p class="should-ellipsis-full">
+                    
+                  </p>
+                  <ul class="skill-list">
+                    <li class="skill">
+                      <div>
+                        <a href="https://www.bilibili.com/bangumi/play/ss5050?spm_id_from=333.337.0.0">追剧</a>
+                      </div>
+                      <progress class="skill-1" max="100" value="100">
+                      </progress>
+                    </li>
+                  </ul>
+                </div>
+                <div class="card-reveal" style="display: none; transform: translateY(0%);">
+                  <span class="card-title grey-text text-darken-4">
+                    一人之下<i class="fa fa-close right"></i>
+                  </span>
+                  <span>
+                    <br>
+                  </span>
+                  <span>
+                    放送时间: 2018-02-24 SUN.<span>
+                        <p>
+                          《一人之下》讲述了现代城市中一群拥有超能力的异人的故事。这些人外表和普通人没有区别，却个个身怀绝技。
+                        </p>
+                        <ul class="skill-list">
+                          <li class="skill">
+                            <div>
+                              <a href="https://www.bilibili.com/bangumi/play/ss5050?spm_id_from=333.337.0.0">追剧</a>
+                            </div>
+                            <progress class="skill-1" max="100" value="100">
+                            </progress>
+                          </li>
+                        </ul>
+                      </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+      </div>
+      
+  </article>
+</div>
       <!-- body.end -->
     </div>
     <!-- search -->    
@@ -630,6 +648,13 @@ gitalk.render('gitalk-container')
         </a>
         
           <ul class="sub-menu">
+            
+              <li>
+                <a href="/analytics/">
+                  <i class="fa fa-line-chart" aria-hidden="true"></i>
+                  统计
+                </a>
+              </li>
             
               <li>
                 <a href="/categories/ctf/">
