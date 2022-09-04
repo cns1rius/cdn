@@ -1487,7 +1487,7 @@ a:active {
     -webkit-animation: fade-in .5s
 }
 
-#bgvideo {
+/* #bgvideo {
     position: absolute;
     top: 0;
     left: 0;
@@ -1553,7 +1553,7 @@ a:active {
     -moz-transition: .4s ease all;
     -o-transition: .4s ease all;
     transition: .4s ease all
-}
+} */
 
 .pattern-center {
     position: relative;
@@ -2149,7 +2149,7 @@ a:active {
     padding: 0 10px;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgba(255, 255, 255, .8)
+    background-color: rgba(255, 255, 255, .3)
 }
 
 .post-list {
