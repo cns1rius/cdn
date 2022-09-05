@@ -1228,24 +1228,24 @@ var home = location.href,
         //         Siren.addsource()
         //     })
         // },
-        // AH: function () {
-        //     if (Poi.windowheight == 'auto') {
-        //         if ($('h1.main-title').length > 0) {
-        //             var _height = $(window).height()
-        //             $('#centerbg').css({
-        //                 'height': _height
-        //             })
-        //             $('#bgvideo').css({
-        //                 'min-height': _height
-        //             })
-        //             $(window).resize(function () {
-        //                 Siren.AH()
-        //             })
-        //         }
-        //     } else {
-        //         $('.headertop').addClass('headertop-bar')
-        //     }
-        // }, 
+        AH: function () {
+            if (Poi.windowheight == 'auto') {
+                if ($('h1.main-title').length > 0) {
+                    var _height = $(window).height()
+                    $('#centerbg').css({
+                        'height': _height
+                    })
+                    $('#bgvideo').css({
+                        'min-height': _height
+                    })
+                    $(window).resize(function () {
+                        Siren.AH()
+                    })
+                }
+            } else {
+                $('.headertop').addClass('headertop-bar')
+            }
+        }, 
         PE: function () {
             if ($('.headertop').length > 0) {
                 if ($('h1.main-title').length > 0) {
