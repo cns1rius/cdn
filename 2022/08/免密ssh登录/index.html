@@ -14,7 +14,7 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
   <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cns1rius/cdn@latest/css/style.css" type="text/css" media="all" id="saukra_css-css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" id="saukra_css-css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/jquery.fancybox.min.css" media="all">  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/lib.min.css" media="all">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/font.css" media="all">
@@ -76,7 +76,7 @@
     /*End of Initial Variables*/
   </script>
   
-    <script src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@latest/js/noSomeKey.js"></script>
+    <script src></script>
   
   <script type="text/javascript">
     var bg = "https://api.maho.cc/random-img/pc.php".split(",");
@@ -169,7 +169,7 @@
     </div>
   </figure>
   
-  <div id="video-container">
+  <!-- <div id="video-container">
     <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
     </video>
     <div id="video-btn" class="loadvideo videolive">
@@ -178,7 +178,7 @@
     </div>
     <div class="video-stu">
     </div>
-  </div>
+  </div> -->
   <div class="headertop-down faa-float animated" onclick="headertop_down()">
     <span>
       <i class="fa fa-chevron-down" aria-hidden="true">
@@ -813,7 +813,7 @@ gitalk.render('gitalk-container')
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/lib.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/InsightSearch.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cns1rius/cdn@latest/js/sakura-app.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
 
 
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -1106,9 +1106,9 @@ gitalk.render('gitalk-container')
   });
 </script>
 
-   <!-- pages壁纸切换 -->
- 
-    <div class="skin-menu no-select" id="mainskin"  style="position: fixed">
+  <!-- pages壁纸切换 -->
+
+    <div class="skin-menu no-select" id="mainskin" style="position: fixed">
         <div class="theme-controls row-container">
             <ul class="menu-list">
                 <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
@@ -1122,16 +1122,18 @@ gitalk.render('gitalk-container')
             </ul>
         </div>
         <div class="font-family-controls row-container">
-            <button type="button" class="control-btn-serif selected" data-mode="serif" onclick="mashiro_global.font_control.change_font()">Serif</button>
-            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+            <button type="button" class="control-btn-serif selected" data-mode="serif"
+                onclick="mashiro_global.font_control.change_font()">Serif</button>
+            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif"
+                onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
         </div>
-    </div>   
-    <canvas id="night-mode-cover"></canvas> 
-        <div class="changeSkin-gear no-select">
-        <div class="keys" id="setbtn"> <span id="open-skinMenu"> 切换壁纸 | SCHEME TOOL 
-            &nbsp;<i class="iconfont icon-gear inline-block rotating"></i> </span></div>
+    </div>
+    <canvas id="night-mode-cover"></canvas>
+    <div class="changeSkin-gear no-select">
+        <div class="keys" id="setbtn"> <span id="open-skinMenu"> 切换壁纸 | SCHEME TOOL
+                &nbsp;<i class="iconfont icon-gear inline-block rotating"></i> </span></div>
     </div><!-- skin.end -->
-
+    
   <!-- left side bar -->
 
  </body>
